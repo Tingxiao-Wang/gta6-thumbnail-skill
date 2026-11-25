@@ -31,8 +31,6 @@ GTA Thumbnail Pro 希望解决的不是单纯的生图问题，而是**让 AI �
 > 我要制作 GTA6 游戏的视频封面，标题是「是游戏？还是壁纸模拟器？」
 
 | WorkBuddy 原生生成 | WorkBuddy + GTA Thumbnail Pro |
-|---|---|
-| ![Without Skill](assets/showcase/without-skill.png) | ![With Skill](assets/showcase/with-skill.png) |
 | 未加载 Skill | 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b5dc7397-a595-4b63-89a9-e101e29d0f59" />
 

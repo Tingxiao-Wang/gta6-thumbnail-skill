@@ -1,0 +1,55 @@
+{
+  "version": "2.4.2",
+  "name": "GTA6-inspired final color finish",
+  "disclaimer": "Original cinematic treatment inspired by warm-coast-city game imagery; not an official GTA6 LUT or Rockstar asset.",
+  "presets": {
+    "vice_sunset": {
+      "label": "热带都市粉橙日落",
+      "overlay": [
+        "muted coral",
+        "soft amber",
+        "cool teal balance"
+      ]
+    },
+    "neon_night": {
+      "label": "海滨夜景蓝紫",
+      "overlay": [
+        "subdued violet",
+        "cool cyan",
+        "dark marine blue"
+      ]
+    },
+    "cinema_natural": {
+      "label": "低饱和电影暖灰",
+      "overlay": [
+        "warm gray",
+        "subtle amber",
+        "soft blue shadow"
+      ]
+    },
+    "none": {
+      "label": "保留原色",
+      "overlay": []
+    }
+  },
+  "default": {
+    "preset": "vice_sunset",
+    "intensity": 32
+  },
+  "apply_order": [
+    "render_background",
+    "render_optional_separate_portrait",
+    "softlight_screen_composite_for_subject_and_background",
+    "render_editable_text_on_top"
+  ],
+  "constraints": [
+    "no_strong_skin_tint",
+    "avoid_synthetic_glow",
+    "no_processing_of_editable_text",
+    "do_not_pretend_pixel-perfect_local_skin_matching_without_matte"
+  ],
+  "editor_controls": [
+    "gradePreset",
+    "gradeIntensity"
+  ]
+}

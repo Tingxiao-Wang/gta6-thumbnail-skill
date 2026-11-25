@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "entry_modes": [
+    "generate",
+    "edit",
+    "learn_style",
+    "use_custom_style",
+    "guided8",
+    "open_editor"
+  ],
+  "priority": [
+    "user current explicit request",
+    "edit existing asset and preserve unchanged fields",
+    "guided8 only if explicitly asked",
+    "automatic selection from known data",
+    "default platform rules"
+  ],
+  "questions": {
+    "instant": 0,
+    "assisted_max": 1,
+    "guided8": "one question per turn; skip already supplied and irrelevant steps"
+  },
+  "host_policy": {
+    "doubao": {
+      "onboarding": "paste doubao/AGENT_INSTRUCTIONS.md; attach files only if supported",
+      "image": "use actual available image tool; do not assume external shell or HTML can run in chat",
+      "editing": "image edit if available; for precise text use offline HTML editor"
+    },
+    "workbuddy": {
+      "onboarding": "import folder including SKILL.md, references, tools",
+      "image": "check host image tools and permissions before invoking; no compulsory API setup",
+      "editing": "host image edit if supported; offline editor for exact text"
+    },
+    "offline_compiler": {
+      "optional": "Python standard library local script tools/compile_brief.py, no third-party dependencies",
+      "no_network": true
+    }
+  },
+  "failure_policy": {
+    "no_image_tool": "return compiled prompt and say image not generated",
+    "text_accuracy": "no-text generated background plus editable text layers",
+    "unsupported_resolution": "report actual output and do not claim target resolution",
+    "image_edit_failure": "preserve original; explain failure and provide fallback",
+    "reference_missing": "do not claim reference was seen"
+  },
+  "api_secret_policy": "Never request users paste API keys into chat or project JSON. No external API required for default flow."
+}

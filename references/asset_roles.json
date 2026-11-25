@@ -1,0 +1,87 @@
+{
+  "version": "2.5.1",
+  "scope": "只在会话可访问的图片中建立编号，编号不表示图片自动被宿主传入生图模型",
+  "role_priority": [
+    "用户明示分配 > 图片实际内容分析 > 下列默认映射"
+  ],
+  "asset_manifest_template": {
+    "asset_id": "ref1",
+    "role": "main_game_screenshot",
+    "has_permission": "user_asserted_or_confirmed",
+    "must_preserve": [
+      "key_subject",
+      "perspective",
+      "recognizable_environment"
+    ],
+    "allowed_edits": [
+      "reframe",
+      "exposure",
+      "contrast",
+      "color_grade",
+      "bounded_outpaint"
+    ],
+    "prohibited_edits": [
+      "replace_key_subject_unless_requested"
+    ]
+  },
+  "default_roles": [
+    {
+      "ref": "图1 / ref1",
+      "when": "只有一张上传图",
+      "role": "main_game_screenshot",
+      "use": "优先作为主底图，保持真实主体与动作事件"
+    },
+    {
+      "ref": "图2 / ref2",
+      "when": "第二张为主播照片",
+      "role": "host_reference",
+      "use": "仅在用户明确要主播形象且有权使用时用于主体抠图或照片编辑"
+    },
+    {
+      "ref": "图3 / ref3",
+      "when": "第三张为局部细节、证明材料",
+      "role": "supporting_evidence",
+      "use": "作为角落局部放大/对比，不得无根据改写内容"
+    },
+    {
+      "ref": "图N / refN",
+      "when": "其余图片",
+      "role": "user_defined_supporting_asset",
+      "use": "先判断真实性、用途和重要性，再选择是否放入"
+    }
+  ],
+  "routing": {
+    "only_one_screenshot": "full_bleed_scene_editorial",
+    "screenshot_plus_host_photo": "gameplay_scene_plus_real_host_composite",
+    "two_provided_screenshots": "verifiable_visual_comparison",
+    "screenshot_plus_annotated_evidence": "discovery_annotation"
+  },
+  "limits": [
+    "不得默认强制真人出镜",
+    "不得凭空生成假冒真实主播肖像",
+    "不得把参考图片的第三方Logo/水印自动打包到最终商品",
+    "上传图片如果无法由出图工具读取，不得声称保留了原图"
+  ],
+  "post_generation_locks": [
+    "user_headline_exact",
+    "main_subject_identity",
+    "unrequested_crop",
+    "existing_scene_facts"
+  ],
+  "v25_additions": {
+    "style_reference": "A user-uploaded or bundled reference image that should guide composition, typography, palette and finish. It should never be copied subject-for-subject.",
+    "bundled_style_reference": "A reference image selected from assets/bundled_references/* when the user did not upload their own style reference.",
+    "previous_result": "The last generated result used as the base image for iterative edits."
+  },
+  "v251_upload_role_gate": {
+    "reference": "references/image_role_disambiguation_v251.json",
+    "no_silent_default": true,
+    "legacy_default_roles_are_suggestions_only": "Never use role based solely on attachment index if intent ambiguous",
+    "status": "pending_clarification blocks generation",
+    "allowed_roles": [
+      "subject",
+      "style_reference",
+      "both"
+    ]
+  }
+}

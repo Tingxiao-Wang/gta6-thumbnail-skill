@@ -1,0 +1,41 @@
+{
+  "id": "custom-muted-cinema",
+  "name": "克制电影感",
+  "version": "1.0.0",
+  "status": "draft",
+  "compatible_platforms": [
+    "xiaohongshu",
+    "bilibili",
+    "youtube"
+  ],
+  "reference_images": [],
+  "visual_contract": {
+    "subject": "单一真实游戏主体",
+    "composition": "前景人物、远景城市，使用左侧真实负空间",
+    "negative_space": "左上标题区，避免压住人物或地标",
+    "effects": [
+      "局部光影",
+      "低饱和分级"
+    ]
+  },
+  "typography": {
+    "hierarchy": "主标题清楚、副标题可省",
+    "placement": "左上或下方负空间",
+    "weight": "heavy",
+    "max_lines": 2
+  },
+  "palette": [
+    "#263248",
+    "#D7A078",
+    "#F1E6CD"
+  ],
+  "prompt_core": "电影化的开放世界游戏场景，前景与城市远景明确，利用真实负空间承载标题，克制光影和统一色调。",
+  "negative_rules": [
+    "不内嵌相框",
+    "不编造官方Logo",
+    "不添加假直播标签"
+  ],
+  "license_note": "示例原创规则，无第三方原图",
+  "test_notes": "未进行宿主生图测试",
+  "preview_asset": ""
+}

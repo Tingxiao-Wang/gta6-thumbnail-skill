@@ -1,0 +1,125 @@
+{
+  "version": "2.5.1",
+  "purpose": "Prevent user-uploaded photos and screenshots from being mistaken for style references.",
+  "asset_roles": {
+    "subject": {
+      "zh": "封面主体",
+      "meaning": "The actual person/game screenshot/car/object to show in the final cover.",
+      "must_preserve": [
+        "user_selected_subject_identity",
+        "important_characteristics",
+        "scene_truth",
+        "face_if_person"
+      ],
+      "permitted_actions": [
+        "edit",
+        "crop",
+        "outpaint",
+        "light_grade",
+        "composite"
+      ],
+      "must_not": [
+        "treat_as_style_only",
+        "replace_identity_without_request"
+      ]
+    },
+    "style_reference": {
+      "zh": "风格参考",
+      "meaning": "Reference for layout/typography/color/treatment ONLY; not subject content.",
+      "must_preserve": [],
+      "permitted_actions": [
+        "analyze",
+        "use_as_visual_reference"
+      ],
+      "must_not": [
+        "copy_people",
+        "copy_text",
+        "copy_logo_or_watermark"
+      ]
+    },
+    "both": {
+      "zh": "两者都要",
+      "meaning": "Use user image as content to preserve AND as a style reference.",
+      "must_preserve": [
+        "subject_identity",
+        "scene_content"
+      ],
+      "permitted_actions": [
+        "edit",
+        "analyze",
+        "composite"
+      ],
+      "must_not": [
+        "lose_subject_due_to_style_transfer"
+      ]
+    }
+  },
+  "resolution_priority": [
+    "user_explicit_per_image_role",
+    "prior_confirmed_per_image_role",
+    "strong_semantic_intent",
+    "ask_on_ambiguity"
+  ],
+  "strong_intent_patterns": {
+    "subject": [
+      "把图1的人物放到封面",
+      "保留照片中的我",
+      "以这张截图作为画面",
+      "使用这张照片里的主体",
+      "这张图是封面背景",
+      "让这辆车出现在封面"
+    ],
+    "style_reference": [
+      "参考图2的排版",
+      "只学习这张图的字效",
+      "按这种画风",
+      "用这张作风格参考",
+      "不要复制参考图里的人物"
+    ],
+    "both": [
+      "保留这张图片的人物，同时沿用它的构图和配色",
+      "这张图既作为主体又作为风格"
+    ]
+  },
+  "ambiguity_rule": {
+    "when": "Uploaded image role is not explicit and cannot be confidently inferred from request.",
+    "action": "ask_before_generation",
+    "max_questions_per_turn": 1,
+    "group_multiple_images_in_one_question": true,
+    "single_image_question": "这张图片你想怎么使用？① 作为封面主体（人物/车辆/游戏画面要出现在成品中）；② 只参考画面风格（借鉴构图、字体和配色，不复制图片主体）；③ 两者都要。回复 1/2/3 即可。",
+    "multiple_image_question": "我收到了多张图片，请确认每张的用途：① 封面主体；② 风格参考；③ 两者都要。可以直接回复「图1=1，图2=2，图3=3」。",
+    "ask_only_for_unresolved": true,
+    "do_not_ask_if_roles_explicit": true,
+    "no_images": "skip_question",
+    "if_user_refuses_questions": "Exclude unclassified images from generation; disclose that they were not used. Do not silently reclassify them."
+  },
+  "multi_asset_examples": [
+    {
+      "input": "用图1的人做封面，模仿图2排版",
+      "roles": {
+        "image_1": "subject",
+        "image_2": "style_reference"
+      },
+      "ask": false
+    },
+    {
+      "input": "帮我用上传的两张图做封面",
+      "roles": {},
+      "ask": true
+    },
+    {
+      "input": "根据图1的截图做底图",
+      "roles": {
+        "image_1": "subject"
+      },
+      "ask": false
+    }
+  ],
+  "handoff_contract": {
+    "user_content_inputs": "images with subject or both",
+    "user_style_inputs": "images with style_reference or both",
+    "bundled_reference_inputs": "only when user_style_inputs is empty",
+    "previous_result": "only previous edit version, never style unless specifically requested"
+  },
+  "privacy": "Never silently store user photos in bundled/public reference assets."
+}

@@ -1,0 +1,993 @@
+{
+  "version": "1.6.0",
+  "title": "GTA Thumbnail Pro 三平台版式执行合同",
+  "status": "product_design_contract_not_platform_mandated",
+  "updated_at": "2026-11-21",
+  "references_basis": {
+    "archive": "gta6_fengmiancankao.zip",
+    "sample_counts": {
+      "bilibili": 10,
+      "xiaohongshu": 7,
+      "youtube": 12,
+      "unique_total": 27
+    },
+    "evidence_note": "由用户提供的29张封面/列表截图人工观察归纳。部分图片含平台叠加的播放量、时长等 UI，不能作为封面装饰元素。不是随机样本、点击率数据或官方设计标准。",
+    "visual_examples": {
+      "xiaohongshu": [
+        "H01/H04: 横版实景，底部大字+局部强调",
+        "H02: 竖版中部大标题与次级小字",
+        "H03: 竖版上下对照，双画面证据",
+        "H05: 竖版高信息密度资讯",
+        "H06: 场景记录型可以少字",
+        "H07: 车图居中，上下分层信息"
+      ],
+      "bilibili": [
+        "B03: BUG圈选/箭头配大字",
+        "B05/B08: 主播与游戏主体双焦点",
+        "B06: 电影叙事拼贴，少字",
+        "B07/B09: 多层资讯/看点型标题",
+        "B01: 明显的主播反应与情绪词"
+      ],
+      "youtube": [
+        "Y02: 一个动作+极短数字",
+        "Y03/Y06/Y08: 反应人物大特写",
+        "Y01/Y05: 系列或直播角标",
+        "Y10: 事件截图+主播+短钩子",
+        "Y12: 左右事实对照",
+        "Y07: 游戏角色电影感"
+      ]
+    },
+    "source_urls": [
+      "https://support.google.com/youtube/answer/72431?hl=en",
+      "https://www.bilibili.com/opus/517638323328040669",
+      "https://www.hubstudio.ai/zh/resources/insights/rednote-note-cover-specs"
+    ]
+  },
+  "semantics": {
+    "coordinate_system": "x,y,w,h 为相对于整张成品画布的 0–1 坐标，左上角为原点，画面铺满整个画布。",
+    "headline_block_height_percent": "主标题图层（包括所有行与行间距）占成品画布高度的比例，不等于单个字的字号。",
+    "font_size_h_ratio": "单行标题建议字号相对画布高度，字号比例仅在宿主支持精确排版时才能严格执行。",
+    "title_position": "优先根据原图负空间选预设布局；不能让标题遮挡必须保留的真人脸、车头、关键游戏事件。",
+    "masking_and_crop": "同平台不同比例需要重构布局，不能只靠整体缩放或强制裁切。",
+    "hard_vs_soft": "hard_rule 指设计系统要求；target_range 是可测试的产品排版目标，不是官方审核标准，更不能保证纯文生图模型像素级执行。",
+    "ratio_recomposition": "If requested ratio differs from platform default, use ratio_layout_overrides[ratio][layout_id] when available; if none, independently recompose using composition.json and visually verify. Dual exports never stretch."
+  },
+  "priority_order": [
+    "explicit_user_title_text_and_no_text_request",
+    "explicit_user_platform_and_aspect_ratio",
+    "preserve_uploaded_subject_and_true_scene",
+    "global_negative_rules_and_content_safety",
+    "platform_output_and_layout_contract",
+    "content_style_recipe_and_title_variants",
+    "automatic_aesthetic_defaults"
+  ],
+  "global_hard_rules": {
+    "source_image_mode": "uploaded_screenshot => screenshot_based_cover (when image accessible)",
+    "full_bleed": true,
+    "outer_paper_or_canvas": false,
+    "unrequested_framed_inset": false,
+    "source_subject_lock": true,
+    "user_title_exact": true,
+    "user_title_auto_rewrite": false,
+    "body_text_not_invent_game_facts": true,
+    "platform_ui_watermark_play_counts_duration": false,
+    "cinematic_means": "电影化的视频封面画面语言，而不是印刷海报样机/画中画。",
+    "screenshot_processing_minimum": [
+      "观察人物/车辆/关键地标/负空间",
+      "按目标画幅重新裁切或适当延展",
+      "对文字区域做局部明暗托底",
+      "主体与背景做有节制的层次增强",
+      "进行缩略图可读性与标题字形检查"
+    ],
+    "no_arbitrary_new_subjects": true,
+    "only_add_labels_if_verified_or_generic": "可选纯分类词；不能虚构实机、泄露、官方结论或排行榜。",
+    "skip_asking_when": "有截图+平台+指定标题/风格→直接设计；缺少影响内容意义的关键方向时最多一次高价值追问。"
+  },
+  "global_anti_patterns": [
+    "截图缩小居中+灰色/白色大底",
+    "外边框、影楼相框、印刷海报挂墙样机",
+    "仅在截图顶端贴一行字",
+    "默认紫粉霓虹豪车替代用户实图",
+    "无凭据增加游戏事实与官方标签",
+    "强行把用户标题翻译成英文或改写",
+    "为了字大遮挡人脸/车头/动作证据",
+    "直接拉伸改变比例",
+    "伪造平台播放量/视频时长/点赞UI"
+  ],
+  "workflow": [
+    "读取用户材料、图片、平台和原文标题，优先保真；判断是否需要追问",
+    "确定发布平台与输出预设，枚举该平台 layouts；按真实画面负空间和内容类别选定唯一布局ID",
+    "先锁定主体框/禁遮挡区，再把标题、标签、副标题分配到相应规范框；无依据时不增加标签和副标题",
+    "按本平台 title_design、headline_size 与 screenshot_processing 参数规划层级、颜色和局部光影",
+    "优先原图图生图/图像编辑；若支持独立可编辑文字，则先无字场景再叠字，确保逐字正确",
+    "生成后检查比例、全版、原图主体、文字、视觉焦点、截图二次处理是否确实发生；不通过时有限修正",
+    "保留当前会话 brief 的 ratio、layout_id、title_exact、subject_locks 以供二次修改"
+  ],
+  "quality_gates": {
+    "H1_full_bleed": "图片内容延伸到全部画布边缘，无灰纸边/悬空截图",
+    "H2_title_exact": "用户提供的标题逐字准确（允许按语义换行、分色，不得改写添加标点）",
+    "H3_source_lock": "没有改掉用户指定主体、城市关系、车型或事件",
+    "H4_layout": "采用所选布局的主体与标题区域，标题不挡住关键证据",
+    "H5_ratio": "实际生成/导出的宽高比符合目标，或明确披露工具限制",
+    "H6_packaging": "不止把截图加字；有可见的局部色彩/对比/层次整合",
+    "H7_legibility": "缩小至320px宽（竖版可用240px）时，主标题与主体仍可理解",
+    "H8_not_fake": "未伪造事实或平台UI"
+  },
+  "capability_limit": "设计合同可被文字指令约束，但无法单靠 SKILL.md 保证豆包/WorkBuddy图像模型遵守精确坐标与字号；有叠字/裁切工具时应实际执行并检查像素，没有时检查成品并诚实说明。",
+  "platforms": {
+    "xiaohongshu": {
+      "display_name": "小红书 / Xiaohongshu",
+      "design_slogan": "标题先行、手机竖版、清晰信息钩子；容许少字电影氛围型。",
+      "output": {
+        "default": {
+          "preset_id": "note_3_4",
+          "width": 1080,
+          "height": 1440,
+          "ratio": "3:4",
+          "status": "common_creator_workflow_not_confirmed_official_mandate"
+        },
+        "optional": [
+          {
+            "preset_id": "square_1_1",
+            "width": 1080,
+            "height": 1080,
+            "ratio": "1:1"
+          },
+          {
+            "preset_id": "wide_16_9",
+            "width": 1920,
+            "height": 1080,
+            "ratio": "16:9"
+          }
+        ]
+      },
+      "safe_area": {
+        "outer_inset_pct": 8,
+        "bottom_avoid_small_text_pct": 18,
+        "note": "产品保守设计边距，不是平台强制审查数值"
+      },
+      "headline_size": {
+        "block_height_pct": [
+          12,
+          18
+        ],
+        "font_size_h_ratio": [
+          0.07,
+          0.12
+        ],
+        "preferred_chars": [
+          4,
+          10
+        ],
+        "max_lines_soft": 2,
+        "semantic_line_break": true,
+        "user_long_title_policy": "保留原文全部字，语义断行、分主次字号；允许超出推荐字数，不擅自删字"
+      },
+      "tag_style": {
+        "height_pct": [
+          4,
+          6
+        ],
+        "max_count": 1,
+        "position": "左上或标题上方",
+        "if_missing": "可不添加"
+      },
+      "subtitle_style": {
+        "height_pct": [
+          5,
+          8
+        ],
+        "max_lines": 1,
+        "only_if": "user_supplied_or_factual_and_useful"
+      },
+      "title_design": {
+        "preferred_color_pairs": [
+          "白字+深描边",
+          "黄字+深描边",
+          "少量红字强调"
+        ],
+        "accent_keywords_max": 1,
+        "weight": "heavy_or_extra_bold",
+        "outline": "medium",
+        "style": "情绪钩子，层级紧凑，切勿所有字同时高亮",
+        "headline_language": "preserve_user_language"
+      },
+      "layout_selection": {
+        "review": "xhs_top_hook",
+        "gameplay": "xhs_top_hook",
+        "news": "xhs_top_bottom_info",
+        "comparison": "xhs_top_bottom_info",
+        "cinematic": "xhs_cinematic_screenshot",
+        "exploration": "xhs_cinematic_screenshot"
+      },
+      "layouts": {
+        "xhs_top_hook": {
+          "label": "竖版上标题下主体",
+          "use_for": [
+            "测评疑问",
+            "体验情绪",
+            "单一挑战"
+          ],
+          "headline_rect": {
+            "x": 0.08,
+            "y": 0.1,
+            "w": 0.84,
+            "h": 0.19
+          },
+          "tag_rect": {
+            "x": 0.08,
+            "y": 0.05,
+            "w": 0.38,
+            "h": 0.055
+          },
+          "subtitle_rect": {
+            "x": 0.08,
+            "y": 0.3,
+            "w": 0.84,
+            "h": 0.07
+          },
+          "hero_rect": {
+            "x": 0.11,
+            "y": 0.38,
+            "w": 0.79,
+            "h": 0.48
+          },
+          "focus_note": "标题处于上部，游戏主体位于中下部；主体不能被下方平台信息压住"
+        },
+        "xhs_top_bottom_info": {
+          "label": "顶部信息+中部主视觉+下部结果",
+          "use_for": [
+            "资讯",
+            "对比",
+            "清单",
+            "攻略"
+          ],
+          "headline_rect": {
+            "x": 0.08,
+            "y": 0.07,
+            "w": 0.84,
+            "h": 0.17
+          },
+          "tag_rect": {
+            "x": 0.08,
+            "y": 0.025,
+            "w": 0.34,
+            "h": 0.04
+          },
+          "subtitle_rect": {
+            "x": 0.08,
+            "y": 0.81,
+            "w": 0.84,
+            "h": 0.07
+          },
+          "hero_rect": {
+            "x": 0.09,
+            "y": 0.25,
+            "w": 0.82,
+            "h": 0.54
+          },
+          "focus_note": "底部只放可读短信息，关键小字上移；双图对比时各画面公平呈现"
+        },
+        "xhs_cinematic_screenshot": {
+          "label": "电影感竖版截图再设计",
+          "use_for": [
+            "初见城市",
+            "场景纪实",
+            "人物背影",
+            "电影质感"
+          ],
+          "headline_rect": {
+            "x": 0.08,
+            "y": 0.07,
+            "w": 0.84,
+            "h": 0.18
+          },
+          "tag_rect": {
+            "x": 0.08,
+            "y": 0.03,
+            "w": 0.34,
+            "h": 0.045
+          },
+          "subtitle_rect": {
+            "x": 0.08,
+            "y": 0.25,
+            "w": 0.84,
+            "h": 0.06
+          },
+          "hero_rect": {
+            "x": 0.13,
+            "y": 0.32,
+            "w": 0.74,
+            "h": 0.54
+          },
+          "focus_note": "竖向延展大场景，背影和地标锁定；无需强行增加副标题"
+        }
+      },
+      "screenshot_processing": {
+        "crop": "横图改3:4优先对主体/地平线做竖向重构，能安全补足就上下延展；禁止横向压扁",
+        "priority": [
+          "主体放大且不截头/截车",
+          "标题上方负空间局部压暗",
+          "背景局部降杂讯与细节密度",
+          "适度提升主体分离感"
+        ],
+        "tone": "维持原截图主调，不默认染成高饱和粉紫",
+        "avoid": [
+          "截图嵌白底竖纸",
+          "密集小字压住人物",
+          "随机卡通贴纸",
+          "以夸张海报覆盖真实游戏信息"
+        ]
+      },
+      "quality_preview_width_px": 240,
+      "sample_ids": [
+        "H01",
+        "H02",
+        "H03",
+        "H05",
+        "H06",
+        "H07"
+      ]
+    },
+    "bilibili": {
+      "display_name": "B站 / Bilibili",
+      "design_slogan": "图文同等重要，内容感与故事性并重；电影型可以少字但必须完成视觉包装。",
+      "output": {
+        "default": {
+          "preset_id": "player_16_9",
+          "width": 1920,
+          "height": 1080,
+          "ratio": "16:9",
+          "status": "product_creative_primary_not_universal_upload_requirement"
+        },
+        "optional": [
+          {
+            "preset_id": "feed_4_3",
+            "width": 1200,
+            "height": 900,
+            "ratio": "4:3",
+            "usage": "按投稿/分发位置选择"
+          },
+          {
+            "preset_id": "dual",
+            "presets": [
+              "player_16_9",
+              "feed_4_3"
+            ],
+            "usage": "双版独立重构，不可拉伸"
+          }
+        ]
+      },
+      "safe_area": {
+        "outer_inset_pct": 6,
+        "avoid_bottom_right_ui_pct": {
+          "width": 16,
+          "height": 15
+        },
+        "four_three_preview_crop_if_centered": {
+          "x": 0.125,
+          "y": 0,
+          "w": 0.75,
+          "h": 1
+        },
+        "note": "16:9与4:3展示位置和上传入口可能变化；中心裁切仅作快速预览，若真的交付双版须重新排版"
+      },
+      "headline_size": {
+        "block_height_pct": [
+          14,
+          22
+        ],
+        "font_size_h_ratio": [
+          0.09,
+          0.16
+        ],
+        "preferred_chars": [
+          4,
+          12
+        ],
+        "max_lines_soft": 2,
+        "semantic_line_break": true,
+        "user_long_title_policy": "长句拆层级但不删原字；主标题与称呼语可分组、不改变词句"
+      },
+      "tag_style": {
+        "height_pct": [
+          4,
+          5
+        ],
+        "max_count": 1,
+        "position": "左上",
+        "if_missing": "非必要，电影型可无"
+      },
+      "subtitle_style": {
+        "height_pct": [
+          5,
+          8
+        ],
+        "max_lines": 1,
+        "only_if": "user_supplied_or_verified_and_material_to_video"
+      },
+      "title_design": {
+        "preferred_color_pairs": [
+          "白字+黑描边",
+          "黄字+黑描边",
+          "单个红色重点词"
+        ],
+        "accent_keywords_max": 1,
+        "weight": "heavy_or_extra_bold",
+        "outline": "medium_to_thick",
+        "style": "按测评/攻略/娱乐决定信息层级；电影型允许轻字重与留白",
+        "headline_language": "preserve_user_language"
+      },
+      "layout_selection": {
+        "review": "bili_left_review",
+        "guide": "bili_left_review",
+        "news": "bili_top_hook",
+        "challenge": "bili_top_hook",
+        "gameplay": "bili_top_hook",
+        "cinematic": "bili_cinematic_screenshot",
+        "exploration": "bili_cinematic_screenshot",
+        "reaction": "bili_top_hook"
+      },
+      "layouts": {
+        "bili_left_review": {
+          "label": "左文右主体-评测资讯",
+          "use_for": [
+            "值不值得",
+            "系统测评",
+            "实机评估",
+            "攻略讲解"
+          ],
+          "headline_rect": {
+            "x": 0.07,
+            "y": 0.24,
+            "w": 0.45,
+            "h": 0.22
+          },
+          "tag_rect": {
+            "x": 0.07,
+            "y": 0.08,
+            "w": 0.25,
+            "h": 0.05
+          },
+          "subtitle_rect": {
+            "x": 0.07,
+            "y": 0.5,
+            "w": 0.45,
+            "h": 0.08
+          },
+          "hero_rect": {
+            "x": 0.54,
+            "y": 0.1,
+            "w": 0.4,
+            "h": 0.78
+          },
+          "focus_note": "文字左侧，人物/车辆右侧；背景左侧局部压暗；有双版需求时重排至4:3中央区",
+          "dual_safe_override": {
+            "headline_rect": {
+              "x": 0.14,
+              "y": 0.23,
+              "w": 0.35,
+              "h": 0.22
+            },
+            "hero_rect": {
+              "x": 0.53,
+              "y": 0.12,
+              "w": 0.31,
+              "h": 0.74
+            }
+          }
+        },
+        "bili_top_hook": {
+          "label": "上方钩子-下方主体",
+          "use_for": [
+            "游戏挑战",
+            "BUG",
+            "结果悬念",
+            "体验情绪"
+          ],
+          "headline_rect": {
+            "x": 0.07,
+            "y": 0.11,
+            "w": 0.64,
+            "h": 0.21
+          },
+          "tag_rect": {
+            "x": 0.07,
+            "y": 0.045,
+            "w": 0.26,
+            "h": 0.05
+          },
+          "subtitle_rect": {
+            "x": 0.07,
+            "y": 0.34,
+            "w": 0.57,
+            "h": 0.06
+          },
+          "hero_rect": {
+            "x": 0.32,
+            "y": 0.34,
+            "w": 0.6,
+            "h": 0.57
+          },
+          "focus_note": "重大事件居画面中下，文字不遮挡事件证据，右下角避免重要小字",
+          "dual_safe_override": {
+            "headline_rect": {
+              "x": 0.14,
+              "y": 0.11,
+              "w": 0.6,
+              "h": 0.2
+            },
+            "hero_rect": {
+              "x": 0.28,
+              "y": 0.36,
+              "w": 0.56,
+              "h": 0.54
+            }
+          }
+        },
+        "bili_cinematic_screenshot": {
+          "label": "横版满版电影感截图",
+          "use_for": [
+            "城市全景",
+            "背影人物",
+            "史诗初见",
+            "剧情/电影感"
+          ],
+          "headline_rect": {
+            "x": 0.06,
+            "y": 0.1,
+            "w": 0.44,
+            "h": 0.24
+          },
+          "tag_rect": {
+            "x": 0.06,
+            "y": 0.05,
+            "w": 0.22,
+            "h": 0.05
+          },
+          "subtitle_rect": {
+            "x": 0.06,
+            "y": 0.36,
+            "w": 0.45,
+            "h": 0.06
+          },
+          "hero_rect": {
+            "x": 0.43,
+            "y": 0.19,
+            "w": 0.51,
+            "h": 0.7
+          },
+          "focus_note": "优先尊重截图真实主体与原有负空间，标题与场景同一画布；电影感不代表纸质海报框",
+          "dual_safe_override": {
+            "headline_rect": {
+              "x": 0.14,
+              "y": 0.09,
+              "w": 0.36,
+              "h": 0.23
+            },
+            "hero_rect": {
+              "x": 0.45,
+              "y": 0.2,
+              "w": 0.39,
+              "h": 0.68
+            }
+          }
+        }
+      },
+      "screenshot_processing": {
+        "crop": "16:9作为创作主版；4:3必须单独重构；只用中心75%宽进行裁切预览，不代表可以直接裁成品",
+        "priority": [
+          "明确主角/车辆/事件主体",
+          "标题区局部压暗而非整幅涂黑",
+          "主体局部明暗和前后层次增强",
+          "有意义的字幕/标签层级（非强制）"
+        ],
+        "tone": "电影感按原截图色调适度分级，避免泛化亮粉紫霓虹",
+        "avoid": [
+          "灰底/细橙边框",
+          "截图加一句顶栏大字即完工",
+          "给场景凭空加跑车",
+          "所有测评都使用同一个黄色字体模板"
+        ]
+      },
+      "quality_preview_width_px": 320,
+      "sample_ids": [
+        "B01",
+        "B03",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09"
+      ],
+      "ratio_layout_overrides": {
+        "4:3": {
+          "bili_left_review": {
+            "headline_rect": {
+              "x": 0.07,
+              "y": 0.22,
+              "w": 0.48,
+              "h": 0.25
+            },
+            "tag_rect": {
+              "x": 0.07,
+              "y": 0.07,
+              "w": 0.27,
+              "h": 0.055
+            },
+            "subtitle_rect": {
+              "x": 0.07,
+              "y": 0.5,
+              "w": 0.48,
+              "h": 0.08
+            },
+            "hero_rect": {
+              "x": 0.54,
+              "y": 0.14,
+              "w": 0.4,
+              "h": 0.75
+            },
+            "note": "真正的4:3布局，主角在右侧但让文字更集中；不是直接裁切16:9"
+          },
+          "bili_top_hook": {
+            "headline_rect": {
+              "x": 0.07,
+              "y": 0.11,
+              "w": 0.8,
+              "h": 0.21
+            },
+            "tag_rect": {
+              "x": 0.07,
+              "y": 0.04,
+              "w": 0.27,
+              "h": 0.055
+            },
+            "subtitle_rect": {
+              "x": 0.07,
+              "y": 0.35,
+              "w": 0.7,
+              "h": 0.06
+            },
+            "hero_rect": {
+              "x": 0.22,
+              "y": 0.38,
+              "w": 0.69,
+              "h": 0.52
+            },
+            "note": "上方更宽的标题，核心事件保持画面中间"
+          },
+          "bili_cinematic_screenshot": {
+            "headline_rect": {
+              "x": 0.07,
+              "y": 0.09,
+              "w": 0.61,
+              "h": 0.25
+            },
+            "tag_rect": {
+              "x": 0.07,
+              "y": 0.04,
+              "w": 0.29,
+              "h": 0.05
+            },
+            "subtitle_rect": {
+              "x": 0.07,
+              "y": 0.36,
+              "w": 0.59,
+              "h": 0.06
+            },
+            "hero_rect": {
+              "x": 0.33,
+              "y": 0.21,
+              "w": 0.6,
+              "h": 0.65
+            },
+            "note": "尊重原图主角与城市关系，标题布局有足够语义断行空间"
+          }
+        }
+      }
+    },
+    "youtube": {
+      "display_name": "YouTube",
+      "design_slogan": "主体优先、极短标题、缩小后仍一眼认出主题；语言跟随用户。",
+      "output": {
+        "default": {
+          "preset_id": "video_16_9",
+          "width": 3840,
+          "height": 2160,
+          "ratio": "16:9",
+          "status": "official_youtube_recommended"
+        },
+        "optional": [
+          {
+            "preset_id": "shorts_9_16",
+            "width": 2160,
+            "height": 3840,
+            "ratio": "9:16",
+            "usage": "Shorts 按当前上传界面能力处理封面"
+          }
+        ]
+      },
+      "safe_area": {
+        "outer_inset_pct": 6,
+        "avoid_bottom_right_ui_pct": {
+          "width": 15,
+          "height": 16
+        },
+        "note": "设计安全建议。Shorts显示/自定义封面上传能力依实际平台界面核验"
+      },
+      "headline_size": {
+        "block_height_pct": [
+          16,
+          24
+        ],
+        "font_size_h_ratio": [
+          0.105,
+          0.18
+        ],
+        "preferred_words_en": [
+          2,
+          5
+        ],
+        "preferred_chars_zh": [
+          2,
+          8
+        ],
+        "max_lines_soft": 2,
+        "user_long_title_policy": "保留原字，可在不遮挡主体前提下做层级与语义断行，不默删文字"
+      },
+      "tag_style": {
+        "height_pct": [
+          4,
+          6
+        ],
+        "max_count": 1,
+        "position": "左上或顶部角标",
+        "if_missing": "仅真实系列/集数/直播时添加"
+      },
+      "subtitle_style": {
+        "height_pct": [
+          0,
+          6
+        ],
+        "max_lines": 1,
+        "only_if": "explicit_or_proven_essential; default_no_subtitle"
+      },
+      "title_design": {
+        "preferred_color_pairs": [
+          "白字+深描边",
+          "黄字+深描边",
+          "红色仅强调1处"
+        ],
+        "accent_keywords_max": 1,
+        "weight": "extra_bold",
+        "outline": "thick_but_controlled",
+        "style": "短标题与主体反向分布，避免大段说明文字",
+        "headline_language": "preserve_user_language"
+      },
+      "layout_selection": {
+        "gameplay": "yt_subject_opposite_text",
+        "review": "yt_subject_opposite_text",
+        "cinematic": "yt_subject_opposite_text",
+        "reaction": "yt_reaction_focus",
+        "live": "yt_reaction_focus",
+        "challenge": "yt_single_word_action",
+        "minimal": "yt_single_word_action"
+      },
+      "layouts": {
+        "yt_subject_opposite_text": {
+          "label": "一侧大主体-另一侧短标题",
+          "use_for": [
+            "测评",
+            "探索",
+            "剧情",
+            "动作钩子"
+          ],
+          "headline_rect": {
+            "x": 0.06,
+            "y": 0.17,
+            "w": 0.42,
+            "h": 0.26
+          },
+          "tag_rect": {
+            "x": 0.06,
+            "y": 0.05,
+            "w": 0.24,
+            "h": 0.06
+          },
+          "subtitle_rect": {
+            "x": 0.06,
+            "y": 0.47,
+            "w": 0.4,
+            "h": 0.06
+          },
+          "hero_rect": {
+            "x": 0.51,
+            "y": 0.08,
+            "w": 0.44,
+            "h": 0.8
+          },
+          "focus_note": "如原图主角本来就在左侧，允许整个布局水平镜像，但不得水平镜像可读文字"
+        },
+        "yt_reaction_focus": {
+          "label": "主播反应+实况事件",
+          "use_for": [
+            "真实主播",
+            "反应",
+            "直播/系列"
+          ],
+          "headline_rect": {
+            "x": 0.06,
+            "y": 0.08,
+            "w": 0.49,
+            "h": 0.21
+          },
+          "tag_rect": {
+            "x": 0.06,
+            "y": 0.025,
+            "w": 0.18,
+            "h": 0.06
+          },
+          "subtitle_rect": {
+            "x": 0.06,
+            "y": 0.32,
+            "w": 0.35,
+            "h": 0.05
+          },
+          "hero_rect": {
+            "x": 0.61,
+            "y": 0.08,
+            "w": 0.34,
+            "h": 0.85
+          },
+          "focus_note": "仅有实际授权主播照时可使用人物大特写，游戏事件需可辨识"
+        },
+        "yt_single_word_action": {
+          "label": "单动作与极短数字/关键词",
+          "use_for": [
+            "挑战",
+            "单个视觉事件",
+            "$0/Day3这类真实内容"
+          ],
+          "headline_rect": {
+            "x": 0.57,
+            "y": 0.1,
+            "w": 0.35,
+            "h": 0.25
+          },
+          "tag_rect": {
+            "x": 0.06,
+            "y": 0.04,
+            "w": 0.23,
+            "h": 0.06
+          },
+          "subtitle_rect": {
+            "x": 0.55,
+            "y": 0.4,
+            "w": 0.36,
+            "h": 0.055
+          },
+          "hero_rect": {
+            "x": 0.1,
+            "y": 0.09,
+            "w": 0.51,
+            "h": 0.8
+          },
+          "focus_note": "不凭空添加数字、分数、价格等事实，允许无字封面"
+        }
+      },
+      "screenshot_processing": {
+        "crop": "16:9全画幅；Shorts竖版须独立延展或重构，不得把横图缩成窄条",
+        "priority": [
+          "视觉焦点最大化但不切掉关键事实",
+          "前景主体与背景分离，轮廓边界清晰",
+          "背景降噪和局部压暗保持标题可读",
+          "小缩略尺寸检查"
+        ],
+        "tone": "可增强反差，但保留来源截图原有世界和角色特征",
+        "avoid": [
+          "段落长文案",
+          "强行翻译英文",
+          "无来源的主播脸",
+          "假直播标签",
+          "过强轮廓光和爆炸"
+        ]
+      },
+      "quality_preview_width_px": 320,
+      "sample_ids": [
+        "Y01",
+        "Y02",
+        "Y03",
+        "Y06",
+        "Y07",
+        "Y08",
+        "Y10",
+        "Y12"
+      ],
+      "ratio_layout_overrides": {
+        "9:16": {
+          "yt_subject_opposite_text": {
+            "headline_rect": {
+              "x": 0.08,
+              "y": 0.09,
+              "w": 0.84,
+              "h": 0.19
+            },
+            "tag_rect": {
+              "x": 0.08,
+              "y": 0.035,
+              "w": 0.28,
+              "h": 0.05
+            },
+            "subtitle_rect": {
+              "x": 0.08,
+              "y": 0.28,
+              "w": 0.84,
+              "h": 0.06
+            },
+            "hero_rect": {
+              "x": 0.12,
+              "y": 0.36,
+              "w": 0.76,
+              "h": 0.48
+            },
+            "note": "Shorts竖版，改成上标题中下主角，不允许直接应用横版左右结构"
+          },
+          "yt_reaction_focus": {
+            "headline_rect": {
+              "x": 0.08,
+              "y": 0.08,
+              "w": 0.84,
+              "h": 0.18
+            },
+            "tag_rect": {
+              "x": 0.08,
+              "y": 0.025,
+              "w": 0.34,
+              "h": 0.05
+            },
+            "subtitle_rect": {
+              "x": 0.08,
+              "y": 0.27,
+              "w": 0.84,
+              "h": 0.06
+            },
+            "hero_rect": {
+              "x": 0.2,
+              "y": 0.36,
+              "w": 0.73,
+              "h": 0.5
+            },
+            "note": "主播占竖版主体下半部分，游戏事件的证据仍可辨识"
+          },
+          "yt_single_word_action": {
+            "headline_rect": {
+              "x": 0.08,
+              "y": 0.08,
+              "w": 0.84,
+              "h": 0.22
+            },
+            "tag_rect": {
+              "x": 0.08,
+              "y": 0.035,
+              "w": 0.29,
+              "h": 0.05
+            },
+            "subtitle_rect": {
+              "x": 0.08,
+              "y": 0.31,
+              "w": 0.83,
+              "h": 0.06
+            },
+            "hero_rect": {
+              "x": 0.13,
+              "y": 0.36,
+              "w": 0.75,
+              "h": 0.48
+            },
+            "note": "超短词位于上方，单动作主体下方，避免横图挤压"
+          }
+        }
+      }
+    }
+  }
+}

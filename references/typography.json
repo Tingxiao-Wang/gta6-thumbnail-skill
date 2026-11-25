@@ -1,0 +1,196 @@
+{
+  "version": "1.6.0",
+  "scope": "gaming_thumbnail; suggestions_not_guarantees",
+  "title_priority": [
+    "preserve_explicit_title_character_for_character",
+    "explicit_no_text_overrides_style",
+    "content_accuracy_over_clickbait",
+    "user_explicit_language_over_platform_assumptions"
+  ],
+  "languages": {
+    "zh": {
+      "short_chars": [
+        2,
+        7
+      ],
+      "medium_chars": [
+        8,
+        12
+      ],
+      "long_chars": [
+        13,
+        22
+      ],
+      "recommended_max_lines": 3,
+      "line_break": "优先在语义短语或标点处断行；不要拆开数字+量词或固定词组",
+      "font_fallbacks": [
+        "Noto Sans CJK SC",
+        "Source Han Sans SC",
+        "system sans-serif"
+      ]
+    },
+    "en": {
+      "short_words": [
+        1,
+        4
+      ],
+      "medium_words": [
+        5,
+        7
+      ],
+      "long_words": [
+        8,
+        12
+      ],
+      "recommended_max_lines": 3,
+      "line_break": "在语义块之间换行，不将单词拆成两行",
+      "font_fallbacks": [
+        "Anton",
+        "Bebas Neue",
+        "Arial Black",
+        "system sans-serif"
+      ]
+    }
+  },
+  "font_notice": "字体名称仅作为风格建议，不能假定宿主环境已安装或取得商业授权；优先使用平台可用且许可允许的字体。",
+  "text_render_pipeline": [
+    {
+      "rank": 1,
+      "if": "image tool can render reliable independent editable text overlay",
+      "do": "generate no-text base then typeset exact title as editable layer; verify exact glyphs"
+    },
+    {
+      "rank": 2,
+      "if": "image tool can render text but no independent overlay",
+      "do": "request exact title once; inspect glyphs and fix via image edit if available"
+    },
+    {
+      "rank": 3,
+      "if": "text fidelity is poor and no editing tools",
+      "do": "generate text-free base with reserved text space; return title coordinates and ready-to-paste text for manual overlay; do not claim complete thumbnail"
+    }
+  ],
+  "max_emphasis": {
+    "accent_keywords": 1,
+    "outline_strokes": 1,
+    "outer_glows": "0_or_subtle",
+    "main_headline_blocks": 1
+  },
+  "headline_modes": {
+    "poster": {
+      "density": "zero_or_short",
+      "layout": "one small-to-medium block; no forced title",
+      "color": "white_or_light_warm",
+      "outline": "thin_or_none",
+      "max_lines": 2
+    },
+    "reaction": {
+      "density": "short",
+      "layout": "single title in negative space opposite face",
+      "color": "warm_yellow_or_white",
+      "outline": "dark_thick_if_busy",
+      "max_lines": 2
+    },
+    "question": {
+      "density": "short",
+      "layout": "one hook phrase, optional single keyword highlight",
+      "color": "white_plus_one_accent",
+      "outline": "medium",
+      "max_lines": 2
+    },
+    "discovery": {
+      "density": "short",
+      "layout": "one evidence-focused headline; not on evidence target",
+      "color": "white_or_yellow",
+      "outline": "medium",
+      "max_lines": 2
+    },
+    "news": {
+      "density": "medium",
+      "layout": "headline + optional verified secondary line",
+      "color": "yellow_white",
+      "outline": "high_contrast",
+      "max_lines": 3
+    },
+    "versus": {
+      "density": "short",
+      "layout": "two small party labels + optional short shared verdict",
+      "color": "neutral_label_plus_one_accent",
+      "outline": "medium",
+      "max_lines": 2
+    },
+    "documentary": {
+      "density": "none_or_short",
+      "layout": "small understated title or none",
+      "color": "white_or_soft_cream",
+      "outline": "thin",
+      "max_lines": 1
+    },
+    "series": {
+      "density": "short_plus_badge",
+      "layout": "one short headline + verified episode badge only",
+      "color": "series_consistent",
+      "outline": "medium",
+      "max_lines": 2
+    },
+    "minimal": {
+      "density": "none_or_short",
+      "layout": "zero text default, user title remains if explicitly supplied",
+      "color": "high_contrast_single",
+      "outline": "thin",
+      "max_lines": 1
+    }
+  },
+  "platform_text_preferences": {
+    "xiaohongshu": {
+      "font_scale": "large_for_phone",
+      "max_lines": 3,
+      "avoid": "small_subtitle_at_bottom"
+    },
+    "bilibili": {
+      "font_scale": "large_and_balanced",
+      "max_lines": 3,
+      "avoid": "long_text_in_lower_right_duration_area"
+    },
+    "youtube": {
+      "font_scale": "very_large_for_small_preview",
+      "max_lines": 2,
+      "avoid": "long_paragraph_and_crowded_corners"
+    }
+  },
+  "overflow_strategy": [
+    "preserve user text exactly",
+    "change line breaks only",
+    "use permitted negative space or enlarge text block",
+    "reduce text size within legibility",
+    "if still impossible: say so and ask permission to shorten; never silently drop text"
+  ],
+  "checks": [
+    "character_exact_match_for_user_provided_text",
+    "font_glyph_integrity_zh_en_numbers_punctuation",
+    "no_text_clipping",
+    "legible_at_10_percent_preview",
+    "no_overlap_with_key_subject_or_evidence"
+  ],
+  "screenshot_title_integration": {
+    "exact_user_title": "绝对优先原文；允许断行但不删减、增加、改写原词；不得为了适合封面擅自制造新闻标题。",
+    "positioning": "先找截图真实负空间或局部建立低对比文字托底；拒绝标题压在复杂主体上或放到图片之外灰底。",
+    "hierarchy": "主标题是必需（用户给标题时）；小标签、副标题仅在用户提供、非事实性且有明确用途时可选。电影海报感不等于必须出现多行文案。",
+    "scene_protect": "保留人物脸、身体轮廓、主要车辆、证据区域的可见性。",
+    "mobile_check": "按实际发布平台缩小查看；不要用仅适合电脑大图的细字装饰。",
+    "platform_overrides": {
+      "xiaohongshu": "竖版优先标题在上部/有可读负空间处，强主视觉但节制文字密度。",
+      "bilibili": "剧情/氛围可少字；测评/攻略在用户内容支持时增加信息层级，不能机械加实机/评测标签。",
+      "youtube": "横向16:9单个清晰主标题，不强制英文，不给标题添加编造的夸张结论。"
+    }
+  },
+  "v16_platform_contract": "references/platform_layout_rules.json::platforms[*].headline_size,tag_style,subtitle_style,title_design",
+  "v16_size_definition": "block_height_pct is headline overall block height including line breaks, not a single line glyph height. font_size_h_ratio describes per-line font size for deterministic overlay tools.",
+  "v16_guardrails": [
+    "先使用用户原文逐字正确，再考虑标题设计",
+    "宽度溢出先按语义断行、分组视觉层级，再微调字号，禁止截断原文",
+    "有真实主体冲突时可镜像布局位置/切换备用布局，不可把标题盖脸、盖车头",
+    "专业海报与纪实型允许无副标题且不自动发明事实",
+    "字体、行距、描边百分比要以实际可用的工具为准，不承诺纯文生图可以逐像素控制"
+  ]
+}

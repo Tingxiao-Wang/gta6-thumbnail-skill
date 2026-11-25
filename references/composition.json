@@ -1,0 +1,736 @@
+{
+  "version": "1.6.0",
+  "measurement": "relative_canvas_0_to_1",
+  "status": "internal_design_heuristic_not_official_platform_rule",
+  "coordinate_definition": "x/y 起点为画布左上角，w/h 为归一化宽高，范围 0–1；是推荐区域而非强制像素裁切。绘图模型可能无法精确执行。",
+  "ratios": {
+    "16:9": "wide",
+    "4:3": "standard",
+    "3:4": "portrait",
+    "9:16": "tall",
+    "1:1": "standard"
+  },
+  "safe_zones": {
+    "wide": {
+      "outer_margin_pct": 6,
+      "critical_text": "6%–90% canvas width; avoid lower-right 16%×14% if UI may overlay",
+      "origin": "design recommendation"
+    },
+    "standard": {
+      "outer_margin_pct": 7,
+      "critical_text": "7%–90% canvas width; keep main content away from lower-right corner",
+      "origin": "design recommendation"
+    },
+    "portrait": {
+      "outer_margin_pct": 8,
+      "critical_text": "8%–92% canvas width; lower 18% avoid fine crucial text",
+      "origin": "design recommendation"
+    },
+    "tall": {
+      "outer_margin_pct": 8,
+      "critical_text": "8%–92% canvas width; upper/lower 15% avoid crucial fine text",
+      "origin": "design recommendation"
+    }
+  },
+  "rules": [
+    "先确定用户尺寸/比例，再挑选 aspect profile；优先清晰主体和标题安全区。",
+    "一个主视觉焦点；仅主播和对比类型允许清晰的双主体。",
+    "比例变化时重新生成/重排主体和文本，禁止拉伸失真。",
+    "标题区可以根据真实上传图里的重点位置镜像/微调，但不能遮挡需指向的证据。",
+    "关键主体尽量完整（脸、头盔、车轮、动作落点），避免莫名裁断。",
+    "同一画面最多一个主标题块，角标/箭头不属于必选装饰。"
+  ],
+  "layouts": {
+    "cinematic_subject": {
+      "description_zh": "电影式主体与背景层次",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.38,
+            "y": 0.1,
+            "w": 0.54,
+            "h": 0.78
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.56,
+            "w": 0.5,
+            "h": 0.32
+          }
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.3,
+            "y": 0.12,
+            "w": 0.63,
+            "h": 0.77
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.63,
+            "w": 0.62,
+            "h": 0.26
+          }
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.1,
+            "y": 0.28,
+            "w": 0.83,
+            "h": 0.54
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.08,
+            "w": 0.84,
+            "h": 0.24
+          }
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.08,
+            "y": 0.3,
+            "w": 0.84,
+            "h": 0.48
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.1,
+            "w": 0.84,
+            "h": 0.19
+          }
+        }
+      }
+    },
+    "split_reaction": {
+      "description_zh": "真人反应+游戏事件",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.59,
+            "y": 0.13,
+            "w": 0.37,
+            "h": 0.8
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.58,
+            "w": 0.5,
+            "h": 0.27
+          },
+          "portrait_box": {
+            "x": 0.59,
+            "y": 0.13,
+            "w": 0.37,
+            "h": 0.8
+          },
+          "gameplay_evidence_region": "uncovered remaining canvas; avoid face/headline overlaps"
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.56,
+            "y": 0.17,
+            "w": 0.39,
+            "h": 0.74
+          },
+          "headline_box": {
+            "x": 0.05,
+            "y": 0.62,
+            "w": 0.5,
+            "h": 0.24
+          },
+          "portrait_box": {
+            "x": 0.56,
+            "y": 0.17,
+            "w": 0.39,
+            "h": 0.74
+          },
+          "gameplay_evidence_region": "uncovered remaining canvas; avoid face/headline overlaps"
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.36,
+            "y": 0.39,
+            "w": 0.6,
+            "h": 0.44
+          },
+          "headline_box": {
+            "x": 0.07,
+            "y": 0.08,
+            "w": 0.86,
+            "h": 0.23
+          },
+          "portrait_box": {
+            "x": 0.36,
+            "y": 0.39,
+            "w": 0.6,
+            "h": 0.44
+          },
+          "gameplay_evidence_region": "uncovered remaining canvas; avoid face/headline overlaps"
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.28,
+            "y": 0.4,
+            "w": 0.68,
+            "h": 0.43
+          },
+          "headline_box": {
+            "x": 0.07,
+            "y": 0.1,
+            "w": 0.86,
+            "h": 0.21
+          },
+          "portrait_box": {
+            "x": 0.28,
+            "y": 0.4,
+            "w": 0.68,
+            "h": 0.43
+          },
+          "gameplay_evidence_region": "uncovered remaining canvas; avoid face/headline overlaps"
+        }
+      }
+    },
+    "gameplay_hero": {
+      "description_zh": "游戏截图突出疑问",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.24,
+            "y": 0.08,
+            "w": 0.7,
+            "h": 0.79
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.66,
+            "w": 0.58,
+            "h": 0.23
+          }
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.17,
+            "y": 0.14,
+            "w": 0.77,
+            "h": 0.72
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.67,
+            "w": 0.66,
+            "h": 0.24
+          }
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.07,
+            "y": 0.31,
+            "w": 0.86,
+            "h": 0.54
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.09,
+            "w": 0.84,
+            "h": 0.24
+          }
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.06,
+            "y": 0.33,
+            "w": 0.88,
+            "h": 0.51
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.1,
+            "w": 0.84,
+            "h": 0.2
+          }
+        }
+      }
+    },
+    "annotated_discovery": {
+      "description_zh": "证据指向式发现",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.39,
+            "y": 0.12,
+            "w": 0.53,
+            "h": 0.77
+          },
+          "headline_box": {
+            "x": 0.05,
+            "y": 0.56,
+            "w": 0.45,
+            "h": 0.31
+          }
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.26,
+            "y": 0.18,
+            "w": 0.66,
+            "h": 0.66
+          },
+          "headline_box": {
+            "x": 0.05,
+            "y": 0.63,
+            "w": 0.59,
+            "h": 0.24
+          }
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.11,
+            "y": 0.33,
+            "w": 0.8,
+            "h": 0.46
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.09,
+            "w": 0.84,
+            "h": 0.22
+          }
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.1,
+            "y": 0.35,
+            "w": 0.8,
+            "h": 0.46
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.1,
+            "w": 0.84,
+            "h": 0.2
+          }
+        }
+      }
+    },
+    "editorial_news": {
+      "description_zh": "资讯标题主导",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.45,
+            "y": 0.33,
+            "w": 0.49,
+            "h": 0.55
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.08,
+            "w": 0.85,
+            "h": 0.33
+          }
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.32,
+            "y": 0.41,
+            "w": 0.6,
+            "h": 0.48
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.08,
+            "w": 0.85,
+            "h": 0.3
+          }
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.1,
+            "y": 0.44,
+            "w": 0.82,
+            "h": 0.39
+          },
+          "headline_box": {
+            "x": 0.07,
+            "y": 0.08,
+            "w": 0.86,
+            "h": 0.32
+          }
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.1,
+            "y": 0.46,
+            "w": 0.82,
+            "h": 0.38
+          },
+          "headline_box": {
+            "x": 0.07,
+            "y": 0.1,
+            "w": 0.86,
+            "h": 0.29
+          }
+        }
+      }
+    },
+    "fair_comparison": {
+      "description_zh": "公平双图对照",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.06,
+            "y": 0.17,
+            "w": 0.42,
+            "h": 0.67
+          },
+          "headline_box": {
+            "x": 0.23,
+            "y": 0.05,
+            "w": 0.53,
+            "h": 0.17
+          },
+          "compare_boxes": [
+            {
+              "x": 0.06,
+              "y": 0.25,
+              "w": 0.42,
+              "h": 0.58
+            },
+            {
+              "x": 0.52,
+              "y": 0.25,
+              "w": 0.42,
+              "h": 0.58
+            }
+          ],
+          "compare_direction": "side_by_side"
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.06,
+            "y": 0.2,
+            "w": 0.42,
+            "h": 0.61
+          },
+          "headline_box": {
+            "x": 0.14,
+            "y": 0.05,
+            "w": 0.7,
+            "h": 0.17
+          },
+          "compare_boxes": [
+            {
+              "x": 0.06,
+              "y": 0.25,
+              "w": 0.42,
+              "h": 0.58
+            },
+            {
+              "x": 0.52,
+              "y": 0.25,
+              "w": 0.42,
+              "h": 0.58
+            }
+          ],
+          "compare_direction": "side_by_side"
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.09,
+            "y": 0.31,
+            "w": 0.82,
+            "h": 0.29
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.08,
+            "w": 0.84,
+            "h": 0.19
+          },
+          "compare_boxes": [
+            {
+              "x": 0.1,
+              "y": 0.31,
+              "w": 0.8,
+              "h": 0.26
+            },
+            {
+              "x": 0.1,
+              "y": 0.6,
+              "w": 0.8,
+              "h": 0.26
+            }
+          ],
+          "compare_direction": "stacked"
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.09,
+            "y": 0.33,
+            "w": 0.82,
+            "h": 0.27
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.1,
+            "w": 0.84,
+            "h": 0.18
+          },
+          "compare_boxes": [
+            {
+              "x": 0.1,
+              "y": 0.31,
+              "w": 0.8,
+              "h": 0.26
+            },
+            {
+              "x": 0.1,
+              "y": 0.6,
+              "w": 0.8,
+              "h": 0.26
+            }
+          ],
+          "compare_direction": "stacked"
+        }
+      }
+    },
+    "fullbleed_documentary": {
+      "description_zh": "沉浸式全景",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.06,
+            "y": 0.08,
+            "w": 0.88,
+            "h": 0.84
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.76,
+            "w": 0.47,
+            "h": 0.14
+          }
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.06,
+            "y": 0.08,
+            "w": 0.88,
+            "h": 0.84
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.76,
+            "w": 0.6,
+            "h": 0.14
+          }
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.06,
+            "y": 0.26,
+            "w": 0.88,
+            "h": 0.6
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.1,
+            "w": 0.66,
+            "h": 0.12
+          }
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.06,
+            "y": 0.28,
+            "w": 0.88,
+            "h": 0.58
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.12,
+            "w": 0.7,
+            "h": 0.11
+          }
+        }
+      }
+    },
+    "series_episode": {
+      "description_zh": "系列标识+事件",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.35,
+            "y": 0.17,
+            "w": 0.58,
+            "h": 0.72
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.64,
+            "w": 0.47,
+            "h": 0.23
+          },
+          "badge_box": {
+            "x": 0.06,
+            "y": 0.07,
+            "w": 0.22,
+            "h": 0.11
+          }
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.24,
+            "y": 0.19,
+            "w": 0.66,
+            "h": 0.68
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.64,
+            "w": 0.56,
+            "h": 0.23
+          },
+          "badge_box": {
+            "x": 0.06,
+            "y": 0.07,
+            "w": 0.22,
+            "h": 0.11
+          }
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.1,
+            "y": 0.33,
+            "w": 0.82,
+            "h": 0.5
+          },
+          "headline_box": {
+            "x": 0.07,
+            "y": 0.15,
+            "w": 0.86,
+            "h": 0.19
+          },
+          "badge_box": {
+            "x": 0.08,
+            "y": 0.06,
+            "w": 0.32,
+            "h": 0.08
+          }
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.1,
+            "y": 0.35,
+            "w": 0.82,
+            "h": 0.48
+          },
+          "headline_box": {
+            "x": 0.07,
+            "y": 0.16,
+            "w": 0.86,
+            "h": 0.18
+          },
+          "badge_box": {
+            "x": 0.08,
+            "y": 0.06,
+            "w": 0.32,
+            "h": 0.08
+          }
+        }
+      }
+    },
+    "single_action": {
+      "description_zh": "单个动作主导",
+      "ratio_profiles": {
+        "wide": {
+          "hero_box": {
+            "x": 0.28,
+            "y": 0.17,
+            "w": 0.59,
+            "h": 0.65
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.1,
+            "w": 0.42,
+            "h": 0.19
+          }
+        },
+        "standard": {
+          "hero_box": {
+            "x": 0.18,
+            "y": 0.24,
+            "w": 0.66,
+            "h": 0.6
+          },
+          "headline_box": {
+            "x": 0.06,
+            "y": 0.1,
+            "w": 0.55,
+            "h": 0.18
+          }
+        },
+        "portrait": {
+          "hero_box": {
+            "x": 0.12,
+            "y": 0.32,
+            "w": 0.78,
+            "h": 0.48
+          },
+          "headline_box": {
+            "x": 0.07,
+            "y": 0.1,
+            "w": 0.8,
+            "h": 0.18
+          }
+        },
+        "tall": {
+          "hero_box": {
+            "x": 0.12,
+            "y": 0.34,
+            "w": 0.78,
+            "h": 0.46
+          },
+          "headline_box": {
+            "x": 0.08,
+            "y": 0.12,
+            "w": 0.8,
+            "h": 0.17
+          }
+        }
+      }
+    }
+  },
+  "screenshot_layout_preflight": [
+    "截图再设计首先进行真实图像观察：主体位置、地平线、负空间、可裁切边缘，然后根据实际内容灵活调整归一化预设框。",
+    "用户截图全画幅铺底，不在灰白页面里绘制小截图。画幅预设仅决定最终尺寸和重排，不能拉伸失真。",
+    "电影海报感只影响画面质感和视觉语言，不允许自动建立相框/画中画/纸质海报样机。",
+    "长标题在负空间按语义断行，文字与背景形成合理区域对比，不一定固定顶端。",
+    "原图裁切损伤重要主体时优先延展可延展环境；不可用则缩小裁切范围并如实说明。"
+  ],
+  "cross_platform_screenshot_composition": {
+    "xiaohongshu": "竖幅中上字区+中部主体；横版截图需保主体竖向重构，内容满版。",
+    "bilibili": "4:3横幅独立构图，必要时16:9另做；强调截图真实人物/城市及文字负空间，非套框。",
+    "youtube": "16:9高辨识度焦点+一块主标题；可选9:16 Shorts单独重构，语言由用户决定。"
+  },
+  "v16_layout_contract": "references/platform_layout_rules.json::platforms[*].layouts",
+  "v16_dispatch_order": [
+    "输入画幅→读取平台输出预设",
+    "截图识别保护主体与可读负空间",
+    "根据内容类型选平台 layout_selection → layout_id",
+    "优先图层标题不盖主体，按需要镜像/用备选布局",
+    "双比例另构图，不进行一键压缩拉伸"
+  ],
+  "v16_bilibili_center_crop_preview": {
+    "enabled_when": "need_4_3_safe_preview_only",
+    "crop_normalized": {
+      "x": 0.125,
+      "y": 0,
+      "w": 0.75,
+      "h": 1
+    },
+    "note": "中心四分之三宽仅代表同高度16:9→4:3的几何预览；正式双版分别重排元素"
+  }
+}

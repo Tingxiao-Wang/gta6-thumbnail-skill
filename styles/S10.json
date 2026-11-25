@@ -1,0 +1,28 @@
+{
+  "id": "S10",
+  "english_name": "Retro Editorial",
+  "name": "复古杂志风",
+  "intended_content": "城市文化、历史、摄影",
+  "composition": "出版物网格；不对称图片和刊名",
+  "palette": "奶油白、复古橙、墨绿",
+  "typography": "衬线搭配小型无衬线",
+  "required_visual_anchors": [
+    "出版物排版",
+    "纸张质感",
+    "编辑层级"
+  ],
+  "optional_visual_elements": [
+    "页码",
+    "邮戳",
+    "档案卡"
+  ],
+  "forbidden_elements": [
+    "霓虹字",
+    "现代贴纸"
+  ],
+  "preview_svg": "references/design_principles/style_previews/S10.svg",
+  "reference_assets": [],
+  "reference_image_type": "original_abstract_svg_design_schematic",
+  "source": "GTA6封面设计原则_V1.0.html",
+  "user_document_data_not_performance_validated": true
+}

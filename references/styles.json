@@ -1,0 +1,686 @@
+{
+  "version": "1.5.0",
+  "method": "保留 V1.2 基于 29 张用户参考图的人工观察；V1.3 追加可操作的启发式视觉参数。非真实 CTR 训练模型或验证过的获胜配方。",
+  "recipes": [
+    {
+      "id": "cinematic_poster",
+      "name_zh": "电影海报型",
+      "name_en": "Cinematic Poster",
+      "seen_in": [
+        "B04",
+        "B06",
+        "B10",
+        "Y07"
+      ],
+      "best_for": [
+        "剧情",
+        "首发",
+        "角色介绍",
+        "氛围向"
+      ],
+      "layout": {
+        "focus": "主人物或车占画面35%–55%",
+        "arrangement": "人物/车居中或偏右；背景都市以远近景建立空间；标题单块",
+        "text": "0–7字中文/1–4英文词，允许完全无字",
+        "safe": "避免 logo 和边缘时长角标冲突"
+      },
+      "palette": [
+        "#7E4F8D",
+        "#E78FA4",
+        "#F0A868",
+        "#27354B"
+      ],
+      "effects": [
+        "落日漫反射",
+        "热带都市剪影",
+        "电影色彩分级"
+      ],
+      "avoid": [
+        "复制官方Logo",
+        "直接描摹官方游戏人物",
+        "无关的强光束"
+      ],
+      "prompt_core": "original cinematic tropical metropolis at sunset, one heroic subject, layered urban depth, restrained magenta orange palette, film-poster composition",
+      "visual_parameters": {
+        "composition_id": "cinematic_subject",
+        "headline_mode": "poster",
+        "hero_rule": "单一人物或车辆，约占宽35%–55%",
+        "secondary_rule": "远近景城市轮廓，不与主体抢焦点",
+        "camera_and_depth": "中景/低机位三分之二侧面，可见城市层次",
+        "contrast_target": "medium_high",
+        "palette_usage": "粉紫日落+暖橙补色，谨慎高饱和",
+        "effects_budget": "low",
+        "max_annotations": 0,
+        "text_density": "minimal",
+        "truth_and_material_guardrail": "原创概念画面与真实截图明确区分"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.cinematic_subject",
+      "typography_source": "references/typography.json#headline_modes.poster",
+      "screenshot_adaptation": {
+        "layout_mode": "full_bleed_cinematic_scene",
+        "treatment": "强化场景层次、电影化光影与情绪，仍是铺满画幅的网络视频封面；禁止实体海报/相框/影棚样机。",
+        "title_integration": "短标题与负空间结合；用户给定长标题按语义断行不删除",
+        "avoid": "framed movie poster, poster on wall, paper margin, gray background, centered embedded screenshot",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      },
+      "film_poster_meaning": "cinematic art direction within a full-bleed platform video cover, NOT an embedded paper poster/frame/mockup"
+    },
+    {
+      "id": "streamer_reaction",
+      "name_zh": "主播反应型",
+      "name_en": "Streamer Reaction",
+      "seen_in": [
+        "B01",
+        "B05",
+        "B08",
+        "Y03",
+        "Y06",
+        "Y08",
+        "Y10"
+      ],
+      "best_for": [
+        "实况",
+        "搞笑",
+        "震惊",
+        "挑战反应"
+      ],
+      "layout": {
+        "focus": "真实用户上传主播面部为主角，通常占25%–40%宽度",
+        "arrangement": "左游戏事件/右主播，或倒置；人物白边/浅色硬描边与背景分离",
+        "text": "中文4–10字或英文2–4词，仅一处主要标题",
+        "safe": "表情不挡动作，不能挤压主播脸部"
+      },
+      "palette": [
+        "#F396A8",
+        "#7D3C86",
+        "#FFD74B",
+        "#FFFFFF"
+      ],
+      "effects": [
+        "人物抠像描边",
+        "明暗反差",
+        "背景轻度降噪"
+      ],
+      "avoid": [
+        "凭空生成或冒充真实主播身份",
+        "脸部畸形",
+        "主播与故事争抢同一焦点"
+      ],
+      "prompt_core": "creator-supplied expressive portrait cutout with clean outline, clear secondary in-game event, strong subject-background separation, readable headline space",
+      "visual_parameters": {
+        "composition_id": "split_reaction",
+        "headline_mode": "reaction",
+        "hero_rule": "用户有权使用的真人肖像，宽约25%–40%",
+        "secondary_rule": "游戏事件占剩余主要区域；两主体视线/运动方向互相呼应",
+        "camera_and_depth": "主播胸像或脸部近景，游戏中景",
+        "contrast_target": "high",
+        "palette_usage": "紫/粉背景搭配白色人物描边及少量黄",
+        "effects_budget": "medium",
+        "max_annotations": 0,
+        "text_density": "short",
+        "truth_and_material_guardrail": "未提供真实肖像时不生成或冒充真实主播，应转其他配方"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence",
+        "do not synthesize a real streamer likeness without user-supplied rights-cleared portrait"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.split_reaction",
+      "typography_source": "references/typography.json#headline_modes.reaction",
+      "screenshot_adaptation": {
+        "layout_mode": "scene_plus_real_portrait",
+        "treatment": "只使用用户提供且有权使用的真人肖像；截图中的游戏事件占另一重要区域。",
+        "title_integration": "标题与主播脸形成视觉对位，不盖住表情",
+        "avoid": "invented real streamer, face swap without permission, random portrait",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      }
+    },
+    {
+      "id": "gameplay_question",
+      "name_zh": "疑问钩子型",
+      "name_en": "Gameplay Question",
+      "seen_in": [
+        "H01",
+        "H02",
+        "H07",
+        "B02"
+      ],
+      "best_for": [
+        "首次体验",
+        "真实性讨论",
+        "新发现",
+        "汽车体验"
+      ],
+      "layout": {
+        "focus": "真实游戏截图/主体约占画面60%–80%",
+        "arrangement": "真实场景大幅铺底，底部或顶部一处短疑问文案",
+        "text": "疑问型 4–9汉字，最多一个强调词",
+        "safe": "主标题与游戏主体不重叠"
+      },
+      "palette": [
+        "#FFFFFF",
+        "#171717",
+        "#71D9A0",
+        "#F2CF55"
+      ],
+      "effects": [
+        "轻阴影保证可读",
+        "关键词局部变色"
+      ],
+      "avoid": [
+        "假的游戏机制和画面声明",
+        "无素材支持的噱头"
+      ],
+      "prompt_core": "authentic user-provided gameplay scene, one clear unexpected detail, editorial cover with concise question headline and one emphasized keyword",
+      "visual_parameters": {
+        "composition_id": "gameplay_hero",
+        "headline_mode": "question",
+        "hero_rule": "真实截图主体约占画面60%–80%可见范围",
+        "secondary_rule": "一个可解释的异常、体验瞬间或视觉悬念",
+        "camera_and_depth": "保留用户截图原始机位，不自行制造新事件",
+        "contrast_target": "medium_high",
+        "palette_usage": "原图中性色+1强调色",
+        "effects_budget": "low",
+        "max_annotations": 1,
+        "text_density": "short",
+        "truth_and_material_guardrail": "用户缺少截图时将内容标为原创示意，避免暗示实际游戏机制"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.gameplay_hero",
+      "typography_source": "references/typography.json#headline_modes.question",
+      "screenshot_adaptation": {
+        "layout_mode": "screenshot_as_event",
+        "treatment": "以原截图真实事件为视觉钩子，突出可见关键位置，不随机添加豪车或动作。",
+        "title_integration": "用户问题原文保持，放在负空间",
+        "avoid": "fake gameplay action, arbitrary arrows",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      }
+    },
+    {
+      "id": "discovery_annotation",
+      "name_zh": "事件圈选型",
+      "name_en": "Annotated Discovery",
+      "seen_in": [
+        "B03",
+        "B09",
+        "Y10"
+      ],
+      "best_for": [
+        "BUG",
+        "彩蛋",
+        "秘密位置",
+        "玩法解读"
+      ],
+      "layout": {
+        "focus": "画面中的一个可核实事件或异常",
+        "arrangement": "红圈或箭头最多2个，指向具体事件；文字沿侧边排布",
+        "text": "5–12字中文，数字/关键词醒目",
+        "safe": "圈选区域内仍应看清原始图像"
+      },
+      "palette": [
+        "#F64635",
+        "#FFD452",
+        "#FFFFFF",
+        "#161616"
+      ],
+      "effects": [
+        "几何圈选",
+        "少量箭头",
+        "局部放大可选"
+      ],
+      "avoid": [
+        "圈选不存在的东西",
+        "三根以上箭头",
+        "凭空补造真实事件"
+      ],
+      "prompt_core": "single visible gameplay discovery with one precise red pointer and an unobstructed callout region, clear informative headline",
+      "visual_parameters": {
+        "composition_id": "annotated_discovery",
+        "headline_mode": "discovery",
+        "hero_rule": "单个可见可核实的异常/彩蛋/目标",
+        "secondary_rule": "证据点与唯一箭头或圈选保持可读",
+        "camera_and_depth": "采用证据截图原机位，可局部放大但不能改写事实",
+        "contrast_target": "high",
+        "palette_usage": "深背景+红色圈选+黄色关键词",
+        "effects_budget": "low",
+        "max_annotations": 2,
+        "text_density": "short",
+        "truth_and_material_guardrail": "没有证据素材时不可圈选捏造对象或宣称真实BUG"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.annotated_discovery",
+      "typography_source": "references/typography.json#headline_modes.discovery",
+      "screenshot_adaptation": {
+        "layout_mode": "screenshot_evidence_first",
+        "treatment": "用户截图的证据对象是主焦点；圈选必须指向看得见的内容。",
+        "title_integration": "保留最少文字并使箭头不遮目标",
+        "avoid": "annotating invisible discoveries, fabricated bug",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      }
+    },
+    {
+      "id": "dense_news",
+      "name_zh": "资讯攻略型",
+      "name_en": "News & Guide",
+      "seen_in": [
+        "B07",
+        "B09",
+        "H05",
+        "H07",
+        "Y09"
+      ],
+      "best_for": [
+        "新闻资讯",
+        "攻略合集",
+        "性能分析",
+        "更新盘点"
+      ],
+      "layout": {
+        "focus": "大标题与1–2个支持性图像并重",
+        "arrangement": "顶层主钩子占上方25%–35%；下方补充视觉证据",
+        "text": "最多三层标题，手机小尺寸需要删减次要内容",
+        "safe": "标题留足字距与描边，避免 4+ 行小字"
+      },
+      "palette": [
+        "#FFDB3D",
+        "#E53935",
+        "#FFFFFF",
+        "#171717"
+      ],
+      "effects": [
+        "关键词分色",
+        "粗描边",
+        "有限信息标牌"
+      ],
+      "avoid": [
+        "未证实消息当事实",
+        "营销优惠/性能指标无证据",
+        "为了热闹堆满字"
+      ],
+      "prompt_core": "structured gaming news thumbnail, strong single-line main claim, secondary factual hook, large legible typography, uncluttered information hierarchy",
+      "visual_parameters": {
+        "composition_id": "editorial_news",
+        "headline_mode": "news",
+        "hero_rule": "一条明确主张和1–2个支持画面",
+        "secondary_rule": "仅在来源已核实条件下标注具体数据",
+        "camera_and_depth": "简洁编辑式信息结构，不依赖大量人物",
+        "contrast_target": "high",
+        "palette_usage": "黄/白/深灰基础，红只强调一个关键词",
+        "effects_budget": "low",
+        "max_annotations": 1,
+        "text_density": "medium",
+        "truth_and_material_guardrail": "禁止编造日期、性能、价格、奖励、官方消息"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.editorial_news",
+      "typography_source": "references/typography.json#headline_modes.news",
+      "screenshot_adaptation": {
+        "layout_mode": "editorial_fullbleed",
+        "treatment": "保留用户原截图并有节制加信息层级；拒绝截图外侧白底文档版。",
+        "title_integration": "用户原文主标题优先，只有提供可核验事实才用副标题",
+        "avoid": "fabricated patch notes, unsupported fact labels",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      }
+    },
+    {
+      "id": "versus_split",
+      "name_zh": "双画面对比型",
+      "name_en": "Split Comparison",
+      "seen_in": [
+        "H03",
+        "H06",
+        "Y12",
+        "B04"
+      ],
+      "best_for": [
+        "游戏与现实",
+        "GTA5对GTA6",
+        "画质对比",
+        "车辆对比"
+      ],
+      "layout": {
+        "focus": "两侧对照物具有可比性",
+        "arrangement": "横版左右50/50或斜切；竖版上下50/50；各自标注",
+        "text": "双方名称清晰，额外结论不超过一句",
+        "safe": "保留相同视角/尺度，避免失真比较"
+      },
+      "palette": [
+        "#4A3F4F",
+        "#F39AC3",
+        "#34B4D4",
+        "#FFFFFF"
+      ],
+      "effects": [
+        "明确分割线",
+        "两侧匹配构图",
+        "一侧冷色一侧暖色"
+      ],
+      "avoid": [
+        "颠倒来源标签",
+        "将 AI 虚构图冒充真实对比",
+        "不等比拉伸"
+      ],
+      "prompt_core": "clearly labeled side-by-side comparison, matched subject scale, distinct split line, fair visual evidence, balanced lighting",
+      "visual_parameters": {
+        "composition_id": "fair_comparison",
+        "headline_mode": "versus",
+        "hero_rule": "两方并列或上下对照，各自约一半画幅",
+        "secondary_rule": "一条分割线与双方名称，视角尽量可比",
+        "camera_and_depth": "同尺度/同角度更公平，必要时说明不完全可比",
+        "contrast_target": "medium_high",
+        "palette_usage": "左右冷暖区分但不以光效伪造差异",
+        "effects_budget": "low",
+        "max_annotations": 0,
+        "text_density": "short",
+        "truth_and_material_guardrail": "需真实A/B素材才可称为真实对比；否则明确概念示意"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.fair_comparison",
+      "typography_source": "references/typography.json#headline_modes.versus",
+      "screenshot_adaptation": {
+        "layout_mode": "true_comparison_source",
+        "treatment": "有两张素材时分别在各自画幅内完整呈现；只有一张时不伪造另一个游戏截图。",
+        "title_integration": "左右/上下标题简洁标明双方，不篡改所给比较内容",
+        "avoid": "fake comparison benchmark, stretched image",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      }
+    },
+    {
+      "id": "clean_documentary",
+      "name_zh": "沉浸纪实型",
+      "name_en": "Immersive Documentary",
+      "seen_in": [
+        "B02",
+        "B06",
+        "H01",
+        "H06",
+        "Y05"
+      ],
+      "best_for": [
+        "探索",
+        "写实风光",
+        "场景赏析",
+        "沉浸式实况"
+      ],
+      "layout": {
+        "focus": "画面事实与场景纹理为主",
+        "arrangement": "大景深、清晰空间尺度；小标题或无标题",
+        "text": "0–6个字，可无文字",
+        "safe": "让核心场景完整呈现"
+      },
+      "palette": [
+        "#496D72",
+        "#B2C8C6",
+        "#D2A783",
+        "#24303A"
+      ],
+      "effects": [
+        "自然光",
+        "克制对比",
+        "真实阴影"
+      ],
+      "avoid": [
+        "过度调色",
+        "过多光效",
+        "假装 AI 场景是真实截图"
+      ],
+      "prompt_core": "quiet cinematic gameplay scenery, grounded lighting, true-to-source composition, clean details, restrained editorial treatment",
+      "visual_parameters": {
+        "composition_id": "fullbleed_documentary",
+        "headline_mode": "documentary",
+        "hero_rule": "场景或物件，保留完整环境关系",
+        "secondary_rule": "负空间，不主动加人物/图标",
+        "camera_and_depth": "自然广角/中景，保持可解释透视",
+        "contrast_target": "medium",
+        "palette_usage": "青灰+砂金，自然光克制",
+        "effects_budget": "none",
+        "max_annotations": 0,
+        "text_density": "none_or_minimal",
+        "truth_and_material_guardrail": "概念画面不得说成游戏实录"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.fullbleed_documentary",
+      "typography_source": "references/typography.json#headline_modes.documentary",
+      "screenshot_adaptation": {
+        "layout_mode": "fullbleed_observational",
+        "treatment": "优先保留原截图自然的地平线、远景层次和环境真实性；弱化不必要特效。",
+        "title_integration": "用户提供标题需保留，可采用低干扰但仍清晰的排版",
+        "avoid": "unnecessary graphic labels, over-vibrant neon",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      }
+    },
+    {
+      "id": "episode_live",
+      "name_zh": "系列直播型",
+      "name_en": "Live / Episode",
+      "seen_in": [
+        "B01",
+        "B05",
+        "Y01",
+        "Y03",
+        "Y05",
+        "Y06",
+        "Y07"
+      ],
+      "best_for": [
+        "直播",
+        "连载实况",
+        "DAY N",
+        "新系列"
+      ],
+      "layout": {
+        "focus": "系列标识与主要游戏冲突",
+        "arrangement": "角落一处系列标签，主图可主播出镜或剧情截图",
+        "text": "突出1个系列标签（DAY 3/LIVE/EP.02）和一个短标题",
+        "safe": "勿与右下时长角标重叠"
+      },
+      "palette": [
+        "#F193BA",
+        "#663981",
+        "#FFFFFF",
+        "#F7CB48"
+      ],
+      "effects": [
+        "小型直播角标",
+        "人物描边",
+        "系列固定配色"
+      ],
+      "avoid": [
+        "非直播写LIVE",
+        "虚构集数",
+        "把播放量时长做进素材"
+      ],
+      "prompt_core": "consistent branded episode thumbnail, clear series badge, creator identity when provided, legible scene-specific hook",
+      "visual_parameters": {
+        "composition_id": "series_episode",
+        "headline_mode": "series",
+        "hero_rule": "剧情/实况核心事件，主播仅在已提供肖像时加入",
+        "secondary_rule": "一枚系列标签与固定视觉识别位",
+        "camera_and_depth": "事件中景+可选真人近景",
+        "contrast_target": "medium_high",
+        "palette_usage": "使用连载系列固定色板，避免每期完全重配色",
+        "effects_budget": "low",
+        "max_annotations": 0,
+        "text_density": "short_plus_badge",
+        "truth_and_material_guardrail": "只有用户明确提供直播事实或集数才允许LIVE/DAY/EP标记"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.series_episode",
+      "typography_source": "references/typography.json#headline_modes.series",
+      "screenshot_adaptation": {
+        "layout_mode": "fullbleed_episode_scene",
+        "treatment": "使用真实剧情和用户给的集数素材，避免节目框模板喧宾夺主。",
+        "title_integration": "仅在确实有集数/直播信息时出现角标",
+        "avoid": "fake LIVE badge, fabricated episode index",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      }
+    },
+    {
+      "id": "minimal_action",
+      "name_zh": "极简动作型",
+      "name_en": "Minimal Action",
+      "seen_in": [
+        "Y02",
+        "H06"
+      ],
+      "best_for": [
+        "奇葩挑战",
+        "反差玩法",
+        "单一动作",
+        "探索时刻"
+      ],
+      "layout": {
+        "focus": "一个动作或物体占主视觉",
+        "arrangement": "大面积简洁背景、主角集中、一个数字或无字",
+        "text": "0–3个英文词/0–5汉字",
+        "safe": "保留负空间，不添加无必要图层"
+      },
+      "palette": [
+        "#81B9E7",
+        "#D7BFA0",
+        "#151515",
+        "#FFFFFF"
+      ],
+      "effects": [
+        "自然光",
+        "清晰主体",
+        "极少贴纸"
+      ],
+      "avoid": [
+        "多重箭头",
+        "信息密集",
+        "抽象无事件主体"
+      ],
+      "prompt_core": "one instantly understandable action, clean open background, single bold visual contradiction, minimalist gaming thumbnail",
+      "visual_parameters": {
+        "composition_id": "single_action",
+        "headline_mode": "minimal",
+        "hero_rule": "一件一眼看懂的动作，主体宽35%–60%",
+        "secondary_rule": "大面积净背景/负空间",
+        "camera_and_depth": "中远景清楚呈现动作起因与方向",
+        "contrast_target": "medium_high",
+        "palette_usage": "自然天空/地面配色，一个局部强调色",
+        "effects_budget": "none",
+        "max_annotations": 0,
+        "text_density": "none_or_minimal",
+        "truth_and_material_guardrail": "不补造未证实的游戏行为"
+      },
+      "editing_locks_default": [
+        "subject_identity",
+        "source_factual_details",
+        "user_title_exact",
+        "platform_ratio"
+      ],
+      "prompt_negative": [
+        "no copied platform UI, views, duration badges, watermark or unrelated logos",
+        "no unrelated stickers or arbitrary visual clutter",
+        "no false claims or invented in-game evidence"
+      ],
+      "composition_variants_source": "references/composition.json#layouts.single_action",
+      "typography_source": "references/typography.json#headline_modes.minimal",
+      "screenshot_adaptation": {
+        "layout_mode": "singular_source_event",
+        "treatment": "放大原截图中唯一清楚的动作/目标，其余作为背景；不要凭空补充冲突。",
+        "title_integration": "无字默认，但用户已提供的标题必须保留",
+        "avoid": "extra visual clutter, random explosions",
+        "full_bleed_default": true,
+        "preserve_user_source_subject": true
+      }
+    }
+  ],
+  "parameter_priority": [
+    "user_explicit_instructions",
+    "material_truth_and_rights",
+    "chosen_platform_geometry",
+    "composition_rules",
+    "style_heuristics",
+    "decoration"
+  ],
+  "screenshot_overrides_source": "references/screenshot_cover_rules.json"
+}

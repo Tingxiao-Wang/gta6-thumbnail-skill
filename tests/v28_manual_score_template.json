@@ -1,0 +1,22 @@
+{
+  "actual_images_reviewed": false,
+  "reviewer": "",
+  "native": {
+    "visual_story": 0,
+    "non_textual_design": 0,
+    "title_hierarchy": 0,
+    "composition_depth": 0,
+    "content_truth": 0
+  },
+  "with_skill": {
+    "visual_story": 0,
+    "non_textual_design": 0,
+    "title_hierarchy": 0,
+    "composition_depth": 0,
+    "content_truth": 0
+  },
+  "flat_one_line_subtitle": false,
+  "unauthorized_person_redraw": false,
+  "fabricated_fact": false,
+  "same_scene_three_text_variants": false
+}

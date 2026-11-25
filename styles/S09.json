@@ -1,0 +1,27 @@
+{
+  "id": "S09",
+  "english_name": "Tactical Guide",
+  "name": "地图攻略风",
+  "intended_content": "地图、路线、收集",
+  "composition": "地图或目标道具主导；图层化定位",
+  "palette": "灰蓝深绿，黄白强调",
+  "typography": "无衬线、编号",
+  "required_visual_anchors": [
+    "地图或信息图",
+    "明确行动目标"
+  ],
+  "optional_visual_elements": [
+    "定位",
+    "路径",
+    "编号",
+    "道具卡"
+  ],
+  "forbidden_elements": [
+    "伪造真实地图和路线"
+  ],
+  "preview_svg": "references/design_principles/style_previews/S09.svg",
+  "reference_assets": [],
+  "reference_image_type": "original_abstract_svg_design_schematic",
+  "source": "GTA6封面设计原则_V1.0.html",
+  "user_document_data_not_performance_validated": true
+}

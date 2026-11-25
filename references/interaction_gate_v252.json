@@ -1,0 +1,119 @@
+{
+  "version": "2.5.2",
+  "id": "intake_gate_v252",
+  "priority": "HIGHEST",
+  "purpose": "Do not bypass the user-facing question flow or treat ambiguous uploaded images as references. This policy supersedes older intake_playbook, clarification_rules and guided_flow conflicts.",
+  "execution_order": [
+    "restore_conversation_state",
+    "classify_new_and_existing_assets",
+    "block_or_resolve_ambiguous_asset_roles",
+    "check_required_content_questions",
+    "select_interaction_mode",
+    "run_guided_step_or_assisted_question",
+    "validate_generation_gate",
+    "generate_or_edit"
+  ],
+  "precedence": {
+    "0": "User explicitly supplied content and previously confirmed answers are retained; do not re-ask.",
+    "1": "Ambiguous uploaded images to be used in the output are a hard stop. Confirm image roles before reference selection or image generation, even if user asks for instant generation.",
+    "2": "Required truthful content and user portrait consent/ownership uncertainties should never be fabricated. Ask if necessary; allow a neutral visual fallback when user agrees.",
+    "3": "Explicit guided8 mode requires step-by-step progression; max two questions in older clarification rules does NOT apply.",
+    "4": "In assisted/default mode, ask only one high-impact question if content is materially ambiguous; give 3 useful choices plus auto-generate.",
+    "5": "Instant and local-edit modes skip cosmetic questions only, not unresolved asset roles or factual constraints.",
+    "6": "Only after the generation gate is ready may a multimodal model/image-edit call be made."
+  },
+  "modes": {
+    "assisted": {
+      "default": true,
+      "max_high_value_questions": 1,
+      "per_turn": 1,
+      "skip_if_intent_clear": true
+    },
+    "guided8": {
+      "triggers": [
+        "八步",
+        "8步",
+        "一步一步",
+        "逐步定制",
+        "按步骤",
+        "带我做",
+        "逐步选择"
+      ],
+      "step_count": 8,
+      "one_question_per_turn": true,
+      "skip_only_if_answered_or_user_explicitly_skips": true
+    },
+    "instant": {
+      "triggers": [
+        "直接生成",
+        "不要问",
+        "你来决定",
+        "先出图"
+      ],
+      "skip_cosmetic_and_optional": true,
+      "cannot_override_hard_gate": true
+    },
+    "edit": {
+      "preserve_previous_brief": true,
+      "ask_only_if_new_asset_roles_unresolved": true
+    }
+  },
+  "image_roles": {
+    "values": [
+      "subject",
+      "style_reference",
+      "both"
+    ],
+    "must_confirm_unresolved": true,
+    "multi_image_question_one_turn": true,
+    "do_not_guess_from_filetype": true,
+    "confirmed_roles_persist": true
+  },
+  "question_rules": {
+    "max_questions_per_assistant_turn": 1,
+    "show_only_current_question": true,
+    "always_provide_skip_or_auto_option_where_safe": true,
+    "once_answered_never_repeat": true,
+    "options_from_database": true,
+    "do_not_ask_color_font_size_if_unnecessary": true
+  },
+  "answer_handling": {
+    "numeric_reply_binds_only_to_active_question": true,
+    "free_text_allowed": true,
+    "previous_button": "上一步",
+    "skip_button": "跳过",
+    "edit_button": "修改第N项",
+    "reset_button": "重新开始",
+    "persist_state_in_conversation": true
+  },
+  "generation_gate": {
+    "status_when_blocked": "needs_clarification",
+    "must_have_no_unresolved_required_images": true,
+    "must_have_no_pending_question": true,
+    "guided8_must_be_complete_or_explicitly_aborted": true,
+    "do_not_trigger_image_tool_before_ready": true,
+    "can_offer_preview_of_options_without_generating": true
+  },
+  "examples": [
+    {
+      "input": "上传两张图：帮我做封面",
+      "output": "请分别确认图1、图2用途：1 主体 2 风格参考 3 两者都要",
+      "generate": false
+    },
+    {
+      "input": "图1=1，图2=2；B站测评",
+      "output": "记录角色并问测评核心角度（若仍模糊）",
+      "generate": false
+    },
+    {
+      "input": "请按八步引导",
+      "output": "依次询问步骤1至8，一轮一题（已明确自动跳过）",
+      "generate": false
+    },
+    {
+      "input": "用图1人物做主体，图2学字效；B站五星通缉标题「五星通缉！」直接生成",
+      "output": "内容/角色已明确，直接进入生成",
+      "generate": true
+    }
+  ]
+}

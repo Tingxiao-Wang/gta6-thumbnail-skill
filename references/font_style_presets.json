@@ -1,0 +1,165 @@
+{
+  "version": "2.2.0",
+  "policy": {
+    "default_count": 3,
+    "ids": [
+      "A",
+      "B",
+      "C"
+    ],
+    "same_canvas": true,
+    "same_exact_headline": true,
+    "same_assets_and_subject": true,
+    "allow_variant_specific_position": true,
+    "allow_variant_specific_decor_density": true,
+    "keep_original_language": true,
+    "no_auto_extra_words": true,
+    "user_requested_count_overrides": true,
+    "source": "三套都是原创设计规则，不声称原始平台用户的点击率数据能够证明哪一种最优。"
+  },
+  "units": "fontSize为画布高度比例；x/y/width均为归一化0~1；strokeWidth/shadowBlur为现有编辑器的1080高度基准值；精确字体渲染取决于用户设备可用字体。",
+  "presets": [
+    {
+      "id": "A",
+      "name": "爆款粗黑型",
+      "role": "高对比冲击",
+      "target": [
+        "测评钩子",
+        "反应",
+        "挑战"
+      ],
+      "headline": {
+        "fontFamily": "Microsoft YaHei",
+        "fontWeight": 900,
+        "fontSize_landscape": 0.128,
+        "fontSize_portrait": 0.106,
+        "fill": "#FFE05A",
+        "stroke": "#0C0C10",
+        "strokeWidth": 9,
+        "shadowColor": "#000000",
+        "shadowBlur": 5,
+        "letterSpacing": 0,
+        "max_lines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.065,
+          "y": 0.2,
+          "width": 0.5
+        },
+        "portrait": {
+          "x": 0.07,
+          "y": 0.13,
+          "width": 0.85
+        }
+      },
+      "tag_rule": "只保留用户明确指定的真实标签；不默认生成英文 REVIEW。",
+      "subtitle_rule": "仅用户提供或真实增加内容时显示。",
+      "decor": "允许一个必要强调色，不画纯装饰横线竖线"
+    },
+    {
+      "id": "B",
+      "name": "电影海报型",
+      "role": "电影光影、克制层次",
+      "target": [
+        "场景沉浸",
+        "开放世界",
+        "剧情"
+      ],
+      "headline": {
+        "fontFamily": "SimSun",
+        "fontWeight": 700,
+        "fontSize_landscape": 0.077,
+        "fontSize_portrait": 0.079,
+        "fill": "#F4EDE0",
+        "stroke": "#171A23",
+        "strokeWidth": 2,
+        "shadowColor": "#000000",
+        "shadowBlur": 3,
+        "letterSpacing": 1.4,
+        "max_lines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.075,
+          "y": 0.66,
+          "width": 0.83
+        },
+        "portrait": {
+          "x": 0.08,
+          "y": 0.59,
+          "width": 0.83
+        }
+      },
+      "tag_rule": "默认不展示未指定标签。",
+      "subtitle_rule": "默认不展示未指定副标题。",
+      "decor": "无边框、无栏目标识、无装饰线；通过留白和局部暗部呈现质感。",
+      "font_fallback_note": "中文优先使用宋体（Windows SimSun；macOS 可用 Songti SC），英文可替代为 Georgia；本地缺失字体时以系统可用衬线字体回退。"
+    },
+    {
+      "id": "C",
+      "name": "栏目资讯型",
+      "role": "清晰信息分级",
+      "target": [
+        "攻略",
+        "测评",
+        "数据解析"
+      ],
+      "headline": {
+        "fontFamily": "Microsoft YaHei",
+        "fontWeight": 800,
+        "fontSize_landscape": 0.098,
+        "fontSize_portrait": 0.09,
+        "fill": "#FFFFFF",
+        "stroke": "#151515",
+        "strokeWidth": 4,
+        "shadowColor": "#000000",
+        "shadowBlur": 2,
+        "letterSpacing": 0.2,
+        "max_lines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.07,
+          "y": 0.15,
+          "width": 0.55
+        },
+        "portrait": {
+          "x": 0.08,
+          "y": 0.11,
+          "width": 0.84
+        }
+      },
+      "tag_rule": "只展示真实且非重复的标签，已有用户标签优先。",
+      "subtitle_rule": "如用户确实给出补充信息，可展示一行；不得自动编造内容。",
+      "decor": "信息分类由字体大小与对齐体现，默认不额外绘制分隔线。"
+    }
+  ],
+  "platform_overrides": {
+    "xiaohongshu": {
+      "headline_safe_margin": 0.07,
+      "mobile_readability": true,
+      "max_added_badges": 1,
+      "portrait_y_adjust": 0.02
+    },
+    "bilibili": {
+      "headline_safe_margin": 0.05,
+      "keep_4_3_content_central": true,
+      "subtitle_only_if_informative": true
+    },
+    "youtube": {
+      "headline_safe_margin": 0.05,
+      "short_title_preferred": true,
+      "existing_chinese_preserved": true,
+      "shorts_relayout": true
+    }
+  },
+  "variant_invariants": [
+    "用户提供的标题与标点完全一致",
+    "同一底图和相同人物/场景",
+    "同一画幅尺寸",
+    "尊重用户指定标签和副标题",
+    "不自动添加第三方Logo与平台UI",
+    "默认不使用无意义的分隔线和英语装饰词"
+  ]
+}

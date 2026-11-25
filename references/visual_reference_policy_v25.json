@@ -1,0 +1,19 @@
+{
+  "version": "2.6-preview",
+  "reference_database": "references/content_atlas/content_atlas_index_v26.json",
+  "html_manual": "references/content_atlas/GTA6封面内容参考手册.html",
+  "priority": [
+    "confirmed_user_style_reference",
+    "manually_selected_content_atlas_case",
+    "auto_selected_content_atlas_case",
+    "text_only_platform_fallback"
+  ],
+  "subject_assets_never_as_style_by_default": true,
+  "user_style_override": "An uploaded image only overrides the visual atlas when its role was explicitly confirmed as style_reference or both.",
+  "youtube": {
+    "has_atlas_case": false,
+    "fallback": "legacy platform/rules only"
+  },
+  "can_use_visual_example_only_if_host_attaches_actual_bytes": true,
+  "public_rights": "Public version excludes inlined third-party Bilibili images and exported research screenshots."
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GTA Thumbnail Pro custom style V2.0",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "compatible_platforms",
+    "visual_contract",
+    "typography",
+    "palette",
+    "prompt_core",
+    "negative_rules",
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{2,48}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 2
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "tested",
+        "approved"
+      ]
+    },
+    "compatible_platforms": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "xiaohongshu",
+          "bilibili",
+          "youtube"
+        ]
+      }
+    },
+    "reference_images": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "visual_contract": {
+      "type": "object",
+      "required": [
+        "subject",
+        "composition",
+        "negative_space"
+      ],
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "composition": {
+          "type": "string"
+        },
+        "negative_space": {
+          "type": "string"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "required": [
+        "hierarchy",
+        "placement",
+        "weight"
+      ],
+      "properties": {
+        "hierarchy": {
+          "type": "string"
+        },
+        "placement": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "string"
+        },
+        "max_lines": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": {
+        "type": "string",
+        "pattern": "^#[A-Fa-f0-9]{6}$"
+      }
+    },
+    "prompt_core": {
+      "type": "string",
+      "minLength": 20
+    },
+    "negative_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "license_note": {
+      "type": "string"
+    },
+    "test_notes": {
+      "type": "string"
+    },
+    "preview_asset": {
+      "type": "string"
+    }
+  }
+}

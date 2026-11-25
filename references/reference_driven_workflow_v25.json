@@ -1,0 +1,15 @@
+{
+  "version": "2.6-preview",
+  "workflow": [
+    "intake_gate_v252",
+    "identify confirmed content and style images",
+    "choose content category using content_atlas_index_v26",
+    "retrieve content formula and case(s)",
+    "apply confirmed user style if supplied, otherwise atlas example if available",
+    "compile three distinct layouts preserving subject and exact title",
+    "host image editing with actual images",
+    "manual comparison and targeted revision",
+    "HTML typography editor and export"
+  ],
+  "warning": "No autonomous image generation is provided by the Python scripts; requires a compatible host."
+}

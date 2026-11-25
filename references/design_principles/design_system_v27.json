@@ -1,0 +1,253 @@
+{
+  "version": "2.7-test",
+  "source_file": "references/design_principles/GTA6封面设计原则_V1.0.html",
+  "description": "Source-faithful structured extraction; 12 design styles and 3 platforms",
+  "global_principles": [
+    {
+      "id": "01",
+      "name": "游戏识别",
+      "rule": "保留可辨识的人物、场景、载具或环境，不强制官方KV。"
+    },
+    {
+      "id": "02",
+      "name": "单一焦点",
+      "rule": "只设一个最高视觉权重的主体。"
+    },
+    {
+      "id": "03",
+      "name": "内容驱动",
+      "rule": "先理解看点，再选择设计。"
+    },
+    {
+      "id": "04",
+      "name": "视觉重构",
+      "rule": "除原生及极简风格，不得只在截图叠字。"
+    },
+    {
+      "id": "05",
+      "name": "图层层次",
+      "rule": "建立背景、主体、信息与辅助元素主次。"
+    },
+    {
+      "id": "06",
+      "name": "色彩差异",
+      "rule": "按内容选配色，不默认粉紫。"
+    },
+    {
+      "id": "07",
+      "name": "文案精简",
+      "rule": "文字承担点击钩子，不复述标题。"
+    },
+    {
+      "id": "08",
+      "name": "真实表达",
+      "rule": "不虚构事实，不把AI画面冒充实机。"
+    }
+  ],
+  "platforms": {
+    "bilibili": {
+      "name": "B站",
+      "width": 1920,
+      "height": 1080,
+      "aspect_ratio": "16:9",
+      "click_motive": "信息价值",
+      "headline_length_guidance": "4–8字",
+      "safe_inset": "四周5%",
+      "ui_avoid": "右下角",
+      "no_text_supported": true,
+      "status": "user_design_recommendation_not_official_mandate"
+    },
+    "xiaohongshu": {
+      "name": "小红书",
+      "width": 1080,
+      "height": 1440,
+      "aspect_ratio": "3:4",
+      "click_motive": "情绪／生活关联",
+      "headline_length_guidance": "6–14字",
+      "safe_inset": "四周6%",
+      "ui_avoid": "底部及边缘",
+      "no_text_supported": true,
+      "status": "user_design_recommendation_not_official_mandate"
+    },
+    "youtube": {
+      "name": "YouTube",
+      "width": 1280,
+      "height": 720,
+      "aspect_ratio": "16:9",
+      "click_motive": "好奇心／视觉故事",
+      "headline_length_guidance": "0–8字",
+      "safe_inset": "四周5%",
+      "ui_avoid": "右下角",
+      "no_text_supported": true,
+      "status": "user_design_recommendation_not_official_mandate"
+    }
+  },
+  "content_style_match": [
+    {
+      "content_type": "官方物料／预告",
+      "click_motive": "最新画面",
+      "primary_style_id": "S11",
+      "alternative_style_ids": [
+        "S01"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "深度解析／考据",
+      "click_motive": "知识增量",
+      "primary_style_id": "S05",
+      "alternative_style_ids": [
+        "S09",
+        "S10"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "全流程／实况",
+      "click_motive": "游戏体验",
+      "primary_style_id": "S01",
+      "alternative_style_ids": [
+        "S06"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "评测／锐评",
+      "click_motive": "获取结论",
+      "primary_style_id": "S04",
+      "alternative_style_ids": [
+        "S03"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "彩蛋／发现",
+      "click_motive": "好奇心",
+      "primary_style_id": "S02",
+      "alternative_style_ids": [
+        "S11"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "攻略／教程",
+      "click_motive": "解决问题",
+      "primary_style_id": "S09",
+      "alternative_style_ids": [
+        "S05"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "搞笑／名场面",
+      "click_motive": "情绪刺激",
+      "primary_style_id": "S07",
+      "alternative_style_ids": [
+        "S11"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "二创／AI作品",
+      "click_motive": "新鲜体验",
+      "primary_style_id": "S01",
+      "alternative_style_ids": [
+        "S10",
+        "S06"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "资讯／爆料",
+      "click_motive": "时效",
+      "primary_style_id": "S08",
+      "alternative_style_ids": [
+        "S04"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "晒单／选购",
+      "click_motive": "消费决策",
+      "primary_style_id": "S03",
+      "alternative_style_ids": [
+        "S04",
+        "S06"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "实景打卡／旅行",
+      "click_motive": "现实虚拟联系",
+      "primary_style_id": "S03",
+      "alternative_style_ids": [
+        "S10"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "穿搭／仿妆",
+      "click_motive": "审美与对比",
+      "primary_style_id": "S03",
+      "alternative_style_ids": [
+        "S06"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "摄影／壁纸",
+      "click_motive": "审美",
+      "primary_style_id": "S12",
+      "alternative_style_ids": [
+        "S01"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    },
+    {
+      "content_type": "剧情／CP",
+      "click_motive": "情感共鸣",
+      "primary_style_id": "S01",
+      "alternative_style_ids": [
+        "S12"
+      ],
+      "source": "用户上传设计原则 V1.0 / 04 内容与风格匹配"
+    }
+  ],
+  "creative_levels": {
+    "strict": "固定风格锚点，允许内容替换及有限场景变化，不随机混搭元素",
+    "standard": "保留各风格核心视觉锚点，可使用该风格允许的可变组件",
+    "expanded": "不破坏核心锚点和事实前提下，允许重新组合本风格的构图与元素"
+  },
+  "style_selection_priority": [
+    "user_explicit_style",
+    "user_style_reference_image",
+    "content_click_motive",
+    "platform_fit",
+    "creative_variation"
+  ],
+  "anti_subtitle_only": "Except native spectacle S11 and minimal atmosphere S12, each result must have a meaningful visual reconstruction beyond laying title text on a screenshot.",
+  "truthfulness": "Do not fabricate gameplay footage, scoring, facts, maps, routes, official announcements or scene evidence.",
+  "quality_review": {
+    "threshold": 80,
+    "scores": {
+      "visual_anchors": 30,
+      "composition_and_hierarchy": 20,
+      "content_match": 20,
+      "click_appeal": 15,
+      "text_correctness_and_readability": 10,
+      "platform": 5
+    },
+    "vetoes": [
+      "missing_visual_anchor",
+      "mere_subtitle_overlay_except_S11_S12",
+      "no_visual_hierarchy",
+      "text_error_or_extra",
+      "fabricated_game_facts",
+      "important_content_ui_occluded",
+      "severe_content_mismatch",
+      "unconsented_real_person_recreation"
+    ],
+    "max_autoretries": 2,
+    "method": "human_or_vision_review_required_no_automatic_claim"
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "version": "1.9.0",
+  "name": "adaptive_creative_intake",
+  "purpose": "先识别用户现成信息，再以最少交互确认真正会改变封面结果的变量。",
+  "source_note": "原创交互设计；借鉴公开封面 Skill 的逐轮编号选择和素材角色清晰化，不复制其固定视觉风格或题材模板。",
+  "priority": [
+    "用户明确选择八步引导→ guided_flow.json；不同于默认智能追问的两轮上限",
+    "用户已经说清的标题、平台、画幅、素材约束",
+    "用户说直接生成/不用问",
+    "当前编辑修改命令",
+    "缺失且确实阻碍内容设计的关键问题",
+    "风格/字体/配色等可自动处理的细节"
+  ],
+  "modes": {
+    "instant": {
+      "triggers": [
+        "直接生成",
+        "你决定",
+        "先出一张",
+        "不要问",
+        "马上出图",
+        "just generate",
+        "generate now"
+      ],
+      "questions": 0,
+      "output": "编译完整设计简报与生图指令后立即调用宿主可用工具；无法生图时交付提示词"
+    },
+    "assisted": {
+      "default": true,
+      "max_questions": 1,
+      "choices": 3,
+      "skip_choice": true,
+      "output": "给最有影响的一个编号选择题，含每个选项产生的画面差异"
+    },
+    "guided": {
+      "triggers": [
+        "逐步选择",
+        "详细定制",
+        "一步步来",
+        "让我自己选",
+        "使用八步流程",
+        "引导我做封面"
+      ],
+      "max_questions": 8,
+      "skip_choice": true,
+      "output": "遵照guided_flow.json依次检查八个阶段，每轮仅一个问题，已给字段和无关人物阶段跳过；第8项后立刻编译完整提示词。"
+    },
+    "edit": {
+      "triggers": [
+        "换字体",
+        "调标题",
+        "位置",
+        "效果",
+        "换平台",
+        "保留",
+        "只修改"
+      ],
+      "questions": 0,
+      "output": "按用户指令局部修改，优先保留项目状态"
+    }
+  },
+  "known_fields": [
+    "platform",
+    "target_ratio",
+    "headline_exact",
+    "content_angle",
+    "source_image",
+    "host_image",
+    "extra_assets",
+    "visual_style",
+    "edit_fields",
+    "output_mode",
+    "expression_action",
+    "person_reference",
+    "background_tone",
+    "font_style",
+    "font_effect",
+    "guided_current_step",
+    "guided_completed_steps"
+  ],
+  "mandatory_question_logic": [
+    {
+      "when": "用户要求生成多平台封面但平台未知且没有任何可用尺寸线索",
+      "ask": "platform",
+      "fallback": "按通用16:9先做首张"
+    },
+    {
+      "when": "用户给出泛化测评主题，没有内容角度和明确标题，且未要求直接生成",
+      "ask": "review_angle",
+      "fallback": "中性综合体验，不预设结论"
+    },
+    {
+      "when": "用户明确要求真人主播露脸，但没有本人或已授权参考图",
+      "ask": "host_asset",
+      "fallback": "可以选择不露脸布局，不生成假冒真实主播脸"
+    },
+    {
+      "when": "用户要求真实对比或数据榜单但没有两份材料/数据",
+      "ask": "evidence",
+      "fallback": "保留对比布局但不写虚构数值"
+    }
+  ],
+  "do_not_ask": [
+    "用户已经提供的标题和平台",
+    "纯美学参数：字形/描边/颜色/阴影/饱和度/数字坐标",
+    "用户说直接出图的情况",
+    "仅改当前封面部分属性时"
+  ],
+  "question_bank": {
+    "review_angle": {
+      "text": "你这期 GTA 测评更想让观众看到哪一点？",
+      "options": [
+        {
+          "number": 1,
+          "label": "值不值得玩",
+          "difference": "疑问大标题＋游戏体验主体",
+          "recipe": "gameplay_question"
+        },
+        {
+          "number": 2,
+          "label": "深度测评",
+          "difference": "更克制的电影/信息层级＋内容锚点",
+          "recipe": "dense_news"
+        },
+        {
+          "number": 3,
+          "label": "优缺点拆解",
+          "difference": "两侧比较或分层信息，要求真实依据",
+          "recipe": "versus_split"
+        }
+      ],
+      "skip": {
+        "number": 4,
+        "label": "你直接决定并生成",
+        "route": "dense_news"
+      }
+    },
+    "platform": {
+      "text": "你准备把这张封面发到哪里？",
+      "options": [
+        {
+          "number": 1,
+          "label": "小红书",
+          "difference": "3:4 竖版重点信息",
+          "platform": "xiaohongshu"
+        },
+        {
+          "number": 2,
+          "label": "B站",
+          "difference": "16:9 横版内容叙事",
+          "platform": "bilibili"
+        },
+        {
+          "number": 3,
+          "label": "YouTube",
+          "difference": "16:9 单一主焦点",
+          "platform": "youtube"
+        }
+      ],
+      "skip": {
+        "number": 4,
+        "label": "先做通用16:9",
+        "platform": "bilibili"
+      }
+    },
+    "host_asset": {
+      "text": "这张封面需要出现你自己的主播形象吗？",
+      "options": [
+        {
+          "number": 1,
+          "label": "需要，我上传有权使用的真人照片",
+          "difference": "主播反应布局＋参考脸部保留",
+          "asset_requirement": "host_image"
+        },
+        {
+          "number": 2,
+          "label": "不需要真人",
+          "difference": "游戏主体或场景为主",
+          "recipe": "cinematic_poster"
+        },
+        {
+          "number": 3,
+          "label": "只要手部/背影等非正脸",
+          "difference": "非正脸素材＋场景融合",
+          "asset_requirement": "partial_host"
+        }
+      ],
+      "skip": {
+        "number": 4,
+        "label": "直接做无主播版",
+        "recipe": "cinematic_poster"
+      }
+    },
+    "evidence": {
+      "text": "对比封面希望突出什么材料？",
+      "options": [
+        {
+          "number": 1,
+          "label": "两张游戏截图",
+          "difference": "双画面对照",
+          "asset_requirement": "two_screenshots"
+        },
+        {
+          "number": 2,
+          "label": "两辆车/两个玩法",
+          "difference": "比较双方真实可见特征",
+          "asset_requirement": "two_entities"
+        },
+        {
+          "number": 3,
+          "label": "已有测评结论或数据",
+          "difference": "数据作为小信息锚点",
+          "asset_requirement": "verified_facts"
+        }
+      ],
+      "skip": {
+        "number": 4,
+        "label": "先做不写结论的概念版",
+        "route": "versus_split"
+      }
+    }
+  },
+  "answer_semantics": {
+    "number_or_mention_only": "匹配当前问题；不可把上轮选择误判为新请求",
+    "selected_choice": "写入设计简报并锁定，在出图阶段不可忽略",
+    "user_says_skip": "采用已知内容与最安全中性缺省直接生成",
+    "user_gives_new_information": "优先更新已有设计简报，不重复已知问题"
+  },
+  "user_message_pattern": "默认辅助模式：一个关键问题＋3个具体建议＋直接生成。八步引导模式：第N/8步，每轮仅本步一个问题，允许编号/自由输入/跳过/上一步/直接生成。",
+  "v252_precedence": "references/interaction_gate_v252.json has highest priority and supersedes conflicting older priority/skip rules.",
+  "v252_generation_guard": "No generation when required image roles or pending essential question unresolved; guided8 one-step-per-turn."
+}

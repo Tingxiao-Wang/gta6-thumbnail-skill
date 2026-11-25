@@ -1,0 +1,213 @@
+{
+  "version": "1.6.0",
+  "weights_explained": "规则采用确定性优先级，非机器学习推荐分数；按内容和素材条件选择。",
+  "priority": [
+    "用户明确指定风格或标题及画幅",
+    "明确有用户截图且需要以其为基础时，先锁定截图中的真实主体/事件，使用跨平台截图工作流",
+    "版权/素材真实性约束",
+    "真实素材可用性及用户肖像要求",
+    "内容目标和可验证证据",
+    "发布平台裁切安全区",
+    "模型能力与实际导出限制",
+    "风格配方偏好"
+  ],
+  "content_routes": [
+    {
+      "when": "首发宣传、剧情向、角色氛围",
+      "styles": [
+        "cinematic_poster",
+        "clean_documentary"
+      ]
+    },
+    {
+      "when": "主播出镜、实况、游戏反应",
+      "styles": [
+        "streamer_reaction",
+        "episode_live"
+      ],
+      "require": "未上传主播肖像则默认无真人虚构主播；可用原创虚构插画人物但不冒充主播"
+    },
+    {
+      "when": "BUG、彩蛋、特殊发现",
+      "styles": [
+        "discovery_annotation",
+        "gameplay_question"
+      ],
+      "require": "要求用户提供可验证的画面证据时才将异常描述为真实"
+    },
+    {
+      "when": "对比、GTA5 vs GTA6、游戏 vs 现实",
+      "styles": [
+        "versus_split"
+      ],
+      "require": "需有两方素材才称为真实对比；否则标示为概念示意"
+    },
+    {
+      "when": "新闻资讯、版本盘点、性能评测",
+      "styles": [
+        "dense_news"
+      ],
+      "require": "用户必须提供核实的数字与主张，未知则不编造"
+    },
+    {
+      "when": "小成本、纯游戏画面、动作创意",
+      "styles": [
+        "minimal_action",
+        "clean_documentary"
+      ]
+    },
+    {
+      "when": "系列直播、DAY 1、连载",
+      "styles": [
+        "episode_live"
+      ],
+      "require": "仅用户明确直播或给出集数时添加LIVE/EP标签"
+    }
+  ],
+  "composition_rules": [
+    "始终先定画幅，再定主视觉安全区，最后确定文字位置。",
+    "优先一个主焦点；角色出镜时应形成主次清晰的双主体，不允许主角群像互相抢戏。",
+    "标题语言按用户输入，YouTube不等于只能英文；跨平台适配优先换画幅和视觉层次，不自动翻译。",
+    "文字标题只在用户没给定标题时自动创作；已给定则不擅自改写。",
+    "不混入源截图中的播放量、时长、UI按键、平台水印与账号昵称。",
+    "不要把训练参考图整张当作可复用素材或逐像素复刻他人封面。",
+    "不同尺寸裁切需重新排布而非压缩拉伸；优先 preserving hero subject / text / highlighted evidence.",
+    "生成工具不支持目标像素或可控文字时，诚实报告限制；有文字叠加能力时图像和文字分层完成。"
+  ],
+  "style_platform_tiebreak": {
+    "xiaohongshu": [
+      "gameplay_question",
+      "dense_news",
+      "versus_split"
+    ],
+    "bilibili": [
+      "discovery_annotation",
+      "streamer_reaction",
+      "dense_news",
+      "cinematic_poster"
+    ],
+    "youtube": [
+      "streamer_reaction",
+      "minimal_action",
+      "versus_split",
+      "episode_live"
+    ]
+  },
+  "output_contract": {
+    "when_image_tool_available": "直接生成目标画幅图片；给出平台、比例、已核实的实际尺寸和简短修改提示",
+    "when_image_tool_missing": "返回一条可直接用于可用生图工具的完整提示词，不声称已出图",
+    "multi_platform": "按画幅逐张重新构图，不得仅把横图裁成竖图"
+  },
+  "deterministic_selector": {
+    "first_match_rules": [
+      {
+        "if": "user_explicit_style_id_matches_existing_recipe",
+        "then": "use_that_style_unless_it_requires_unavailable_real_material; explain fallback"
+      },
+      {
+        "if": "comparison_or_vs_and_two_materials_available",
+        "then": "versus_split"
+      },
+      {
+        "if": "comparison_or_vs_and_missing_material",
+        "then": "versus_split_concept_only_or_request_comparison_material"
+      },
+      {
+        "if": "actual_streamer_portrait_supplied_and_reaction_requested",
+        "then": "streamer_reaction"
+      },
+      {
+        "if": "streamer_requested_without_actual_portrait",
+        "then": "minimal_action_or_gameplay_question; do not invent a real streamer"
+      },
+      {
+        "if": "verified_bug_or_secret_evidence_supplied",
+        "then": "discovery_annotation"
+      },
+      {
+        "if": "bug_or_secret_without_evidence",
+        "then": "gameplay_question; label as idea not proven"
+      },
+      {
+        "if": "verified_news_or_guide_with_factual_content",
+        "then": "dense_news"
+      },
+      {
+        "if": "episode_or_live_claim_explicit",
+        "then": "episode_live"
+      },
+      {
+        "if": "story_or_cinematic_or_trailer",
+        "then": "cinematic_poster"
+      },
+      {
+        "if": "immersive_or_documentary_or_natural",
+        "then": "clean_documentary"
+      },
+      {
+        "if": "single_stunt_or_no_text",
+        "then": "minimal_action"
+      },
+      {
+        "if": "surprise_or_question_or_challenge",
+        "then": "gameplay_question"
+      },
+      {
+        "if": "otherwise",
+        "then": "cinematic_poster"
+      }
+    ],
+    "style_count": {
+      "primary": 1,
+      "secondary_max": 1
+    },
+    "composition_lookup": "styles.json recipes[id].visual_parameters.composition_id -> composition.json layouts",
+    "typography_lookup": "styles.json recipes[id].visual_parameters.headline_mode -> typography.json headline_modes",
+    "preflight": "clarification_rules.json -> decision_catalog.json -> design_brief_schema.json; then original style/layout/typography selector"
+  },
+  "modification_dispatch": "Follow references/editing_rules.json when request refers to previous output; preserve locked fields unless user explicitly overrides.",
+  "capability_dispatch": "Before any export claim, apply references/capabilities.json and verify tool supports required output.",
+  "invalid_assumptions": [
+    "YouTube标题必须英文",
+    "小红书封面一律竖版",
+    "B站只有16:9",
+    "每张参考图都获授权可再分发",
+    "只要装Skill就自动有生图工具"
+  ],
+  "preflight_dispatch": {
+    "before_style_selector": "Run references/clarification_rules.json. Select one of GENERATE_NOW, RECOMMEND_AND_ASK, SUGGEST_AND_GENERATE, EDIT_EXISTING, SAFE_FALLBACK.",
+    "user_choice_to_brief": "Merge the chosen option with known slots via references/design_brief_schema.json; do not ask for values already known.",
+    "review_subtype_lookup": "references/decision_catalog.json review_subtypes. Do not map all review prompts to generic cinematic_poster.",
+    "skip_question_safeguard": "For direct generation/just do it, no questions. Use a neutral, non-factual review hook if specific verdict unknown.",
+    "hard_rules": [
+      "Explicit user heading wins over proposed title",
+      "No invented reviews/claims",
+      "At most one question per turn and two turns total",
+      "No second question after user has selected a concrete creative direction"
+    ],
+    "legacy_routing_kept": true,
+    "screenshot_first": "用户已上传截图、已有标题和平台：直接基于源图二次包装，不要先追问或把电影感解读为实体海报。"
+  },
+  "screenshot_mode_dispatch": {
+    "trigger": "when accessible user screenshot exists and the request asks to use/redesign/preserve that screenshot",
+    "mode": "screenshot_based_cover",
+    "execute_before": "style_selector_and_prompt_compilation",
+    "shared_rules": "references/screenshot_cover_rules.json",
+    "platform_rules": "references/platforms.json::platforms[platform].screenshot_cover",
+    "style_rules": "references/styles.json::recipes[style_id].screenshot_adaptation",
+    "cinematic_poster_override": "film-look full-bleed video thumbnail, no physical poster frame",
+    "do_not_ask_if": "source image + platform + exact title + desired visual style provided",
+    "fallback": "if uploaded image is unavailable, acknowledge and ask for attachment only when strict preservation required; otherwise offer concept image",
+    "text_priority": "exact user title overrides any autogenerated platform tagline"
+  },
+  "v16_visual_contract_dispatch": {
+    "file": "references/platform_layout_rules.json",
+    "must_run": "after_preflight_before_final_prompt",
+    "priority": "over vague style adjectives, below explicit user constraints",
+    "platform_preset": "use output.default unless explicit user requests other preset; Bilibili creative main is 16:9",
+    "layout_id": "pick using platform.layout_selection[content_type], then adapt using source screenshot negative space",
+    "user_title": "exact; do not auto-edit",
+    "style_ids_preserved": true,
+    "quality_check": "global H1-H8; if fail attempt bounded repair and disclose limitations"
+  }
+}

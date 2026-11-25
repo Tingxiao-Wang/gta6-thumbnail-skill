@@ -1,0 +1,28 @@
+{
+  "id": "S02",
+  "english_name": "Mystery Discovery",
+  "name": "悬念探索风",
+  "intended_content": "彩蛋、NPC、地图秘密",
+  "composition": "主场景与探索对象建立联系；目标位于视觉交点",
+  "palette": "原色＋红黄白强调",
+  "typography": "粗体4–8字",
+  "required_visual_anchors": [
+    "具体探索对象",
+    "聚焦或引导关系"
+  ],
+  "optional_visual_elements": [
+    "红圈",
+    "箭头",
+    "放大框",
+    "局部模糊"
+  ],
+  "forbidden_elements": [
+    "虚构彩蛋",
+    "多处无意义标注"
+  ],
+  "preview_svg": "references/design_principles/style_previews/S02.svg",
+  "reference_assets": [],
+  "reference_image_type": "original_abstract_svg_design_schematic",
+  "source": "GTA6封面设计原则_V1.0.html",
+  "user_document_data_not_performance_validated": true
+}

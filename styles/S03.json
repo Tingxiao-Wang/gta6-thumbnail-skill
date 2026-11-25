@@ -1,0 +1,27 @@
+{
+  "id": "S03",
+  "english_name": "Versus Comparison",
+  "name": "强反差对比风",
+  "intended_content": "代际、画质、版本对比",
+  "composition": "左右、上下或斜线分屏；相近视角和尺度",
+  "palette": "冷暖或明暗对比",
+  "typography": "同一字体体系",
+  "required_visual_anchors": [
+    "两个可比较对象",
+    "清晰分界",
+    "真实差异"
+  ],
+  "optional_visual_elements": [
+    "VS",
+    "版本标签",
+    "细节对比"
+  ],
+  "forbidden_elements": [
+    "人为伪造差距"
+  ],
+  "preview_svg": "references/design_principles/style_previews/S03.svg",
+  "reference_assets": [],
+  "reference_image_type": "original_abstract_svg_design_schematic",
+  "source": "GTA6封面设计原则_V1.0.html",
+  "user_document_data_not_performance_validated": true
+}

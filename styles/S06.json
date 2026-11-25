@@ -1,0 +1,29 @@
+{
+  "id": "S06",
+  "english_name": "Background Typography",
+  "name": "背景巨字风",
+  "intended_content": "角色、城市、观点",
+  "composition": "背景巨字覆盖60–90%；前景主体遮挡部分文字",
+  "palette": "底色与文字高对比",
+  "typography": "超粗体或压缩体",
+  "required_visual_anchors": [
+    "巨型背景字",
+    "独立主体",
+    "遮挡关系"
+  ],
+  "optional_visual_elements": [
+    "镂空字",
+    "倾斜",
+    "立体字"
+  ],
+  "forbidden_elements": [
+    "遮脸",
+    "乱码",
+    "普通字幕"
+  ],
+  "preview_svg": "references/design_principles/style_previews/S06.svg",
+  "reference_assets": [],
+  "reference_image_type": "original_abstract_svg_design_schematic",
+  "source": "GTA6封面设计原则_V1.0.html",
+  "user_document_data_not_performance_validated": true
+}

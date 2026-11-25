@@ -1,0 +1,95 @@
+{
+  "version": "1.6.0",
+  "host_support_status": "unverified_by_this_package; user must test in own session",
+  "capability_probe_order": [
+    "image_generation",
+    "image_editing",
+    "reference_image_use",
+    "text_overlay",
+    "aspect_ratio_control",
+    "exact_pixel_export",
+    "multi_image_output",
+    "attached_knowledge_read"
+  ],
+  "levels": {
+    "full": {
+      "requires": [
+        "image_generation",
+        "reference_image_use",
+        "text_overlay",
+        "aspect_ratio_control"
+      ],
+      "procedure": "image base -> optional edit -> exact text overlay -> inspect -> export actual supported pixels"
+    },
+    "generation_only": {
+      "requires": [
+        "image_generation"
+      ],
+      "procedure": "prompt with explicit aspect and title; if text fails create clean no-text base and give typography instructions; do not promise exact pixel size"
+    },
+    "text_only": {
+      "requires": [],
+      "procedure": "provide one complete image-generation prompt and optional separate title-layer instructions; say no image was generated"
+    }
+  },
+  "host_guidance": {
+    "workbuddy": {
+      "entry": "SKILL.md + references directory in an importable skill folder if version supports it",
+      "files": "load only needed reference file(s)",
+      "caution": "available image and file operations are account/tool dependent, not guaranteed by Skill installation"
+    },
+    "doubao": {
+      "entry": "paste doubao/AGENT_INSTRUCTIONS.md into an assistant/agent instruction field or a capable chat",
+      "files": "attach references when supported; otherwise the standalone instruction remains usable",
+      "caution": "native WorkBuddy folder cannot be assumed directly importable into Doubao; no guaranteed direct file access"
+    }
+  },
+  "decision_table": [
+    {
+      "condition": "image_generation and text_overlay",
+      "action": "generate text-free background first; overlay exact title using accessible typography tools"
+    },
+    {
+      "condition": "image_generation and not text_overlay",
+      "action": "generate image with title if model is reliable; otherwise background without text + manual overlay directions"
+    },
+    {
+      "condition": "image_editing and reference_image_use",
+      "action": "edit supplied image with unchanged-subject locks"
+    },
+    {
+      "condition": "not image_editing and requested_local_change",
+      "action": "retry from prior image as reference if available; warn consistency cannot be guaranteed"
+    },
+    {
+      "condition": "not aspect_ratio_control",
+      "action": "ask generator for closest aspect, later crop only if accessible without cutting subject; disclose resulting ratio"
+    },
+    {
+      "condition": "not exact_pixel_export",
+      "action": "return actual dimensions if verified or aspect only; do not label 4K by guess"
+    },
+    {
+      "condition": "not attached_knowledge_read",
+      "action": "use embedded minimal rules in SKILL.md or doubao/AGENT_INSTRUCTIONS.md; do not claim loading JSON"
+    },
+    {
+      "condition": "not image_generation",
+      "action": "return a single complete copy-ready generation prompt; explicitly no image output"
+    }
+  ],
+  "prohibited_claims": [
+    "claiming_workbuddy_or_doubao_account_has_a_specific_tool_without_testing",
+    "claiming_native_skill_import_is_supported_in_all_doubao_versions",
+    "claiming_exact_resolution_or_perfect_text_without_output_verification",
+    "claiming_uploaded images persist across sessions"
+  ],
+  "screenshot_capability_contract": {
+    "prefer": "actual_image_edit_with_source",
+    "fallback": "reference_image_supported_image_generation",
+    "no_source_tool": "must_not_claim_preserving_user_screenshot_without_passing_source_to_tool",
+    "no_overlay": "must_not_claim_exact_title_if_text_is_malformed",
+    "output_validation": "distinguish image embedded border from chat viewer surrounding whitespace; verify image itself if possible"
+  },
+  "v16_layout_truth": "Numeric layout contract can be enforced with actual crop/typography/compositor tools; with prompt-only image generation use best-effort visual constraint and inspect output, do not claim exact pixels or exact font sizes without verification."
+}

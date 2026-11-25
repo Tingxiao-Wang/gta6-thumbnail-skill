@@ -1,0 +1,341 @@
+{
+  "version": "1.5.0",
+  "purpose": "用已有平台、风格、构图和字体知识库，将关键模糊需求转成一次高价值追问或可执行的设计建议。不要把完整的设计工作退还给用户。",
+  "principles": [
+    "先读取当前消息和已知对话状态，绝不重复询问已回答的信息。",
+    "先区分事实缺失与设计偏好缺失：事实影响作品真实性才可能追问；可从数据库推导的设计偏好一律自动决定。",
+    "用户明确要求立即生成、不要提问、随便做或按你推荐时，直接采用安全中性方案；仍不得捏造游戏事实。",
+    "用户已指定标题必须逐字保留；未指定时才建议标题。",
+    "对模糊问题最多问一个可决策问题；一次最多展示3个实质选项+1个跳过/先生成选项。",
+    "推荐必须说明用户能感知的差异及选择依据，禁止使用style_id等内部术语向普通用户提问。",
+    "B站与YouTube不是美学/语言的硬绑定；跨平台改图先重新构图，不把画幅当成内容问题。",
+    "制作仅针对用户上传或确有使用权的素材；缺少BUG/数值/泄露等证据时先走中性示意，不能制造伪证。"
+  ],
+  "interaction_policy": {
+    "max_questions_per_turn": 1,
+    "max_clarification_rounds_per_request": 2,
+    "max_substantive_options": 3,
+    "allow_skip_and_auto_generate": true,
+    "never_ask_about": [
+      "色板",
+      "描边",
+      "字体家族",
+      "阴影",
+      "安全区",
+      "景深",
+      "构图百分比",
+      "style_id",
+      "镜头光效强度"
+    ],
+    "stop_asking_if": [
+      "用户明确说直接生成/不用问/你决定/按你推荐",
+      "已有足以决定画幅与内容的输入",
+      "处于修改当前封面的任务且仅要求修改具体属性",
+      "连续两轮已向用户追问",
+      "用户选择跳过或不确定"
+    ],
+    "fallback_when_skipped": "从当前上下文选择平台默认或通用16:9预设，优先中性可验证的标题与配方，继续生成或提供可复制提示词。",
+    "content_before_cosmetics": true,
+    "do_not_pretend_models_support_choice_ui": true
+  },
+  "modes": {
+    "GENERATE_NOW": "输入足够，或者用户跳过/要求直接生成：用数据库自动决策并出图，不再追问。",
+    "RECOMMEND_AND_ASK": "一个高价值事实或内容方向缺失且会明显影响封面表达：输出3个具体方案、推荐理由与一个直接生成选项。",
+    "SUGGEST_AND_GENERATE": "不足以构成阻碍的细节缺失：内部选安全默认，必要时说明推荐理由，直接生图。",
+    "EDIT_EXISTING": "用户只对上一张局部修改：按 editing_rules.json 的差量修改走，不重新开创意问卷。",
+    "SAFE_FALLBACK": "缺失真实证据/素材却要求肯定事实或真实人物：禁止杜撰，改为中性概念方案并清楚说明；只有真实性无法避开时询问证据。"
+  },
+  "selection_order": [
+    "1. 先处理对上一张图片的编辑命令（EDIT_EXISTING）。",
+    "1a. 用户已提供可访问截图 + 平台 + 文字/风格要求时，直接进入 screenshot_based_cover；只补审美决策，不问“电影海报形”的含义。",
+    "2. 检查用户是否要求直接生成或已经回答过问题；命中即跳过追问。",
+    "3. 只有在真实重大主张不可避开时优先检验证据，禁止暗示有真实游戏资料。",
+    "4. 平台未知且无法推断、画幅结果会有实质差异时问 platform_choice；若用户要求立刻做则通用16:9并说明。",
+    "5. 视频题材本身未知且无法合理设计时问 video_topic；如果仅没有具体画风则不问。",
+    "6. 已知是测评但不知道核心角度时问 review_focus；具体主题已给就直接决策。",
+    "7. 已知是对比但未知道比较对象时问 compare_entities；若只需概念对比且可安全推断则不问。",
+    "8. 其他情况自动读路由、风格、字体、构图并生成。"
+  ],
+  "clarification_triggers": [
+    {
+      "question_id": "evidence_source",
+      "priority": 100,
+      "when": "用户明确要求真实BUG/官方数据/泄露/不存在证据的比较结果且真实性无法通过中性呈现规避",
+      "ask_only_if": "无法以原创概念示意满足用户目标",
+      "otherwise": "SAFE_FALLBACK"
+    },
+    {
+      "question_id": "platform_choice",
+      "priority": 90,
+      "when": "平台和可交付画幅完全未知，且无法从上下文推断",
+      "ask_only_if": "用户允许追问且没有默认平台",
+      "otherwise": "SUGGEST_AND_GENERATE，通用16:9"
+    },
+    {
+      "question_id": "video_topic",
+      "priority": 85,
+      "when": "用户仅说做一张GTA封面，没有视频主题、看点或可推断素材",
+      "ask_only_if": "画面内容完全无法确定",
+      "otherwise": "SUGGEST_AND_GENERATE"
+    },
+    {
+      "question_id": "review_focus",
+      "priority": 80,
+      "when": "已知是测评但只说“GTA测评/评测”，未给角度、事实或明确主标题",
+      "ask_only_if": "用户没有说“直接生成”，当前问题未在上下文解答",
+      "otherwise": "GENERATE_NOW，中性综合测评"
+    },
+    {
+      "question_id": "compare_entities",
+      "priority": 75,
+      "when": "明确要求对比，但两个比较对象无法从用户输入和现有素材识别",
+      "ask_only_if": "缺失对象会导致两侧内容完全无意义",
+      "otherwise": "SUGGEST_AND_GENERATE"
+    },
+    {
+      "question_id": "video_goal",
+      "priority": 55,
+      "when": "用户明确希望讨论如何策划封面但未给创作目标",
+      "ask_only_if": "要求先给思路或选题，不是直接出图",
+      "otherwise": "GENERATE_NOW"
+    }
+  ],
+  "question_catalog": [
+    {
+      "id": "platform_choice",
+      "ask_zh": "这张封面主要发到哪里？我会自动调整画幅和文字层级。",
+      "ask_en": "Where will you publish this thumbnail? I will optimize the aspect ratio and layout.",
+      "options": [
+        {
+          "id": "bilibili",
+          "label_zh": "B站",
+          "label_en": "Bilibili",
+          "rationale_zh": "默认16:9创作主版，需要4:3时另外重排列表图",
+          "platform": "bilibili"
+        },
+        {
+          "id": "xiaohongshu",
+          "label_zh": "小红书",
+          "label_en": "Xiaohongshu",
+          "rationale_zh": "默认3:4手机竖版，文字更集中",
+          "platform": "xiaohongshu"
+        },
+        {
+          "id": "youtube",
+          "label_zh": "YouTube",
+          "label_en": "YouTube",
+          "rationale_zh": "默认16:9，主体突出，标题尽量简洁",
+          "platform": "youtube"
+        }
+      ],
+      "skip": {
+        "id": "generic",
+        "label_zh": "先做通用横版",
+        "label_en": "Use a general wide format",
+        "fallback": "16:9 no forced language change"
+      }
+    },
+    {
+      "id": "video_topic",
+      "ask_zh": "这期 GTA 视频主要想让观众看到什么？",
+      "ask_en": "What is the main moment or takeaway of this GTA video?",
+      "options": [
+        {
+          "id": "chase",
+          "label_zh": "实况 / 挑战",
+          "label_en": "Gameplay / challenge",
+          "rationale_zh": "突出一眼能理解的关键动作",
+          "style_id": "gameplay_question",
+          "headline_suggestion_zh": "这次能逃掉吗？"
+        },
+        {
+          "id": "guide",
+          "label_zh": "攻略 / 发现",
+          "label_en": "Guide / discovery",
+          "rationale_zh": "突出具体玩法、步骤或已提供的发现",
+          "style_id": "dense_news",
+          "headline_suggestion_zh": "GTA玩法解析"
+        },
+        {
+          "id": "review",
+          "label_zh": "测评 / 体验",
+          "label_en": "Review / impressions",
+          "rationale_zh": "突出需要讨论的体验角度",
+          "style_id": "dense_news",
+          "headline_suggestion_zh": "GTA体验测评"
+        }
+      ],
+      "skip": {
+        "id": "generic",
+        "label_zh": "先给我一张通用方案",
+        "label_en": "Make a general concept first",
+        "fallback": "cinematic_poster, neutral conceptual scene"
+      }
+    },
+    {
+      "id": "review_focus",
+      "ask_zh": "这期测评最想突出哪一点？我会据此改变标题和构图。",
+      "ask_en": "What is the main angle of this review? It determines the headline and composition.",
+      "options": [
+        {
+          "id": "worth_it",
+          "label_zh": "值不值得玩",
+          "label_en": "Is it worth playing?",
+          "rationale_zh": "适合综合体验，采用中性的疑问标题，不预设好坏结论",
+          "style_id": "gameplay_question",
+          "headline_suggestion_zh": "到底值不值？",
+          "headline_suggestion_en": "WORTH PLAYING?"
+        },
+        {
+          "id": "deep_review",
+          "label_zh": "深度测评",
+          "label_en": "In-depth review",
+          "rationale_zh": "适合系统分析，强调内容层级和可信度",
+          "style_id": "dense_news",
+          "headline_suggestion_zh": "GTA深度测评",
+          "headline_suggestion_en": "GTA DEEP REVIEW"
+        },
+        {
+          "id": "pros_cons",
+          "label_zh": "优缺点拆解",
+          "label_en": "Pros and cons",
+          "rationale_zh": "适合讨论利弊，需从用户视频内容获取优缺点，不编造结论",
+          "style_id": "dense_news",
+          "conditional_style_id": "versus_split",
+          "conditional_style_requires": "user_provided_two_sided_material_or_facts",
+          "headline_suggestion_zh": "优缺点聊透",
+          "headline_suggestion_en": "PROS & CONS"
+        }
+      ],
+      "skip": {
+        "id": "auto",
+        "label_zh": "不确定，先生成一版",
+        "label_en": "Not sure, generate a draft",
+        "fallback": "dense_news, neutral headline GTA综合体验, no invented facts"
+      }
+    },
+    {
+      "id": "compare_entities",
+      "ask_zh": "你想对比哪两项内容？",
+      "ask_en": "Which two subjects should be compared?",
+      "options": [
+        {
+          "id": "games",
+          "label_zh": "两代游戏",
+          "label_en": "Two game installments",
+          "rationale_zh": "适合版本/画面差异，必须明确双方名称和来源",
+          "style_id": "versus_split"
+        },
+        {
+          "id": "cars",
+          "label_zh": "两辆车",
+          "label_en": "Two vehicles",
+          "rationale_zh": "车辆造型或驾驶体验对照，实际数据不得编造",
+          "style_id": "versus_split"
+        },
+        {
+          "id": "scenes",
+          "label_zh": "两个场景/玩法",
+          "label_en": "Two scenes / gameplay modes",
+          "rationale_zh": "更适合实际截图并排呈现",
+          "style_id": "versus_split"
+        }
+      ],
+      "skip": {
+        "id": "generic",
+        "label_zh": "先做一个概念布局",
+        "label_en": "Make a concept layout",
+        "fallback": "versus_split concept placeholder without factual comparison claim"
+      }
+    },
+    {
+      "id": "evidence_source",
+      "ask_zh": "你希望封面展示真实的游戏事件吗？如果是，请上传对应截图或提供可靠信息；否则我可以制作明确的概念示意。",
+      "ask_en": "Should the cover show a real, verifiable in-game event? Please provide evidence, or I can make a clearly conceptual illustration.",
+      "options": [
+        {
+          "id": "upload",
+          "label_zh": "上传真实截图",
+          "label_en": "Upload actual screenshot",
+          "rationale_zh": "保留证据主体，不杜撰异常位置",
+          "style_id": "discovery_annotation"
+        },
+        {
+          "id": "verified_text",
+          "label_zh": "我有可核实的文字信息",
+          "label_en": "I have verifiable information",
+          "rationale_zh": "只呈现提供的信息，不添加未核实数字",
+          "style_id": "dense_news"
+        },
+        {
+          "id": "concept",
+          "label_zh": "改为概念示意",
+          "label_en": "Make a concept illustration",
+          "rationale_zh": "避免误导真实事件，画面标注概念性质",
+          "style_id": "gameplay_question"
+        }
+      ],
+      "skip": {
+        "id": "concept",
+        "label_zh": "先做概念版",
+        "label_en": "Use a concept version",
+        "fallback": "gameplay_question neutral concept, no claim of a real discovery"
+      }
+    },
+    {
+      "id": "video_goal",
+      "ask_zh": "你更希望观众一眼看到哪种信息？",
+      "ask_en": "What should viewers notice first?",
+      "options": [
+        {
+          "id": "event",
+          "label_zh": "关键事件",
+          "label_en": "The main event",
+          "rationale_zh": "用一个动作或意外作为主视觉",
+          "style_id": "gameplay_question"
+        },
+        {
+          "id": "value",
+          "label_zh": "观点/判断",
+          "label_en": "An opinion or question",
+          "rationale_zh": "用一个疑问或讨论点形成标题钩子",
+          "style_id": "dense_news"
+        },
+        {
+          "id": "atmosphere",
+          "label_zh": "故事氛围",
+          "label_en": "Cinematic atmosphere",
+          "rationale_zh": "减少文字，强化场景沉浸感",
+          "style_id": "cinematic_poster"
+        }
+      ],
+      "skip": {
+        "id": "auto",
+        "label_zh": "你来推荐",
+        "label_en": "Recommend for me",
+        "fallback": "pick from current user context"
+      }
+    }
+  ],
+  "user_message_template": {
+    "recommended_structure": [
+      "先确认已知信息（短句即可）",
+      "说出一个判断：为什么现在这一点会影响最终封面",
+      "提出唯一的问题",
+      "显示2–3个用户能懂的方案，每个说清具体输出效果",
+      "标记数据库推荐选项，提供“直接生成”跳过方式"
+    ],
+    "max_words_zh_hint": 160,
+    "no_internal_ids_in_user_facing_text": true,
+    "never_expose_full_brief_unless_requested": true,
+    "when_user_picks_option": "复用之前输入和选择；创建 design_brief；无需再询问视觉细节，直接执行。"
+  },
+  "screenshot_priority": {
+    "complete_example": "用户上传城市俯瞰截图 + 指定“孩子们真正的史一游来了” + B站 + 电影海报感：信息足够，不询问，直接按全画幅截图电影化进行设计。",
+    "when_to_ask": "仅当关键源图不可访问且用户必须保留它，或内容真实性必须确认且无法安全默认时追问。",
+    "never_ask": "有截图、有平台、有标题时再问字体、要不要副标题、海报风格是什么意思；直接根据库决策。",
+    "fallback_when_missing_source": "无法读取截图却要求保留真实主角：请用户补传；不得凭空生成“原图人物”。"
+  },
+  "v252_precedence": "references/interaction_gate_v252.json has highest priority and supersedes conflicting older priority/skip rules.",
+  "v252_generation_guard": "No generation when required image roles or pending essential question unresolved; guided8 one-step-per-turn."
+}

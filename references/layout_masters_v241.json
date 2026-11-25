@@ -1,0 +1,138 @@
+{
+  "version": "2.4.1",
+  "description": "版式母版独立于字体配方。用户拖动后优先保留用户坐标。",
+  "masters": {
+    "A": {
+      "name": "横向爆点大字",
+      "kind": "impact_spread",
+      "landscape": {
+        "intro": {
+          "x": 0.055,
+          "y": 0.085,
+          "width": 0.53,
+          "fontSize": 0.083
+        },
+        "focus": {
+          "x": 0.055,
+          "y": 0.218,
+          "width": 0.44,
+          "fontSize": 0.172
+        },
+        "outro": {
+          "x": 0.515,
+          "y": 0.252,
+          "width": 0.405,
+          "fontSize": 0.119
+        }
+      },
+      "portrait": {
+        "intro": {
+          "x": 0.075,
+          "y": 0.12,
+          "width": 0.8,
+          "fontSize": 0.069
+        },
+        "focus": {
+          "x": 0.075,
+          "y": 0.27,
+          "width": 0.78,
+          "fontSize": 0.136
+        },
+        "outro": {
+          "x": 0.075,
+          "y": 0.43,
+          "width": 0.78,
+          "fontSize": 0.108
+        }
+      }
+    },
+    "B": {
+      "name": "右下留白电影",
+      "kind": "cinematic_corner",
+      "landscape": {
+        "intro": {
+          "x": 0.735,
+          "y": 0.565,
+          "width": 0.23,
+          "fontSize": 0.064
+        },
+        "focus": {
+          "x": 0.525,
+          "y": 0.738,
+          "width": 0.285,
+          "fontSize": 0.105
+        },
+        "outro": {
+          "x": 0.803,
+          "y": 0.775,
+          "width": 0.185,
+          "fontSize": 0.083
+        }
+      },
+      "portrait": {
+        "intro": {
+          "x": 0.53,
+          "y": 0.63,
+          "width": 0.4,
+          "fontSize": 0.061
+        },
+        "focus": {
+          "x": 0.29,
+          "y": 0.75,
+          "width": 0.49,
+          "fontSize": 0.109
+        },
+        "outro": {
+          "x": 0.7,
+          "y": 0.79,
+          "width": 0.23,
+          "fontSize": 0.071
+        }
+      }
+    },
+    "C": {
+      "name": "左侧纵向资讯",
+      "kind": "editorial_stack",
+      "landscape": {
+        "intro": {
+          "x": 0.05,
+          "y": 0.072,
+          "width": 0.35,
+          "fontSize": 0.074
+        },
+        "focus": {
+          "x": 0.05,
+          "y": 0.246,
+          "width": 0.315,
+          "fontSize": 0.158
+        },
+        "outro": {
+          "x": 0.05,
+          "y": 0.505,
+          "width": 0.35,
+          "fontSize": 0.115
+        }
+      },
+      "portrait": {
+        "intro": {
+          "x": 0.075,
+          "y": 0.1,
+          "width": 0.69,
+          "fontSize": 0.067
+        },
+        "focus": {
+          "x": 0.075,
+          "y": 0.225,
+          "width": 0.72,
+          "fontSize": 0.134
+        },
+        "outro": {
+          "x": 0.075,
+          "y": 0.39,
+          "width": 0.67,
+          "fontSize": 0.103
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,526 @@
+{
+  "version": "2.6.1",
+  "description": "Structured, content-driven visual storytelling; different scenes rather than just text changes.",
+  "policy": {
+    "user_style_priority": "Keep confirmed user-uploaded style reference highest.",
+    "text_only_is_not_default": "Do not force subtitle on every image. No-text cinematic covers remain valid.",
+    "functional_marks_only": "Arrows, circles, number badges, split frames and evidence crops are allowed when they communicate actual content.",
+    "no_fabrication": "Use only real provided/corroborated facts and assets. If supporting evidence is unavailable, use the fallback scene strategy.",
+    "generation": "Three independent scene prompts and potentially three independent backgrounds; only fast mode shares one background.",
+    "role_gate": "Never bypass the mandatory V2.5.2 intake gate."
+  },
+  "cases": {
+    "bili_A": {
+      "category": "预告 / 官方内容",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "CINEMATIC_HERO",
+          "name": "电影场景主导",
+          "scene_direction": "选择用户提供或允许使用的最有张力的单张场景，强调主体空间、光影和清晰轮廓，不强制标题",
+          "composition": "主体占画布 50–75%；留白有意控制",
+          "headline_treatment": "左下或极简",
+          "evidence_rule": "无字或一句短标题；禁止无授权官方标识"
+        },
+        {
+          "id": "B",
+          "mode": "EVENT_COMPARISON",
+          "name": "关键画面双窗",
+          "scene_direction": "两个来自用户素材的不同画面或同一画面的不同真实局部组成宽窄双窗；不虚构预告细节",
+          "composition": "左 58% 主画面，右 42% 辅助视窗",
+          "headline_treatment": "靠近分割带",
+          "evidence_rule": "两个窗口须能提供不同真实信息"
+        },
+        {
+          "id": "C",
+          "mode": "DETAIL_MYSTERY",
+          "name": "关键物件特写",
+          "scene_direction": "单个游戏场景内聚焦一个实际可见的物件/动作，局部放大并突出光影差异",
+          "composition": "特写为主；边缘保留环境线索",
+          "headline_treatment": "极简角落",
+          "evidence_rule": "只标注用户有证据的可见对象"
+        }
+      ]
+    },
+    "bili_B": {
+      "category": "解析 / 考据",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "EVIDENCE_COLLAGE",
+          "name": "证据型多图拼贴",
+          "scene_direction": "主实机画面 + 2 个来自用户素材的局部放大镜头；各镜头提供不同可观察信息",
+          "composition": "主图 60%，两个小图各 20%；视觉连接真实证据",
+          "headline_treatment": "下方核心发现",
+          "evidence_rule": "不能制造不存在的实机截图"
+        },
+        {
+          "id": "B",
+          "mode": "TARGET_ZOOM",
+          "name": "线索聚焦型",
+          "scene_direction": "放大一处真实可见的解析对象，附一个小的原图定位视窗，必要时用箭头标明对应位置",
+          "composition": "主图右侧细节放大，左上保留来源全貌",
+          "headline_treatment": "左侧巨大关键词",
+          "evidence_rule": "没有明确线索则退化成普通镜头特写，不乱画红圈"
+        },
+        {
+          "id": "C",
+          "mode": "STORY_MAP",
+          "name": "视觉关系图型",
+          "scene_direction": "以实际出现的人物/地点/线索卡片进行有层级的情报拼版；不用虚构关系",
+          "composition": "左侧主体，右侧少量已知证据块",
+          "headline_treatment": "顶部短结论",
+          "evidence_rule": "不得自行添加游戏事实或虚构地图标注"
+        }
+      ]
+    },
+    "bili_C": {
+      "category": "全流程 / 实况",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "HOST_EPISODE",
+          "name": "主播主导型",
+          "scene_direction": "如有真人素材，主播半身突出前景，身后使用用户游戏素材做动作场景",
+          "composition": "真人 35%，实机 65%",
+          "headline_treatment": "侧边系列标题",
+          "evidence_rule": "无主播素材时不擅自生成人物本人"
+        },
+        {
+          "id": "B",
+          "mode": "GAMEPLAY_MOMENT",
+          "name": "高能动作型",
+          "scene_direction": "实际截图中的一个关键动作画面铺满画布，少量真实进度/章节信息承接",
+          "composition": "一个强动作焦点，无额外框架",
+          "headline_treatment": "角落进度标识",
+          "evidence_rule": "不编造通关进度或平台画质"
+        },
+        {
+          "id": "C",
+          "mode": "PROGRESS_DIARY",
+          "name": "进度纪录型",
+          "scene_direction": "取材于用户实际素材的主舞台 + 一两个小的序列截图，有明确时间进展才使用序列",
+          "composition": "中间主截图、底边小格",
+          "headline_treatment": "侧方细标题",
+          "evidence_rule": "无连续素材则只用同图不同构图裁切"
+        }
+      ]
+    },
+    "bili_D": {
+      "category": "评测 / 观点",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "REACTION_HERO",
+          "name": "人物观点型",
+          "scene_direction": "有真人素材时将真人反应放右侧，形成与左侧游戏主画面的对视；无真人则使用游戏角色的情绪场景",
+          "composition": "左侧实机与右侧反应双焦点",
+          "headline_treatment": "左侧大观点词",
+          "evidence_rule": "不得无素材生成特定UP主脸"
+        },
+        {
+          "id": "B",
+          "mode": "VERSUS_EVIDENCE",
+          "name": "矛盾对照型",
+          "scene_direction": "对同一游戏体验的两面或两个有依据的场景做左右对照，采用明确的构图反差",
+          "composition": "左右分割 55/45；对照应来自真实素材",
+          "headline_treatment": "交界区短问题",
+          "evidence_rule": "无对比素材时使用同源实景不同焦距，避免假对照结论"
+        },
+        {
+          "id": "C",
+          "mode": "NUMBER_QUESTION",
+          "name": "数字/问号主视觉",
+          "scene_direction": "有用户确认的数据时让数字成为主视觉，否则使用大问号或用户原文中的实际时间数字，并以游戏场景铺底",
+          "composition": "数字或问号覆盖 25–40% 局部焦点",
+          "headline_treatment": "底部小判断句",
+          "evidence_rule": "严禁自造评分、价格、发售日期"
+        }
+      ]
+    },
+    "bili_E": {
+      "category": "攻略 / 发现",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "PRECISION_TARGET",
+          "name": "局部指示型",
+          "scene_direction": "真实可见的彩蛋物件或NPC作为唯一视觉焦点，使用一条有效箭头/一个圈注帮助定位",
+          "composition": "目标物放大 35–55%",
+          "headline_treatment": "远离目标的短标题",
+          "evidence_rule": "只有确切可见目标才加指示"
+        },
+        {
+          "id": "B",
+          "mode": "BEFORE_AFTER",
+          "name": "步骤对照型",
+          "scene_direction": "用户有两张不同步骤的图片时做左右对照；否则使用同一素材的全景与局部两窗",
+          "composition": "双窗明确视角层级",
+          "headline_treatment": "上方简洁结果",
+          "evidence_rule": "不能编造攻略步骤"
+        },
+        {
+          "id": "C",
+          "mode": "MYSTERY_STILL",
+          "name": "悬念留白型",
+          "scene_direction": "用用户场景的不可思议瞬间作为主视觉，隐藏不必要的文字和额外标识",
+          "composition": "场景 85% 以上",
+          "headline_treatment": "可无字",
+          "evidence_rule": "不用夸张表情或假指示"
+        }
+      ]
+    },
+    "bili_F": {
+      "category": "搞笑 / 名场面",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "ACTION_FREEZE",
+          "name": "动作冻结型",
+          "scene_direction": "以最夸张但真实存在的动作一帧铺满画面，用自然镜头造成悬念",
+          "composition": "动作人物占画布中心",
+          "headline_treatment": "一行短情绪词或无字",
+          "evidence_rule": "不得凭空添加真实主播反应"
+        },
+        {
+          "id": "B",
+          "mode": "REACTION_SPLIT",
+          "name": "表情呼应型",
+          "scene_direction": "当有真人素材时用其反应脸与真实游戏事件双焦点对照",
+          "composition": "人物一侧、游戏另一侧，视线回流",
+          "headline_treatment": "空白区醒目情绪词",
+          "evidence_rule": "真人素材缺失时改用游戏角色互动"
+        },
+        {
+          "id": "C",
+          "mode": "MEME_CROP",
+          "name": "反差放大型",
+          "scene_direction": "对用户素材中荒诞的一个细节做极端但可识别的裁切，辅以一个功能性的动作圈注",
+          "composition": "细节放大，背景留出因果场景",
+          "headline_treatment": "极短标题",
+          "evidence_rule": "无目标时不硬加红圈/贴纸"
+        }
+      ]
+    },
+    "bili_G": {
+      "category": "二创 / 鬼畜",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "STYLIZED_POSTER",
+          "name": "风格化主海报",
+          "scene_direction": "采用原创视觉符号、独立色调和完整电影式景别，用户真实素材保留可辨认关系",
+          "composition": "主物件居中，副主体边缘",
+          "headline_treatment": "电影式少字标题",
+          "evidence_rule": "不得冒充官方物料"
+        },
+        {
+          "id": "B",
+          "mode": "SURREAL_COLLAGE",
+          "name": "超现实拼贴型",
+          "scene_direction": "用用户授权内容进行大小反常的多层前后景拼贴，突出荒诞联系",
+          "composition": "大小对比明显，层间遮挡真实",
+          "headline_treatment": "角落漫画词",
+          "evidence_rule": "避免复制他人特定拼贴构图"
+        },
+        {
+          "id": "C",
+          "mode": "GRAPHIC_COVER",
+          "name": "图形海报型",
+          "scene_direction": "利用高对比双色块和人物剪影形成独立平面设计，不依赖黄色大标题",
+          "composition": "几何秩序+主体剪影",
+          "headline_treatment": "标题可横向穿插图形",
+          "evidence_rule": "不使用无授权徽标"
+        }
+      ]
+    },
+    "bili_H": {
+      "category": "资讯 / 爆料",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "EVIDENCE_NEWS",
+          "name": "证据突出型",
+          "scene_direction": "若有可信消息源截图，将真实信息截屏作为局部证据，游戏画面做背景",
+          "composition": "信息证据块占 35–50%",
+          "headline_treatment": "核心事实短句",
+          "evidence_rule": "未提供真实来源时不画假新闻截图"
+        },
+        {
+          "id": "B",
+          "mode": "TIMELINE_FACT",
+          "name": "时间节点型",
+          "scene_direction": "有用户确认的真实日期/时点时，用单个日期数字与相关内容场景呼应",
+          "composition": "巨大日期 + 游戏场景",
+          "headline_treatment": "一句主信息",
+          "evidence_rule": "无明确时间则不制造倒计时"
+        },
+        {
+          "id": "C",
+          "mode": "CINEMATIC_UPDATE",
+          "name": "画面新闻型",
+          "scene_direction": "以最能表达事件的真实图像作焦点，信息清晰但不过度加角标",
+          "composition": "主体 65%，信息区 35%",
+          "headline_treatment": "单条有依据的新闻标题",
+          "evidence_rule": "不能假装官方发布"
+        }
+      ]
+    },
+    "xhs_A": {
+      "category": "晒单 / 开箱",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "HERO_PRODUCT",
+          "name": "主体大特写",
+          "scene_direction": "以真实可见物品为最大主体，背景干净，突出材质与细节",
+          "composition": "主体占 55–75%",
+          "headline_treatment": "上方短标签",
+          "evidence_rule": "无用户实物素材不伪造真实晒单"
+        },
+        {
+          "id": "B",
+          "mode": "DESK_FLATLAY",
+          "name": "生活场景平铺",
+          "scene_direction": "有用户素材时组织真实物件与桌面场景，强调自然记录感",
+          "composition": "俯拍几何分区",
+          "headline_treatment": "中间简短标题",
+          "evidence_rule": "不要随意添加购买金额"
+        },
+        {
+          "id": "C",
+          "mode": "DETAIL_STACK",
+          "name": "细节分镜",
+          "scene_direction": "一张主图带两张真实细节局部，表达开箱信息",
+          "composition": "1大2小层级",
+          "headline_treatment": "下方一行信息",
+          "evidence_rule": "没有细节素材只放大原图已有细节"
+        }
+      ]
+    },
+    "xhs_B": {
+      "category": "玩梗 / 情绪",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "EMOTION_FACE",
+          "name": "情绪主体",
+          "scene_direction": "真人或角色的真实夸张表情靠近镜头，弱化背景",
+          "composition": "人物放大 60%",
+          "headline_treatment": "短情绪词",
+          "evidence_rule": "没有真人授权素材不用真人身份"
+        },
+        {
+          "id": "B",
+          "mode": "MEME_SPLIT",
+          "name": "对话冲突",
+          "scene_direction": "左右角色或事件形成反差，以真正有意义的短语分开",
+          "composition": "左右表意对照",
+          "headline_treatment": "上方反差词",
+          "evidence_rule": "不制造事实性对立"
+        },
+        {
+          "id": "C",
+          "mode": "SIMPLE_ABSURD",
+          "name": "干净荒诞",
+          "scene_direction": "一个荒诞场景元素占画布，少字或无字",
+          "composition": "单一中心焦点",
+          "headline_treatment": "极简",
+          "evidence_rule": "不加无意义emoji"
+        }
+      ]
+    },
+    "xhs_C": {
+      "category": "选购 / 避坑",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "CHECKLIST_CARD",
+          "name": "信息清单",
+          "scene_direction": "主体素材与2到3条真实注意点组成对齐卡片，能直接阅读",
+          "composition": "主体 50%，信息 50%",
+          "headline_treatment": "有层级的短条目",
+          "evidence_rule": "没有用户确认的注意点不得自动编写事实"
+        },
+        {
+          "id": "B",
+          "mode": "SPLIT_CHOICE",
+          "name": "选择对照",
+          "scene_direction": "两种真实选择并排呈现，明确图像之间的利益差异",
+          "composition": "55/45 并列",
+          "headline_treatment": "核心问题居中",
+          "evidence_rule": "缺少真实选择时用一般疑问不做断言"
+        },
+        {
+          "id": "C",
+          "mode": "WARNING_HERO",
+          "name": "风险主视觉",
+          "scene_direction": "实物/场景大特写+一个有意义的风险提示区",
+          "composition": "主物件居中，信息在边缘",
+          "headline_treatment": "大号风险关键词",
+          "evidence_rule": "禁止假价格/虚构故障"
+        }
+      ]
+    },
+    "xhs_D": {
+      "category": "截图美学",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "POSTER_MINIMAL",
+          "name": "电影海报式",
+          "scene_direction": "保留高质量截图，控制轻文字与留白，强调色彩氛围",
+          "composition": "画面 90% 主体",
+          "headline_treatment": "可无字",
+          "evidence_rule": "不用强行大字"
+        },
+        {
+          "id": "B",
+          "mode": "COLOR_STORY",
+          "name": "色彩主题式",
+          "scene_direction": "以真实场景中两种色调区域形成强烈整体情绪",
+          "composition": "景别与色块构成",
+          "headline_treatment": "少量标题",
+          "evidence_rule": "不增加不实环境特征"
+        },
+        {
+          "id": "C",
+          "mode": "FILM_STRIP",
+          "name": "连拍故事式",
+          "scene_direction": "用户提供多图时组成三格电影分镜；单图只能用真实不同裁切",
+          "composition": "三格画面",
+          "headline_treatment": "精简小标题",
+          "evidence_rule": "不能假称多张不同游戏截图"
+        }
+      ]
+    },
+    "xhs_E": {
+      "category": "实景 / 打卡",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "LOCATION_PORTRAIT",
+          "name": "地点人物型",
+          "scene_direction": "用户照片中的人和场景交代位置感，保持身份及环境",
+          "composition": "人 35%，环境 65%",
+          "headline_treatment": "适度短标题",
+          "evidence_rule": "禁止编造地名和旅行地点"
+        },
+        {
+          "id": "B",
+          "mode": "SCENE_DISCOVERY",
+          "name": "地点发现型",
+          "scene_direction": "最独特的实际景物细节作为主视觉，并附原图定位小窗",
+          "composition": "景物特写 + 环境小窗",
+          "headline_treatment": "注释短句",
+          "evidence_rule": "无需未经确认地理坐标"
+        },
+        {
+          "id": "C",
+          "mode": "STORY_POSTCARD",
+          "name": "旅行明信片式",
+          "scene_direction": "一张完整景物图配短叙事文字，强调生活方式与色调统一",
+          "composition": "画面 85%",
+          "headline_treatment": "边缘一行",
+          "evidence_rule": "不复制第三方原创明信片排版"
+        }
+      ]
+    },
+    "xhs_F": {
+      "category": "穿搭 / 仿妆",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "PORTRAIT_LOOK",
+          "name": "人物妆造型",
+          "scene_direction": "真实用户人物半身突出妆容服饰，不改变面部身份",
+          "composition": "人像占 60%",
+          "headline_treatment": "上侧简短名称",
+          "evidence_rule": "不要擅自改变人脸和肤色"
+        },
+        {
+          "id": "B",
+          "mode": "DETAIL_COMPARISON",
+          "name": "穿搭细节型",
+          "scene_direction": "主半身 + 真实配饰、妆容局部两张放大视窗",
+          "composition": "主图加细节窗",
+          "headline_treatment": "下方关键部位词",
+          "evidence_rule": "没有真人素材不能伪造真人试穿"
+        },
+        {
+          "id": "C",
+          "mode": "MOOD_FASHION",
+          "name": "杂志氛围型",
+          "scene_direction": "人物与环境色块一体化，使用夸张但节制的版式",
+          "composition": "人物占画面约半幅",
+          "headline_treatment": "简短杂志感标题",
+          "evidence_rule": "不复制现成品牌广告设计"
+        }
+      ]
+    },
+    "xhs_G": {
+      "category": "剧情 / CP",
+      "variants": [
+        {
+          "id": "A",
+          "mode": "CHARACTER_DUO",
+          "name": "双人关系型",
+          "scene_direction": "只用真实用户素材里出现的角色，视线和位置形成关系张力",
+          "composition": "左右双主体",
+          "headline_treatment": "一条故事钩子",
+          "evidence_rule": "不得自动制造不存在的关系剧情"
+        },
+        {
+          "id": "B",
+          "mode": "SCENE_SUSPENSE",
+          "name": "情节悬念型",
+          "scene_direction": "截取实际剧情里有动作张力的一帧，营造未完成的叙事",
+          "composition": "单一剧情场景",
+          "headline_treatment": "极少标题",
+          "evidence_rule": "不加虚构台词"
+        },
+        {
+          "id": "C",
+          "mode": "EMOTIONAL_COLLAGE",
+          "name": "情绪片段型",
+          "scene_direction": "主画面+来源可靠的两处情绪局部组成故事视觉节奏",
+          "composition": "主次两层拼贴",
+          "headline_treatment": "细标题",
+          "evidence_rule": "不伪造对话或情节"
+        }
+      ]
+    }
+  },
+  "youtube_fallback": {
+    "category": "YouTube 基础风格（无专属手册）",
+    "variants": [
+      {
+        "id": "A",
+        "mode": "CINEMATIC_HERO",
+        "name": "大景别电影型",
+        "scene_direction": "游戏主题原创电影感主景，一处明确戏剧张力",
+        "composition": "主体居中或靠右，左侧有效留白",
+        "headline_treatment": "极简标题",
+        "evidence_rule": "仅使用有权限的图片"
+      },
+      {
+        "id": "B",
+        "mode": "REACTION_SPLIT",
+        "name": "人物+游戏关系型",
+        "scene_direction": "如有博主人像用反应头像和用户游戏素材形成关系",
+        "composition": "左右双主体，方向回流",
+        "headline_treatment": "一个观点关键词",
+        "evidence_rule": "无真人素材时改为两种有真实依据的景别"
+      },
+      {
+        "id": "C",
+        "mode": "DETAIL_IMPACT",
+        "name": "极端细节型",
+        "scene_direction": "放大用户素材里一个有意义的动作或细节，背景为原场景",
+        "composition": "主细节占视觉中心 60%以上",
+        "headline_treatment": "短而有力，非强制",
+        "evidence_rule": "无可见目标时不标注不存在的细节"
+      }
+    ]
+  }
+}

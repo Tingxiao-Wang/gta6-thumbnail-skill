@@ -1,0 +1,177 @@
+{
+  "version": "1.4.0",
+  "purpose": "用户可理解的创作方向索引，使用 V1.3 9 种风格 ID，避免只提示内部风格代号。",
+  "mapping_priority": [
+    "用户明确意思",
+    "用户视频事实与已有素材",
+    "内容细分类型",
+    "平台画幅限制",
+    "默认视觉偏好"
+  ],
+  "review_subtypes": [
+    {
+      "id": "worth_it",
+      "detect": [
+        "值不值得玩",
+        "值得买吗",
+        "值得玩",
+        "值吗",
+        "worth it",
+        "is it good"
+      ],
+      "primary_style_id": "gameplay_question",
+      "secondary_style_id": "dense_news",
+      "headline_if_missing_zh": "到底值不值？",
+      "headline_if_missing_en": "WORTH IT?",
+      "hook": "question_without_prejudged_answer",
+      "layout_rationale": "大疑问为主体；辅以与视频相关的真实画面，避免未经证实的分数/价格",
+      "must_not": [
+        "冒充游戏真实评分",
+        "预设评测结论",
+        "把宣传海报当深度评测"
+      ]
+    },
+    {
+      "id": "deep_review",
+      "detect": [
+        "深度测评",
+        "全面评测",
+        "深度解析",
+        "分析",
+        "deep review",
+        "in-depth"
+      ],
+      "primary_style_id": "dense_news",
+      "secondary_style_id": "clean_documentary",
+      "headline_if_missing_zh": "GTA深度测评",
+      "headline_if_missing_en": "IN-DEPTH REVIEW",
+      "hook": "systematic_explanation",
+      "layout_rationale": "信息分层明确，副标题只使用视频确实涉及的维度，避免堆砌概念文字",
+      "must_not": [
+        "凭空列出画面/玩法/手感为视频章节",
+        "伪造媒体评级"
+      ]
+    },
+    {
+      "id": "pros_cons",
+      "detect": [
+        "优缺点",
+        "利弊",
+        "槽点",
+        "pros and cons",
+        "good and bad"
+      ],
+      "primary_style_id": "dense_news",
+      "secondary_style_id": "versus_split",
+      "headline_if_missing_zh": "优缺点聊透",
+      "headline_if_missing_en": "PROS & CONS",
+      "hook": "balanced_comparison",
+      "layout_rationale": "没有用户真实正反内容时只呈现中性对立视觉；已提供证据可采用左右分栏",
+      "must_not": [
+        "凭空发明优点缺点",
+        "无双侧素材却声称真实对比"
+      ]
+    },
+    {
+      "id": "feature_review",
+      "detect": [
+        "画质评测",
+        "画面评测",
+        "驾驶手感",
+        "玩法评测",
+        "性能实测",
+        "graphics review",
+        "gameplay review"
+      ],
+      "primary_style_id": "dense_news",
+      "secondary_style_id": "gameplay_question",
+      "headline_if_missing_zh": "专项体验测评",
+      "headline_if_missing_en": "FEATURE REVIEW",
+      "hook": "single_feature",
+      "layout_rationale": "与用户提到的专项主题一致，集中呈现一个可解释看点",
+      "must_not": [
+        "编造测试数据",
+        "以概念画面冒充真实帧率表现"
+      ]
+    }
+  ],
+  "other_content_routes": [
+    {
+      "id": "chase",
+      "detect": [
+        "追逐",
+        "五星通缉",
+        "逃亡",
+        "警车",
+        "police chase"
+      ],
+      "primary_style_id": "gameplay_question",
+      "why": "动作事件是一眼能懂的视觉钩子"
+    },
+    {
+      "id": "guide",
+      "detect": [
+        "攻略",
+        "教程",
+        "技巧",
+        "guide",
+        "tips"
+      ],
+      "primary_style_id": "dense_news",
+      "why": "具体信息清晰比过度海报化更重要"
+    },
+    {
+      "id": "bug",
+      "detect": [
+        "BUG",
+        "漏洞",
+        "彩蛋",
+        "秘密",
+        "easter egg"
+      ],
+      "primary_style_id": "discovery_annotation",
+      "fallback_style_id": "gameplay_question",
+      "why": "有真实截图才圈选异常；否则用概念疑问且不声称真实"
+    },
+    {
+      "id": "comparison",
+      "detect": [
+        "对比",
+        "VS",
+        "versus",
+        "比较"
+      ],
+      "primary_style_id": "versus_split",
+      "why": "必须明确两侧比较对象和来源"
+    },
+    {
+      "id": "cinematic",
+      "detect": [
+        "故事",
+        "剧情",
+        "电影感",
+        "story"
+      ],
+      "primary_style_id": "cinematic_poster",
+      "why": "场景讲述优先，不用通用跑车硬套"
+    },
+    {
+      "id": "live",
+      "detect": [
+        "直播",
+        "连载",
+        "第1期",
+        "LIVE",
+        "EP1"
+      ],
+      "primary_style_id": "episode_live",
+      "why": "仅使用确有依据的系列信息"
+    }
+  ],
+  "neutral_fallback": {
+    "platform_known_topic_vague": "dense_news for reviews, cinematic_poster for pure concept",
+    "platform_unknown": "16:9 general layout",
+    "review_unknown": "dense_news, neutral question or topical label, no unsupported conclusions"
+  },
+  "note": "此库仅提供推荐映射，不提供真实游戏数据；游戏事实需来自用户提供的可信素材。"
+}

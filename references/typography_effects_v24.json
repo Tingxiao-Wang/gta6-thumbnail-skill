@@ -1,0 +1,143 @@
+{
+  "version": "2.4.0",
+  "coordinate_system": "All pixel values measured at 1080px high and scaled with canvas height. Not pixel-exact measurements from source images.",
+  "font_policy": "No font binaries bundled; users import fonts they are licensed to use or use installed system fonts.",
+  "effects": {
+    "F01": {
+      "name": "粉紫立体情绪字",
+      "reference": "b(1)",
+      "renderer": "svg_layers",
+      "fill_gradient": [
+        "#FFFFFF",
+        "#FFE5FB",
+        "#DE73ED"
+      ],
+      "keyword_gradient": [
+        "#FF8CCF",
+        "#F943AD",
+        "#C52488"
+      ],
+      "outer_stroke": "#1B0B2A",
+      "inner_stroke": "#A648C2",
+      "extrude_color": "#4A176C",
+      "extrude_px_at_1080": 12,
+      "stroke_px_at_1080": [
+        13,
+        5
+      ],
+      "shadow_blur": 4,
+      "texture": "none",
+      "default_keyword_scale": 1.14,
+      "font_role": "heavy_cjk"
+    },
+    "F03": {
+      "name": "橙黄漫画爆点字",
+      "reference": "b(3)",
+      "renderer": "svg_layers",
+      "fill_gradient": [
+        "#FFF1A4",
+        "#FFC940",
+        "#F88320"
+      ],
+      "keyword_gradient": [
+        "#FFE46B",
+        "#FF8E25",
+        "#EB4222"
+      ],
+      "outer_stroke": "#120B08",
+      "inner_stroke": "#F65A15",
+      "extrude_color": "#492011",
+      "extrude_px_at_1080": 6,
+      "stroke_px_at_1080": [
+        16,
+        6
+      ],
+      "shadow_blur": 3,
+      "texture": "none",
+      "default_keyword_scale": 1.2,
+      "font_role": "heavy_cjk"
+    },
+    "F11": {
+      "name": "底部白绿强调字",
+      "reference": "h(1)",
+      "renderer": "svg_layers",
+      "fill_gradient": [
+        "#FFFFFF",
+        "#FFFFFF",
+        "#E9F8EC"
+      ],
+      "keyword_gradient": [
+        "#7FFFA5",
+        "#16DE72",
+        "#02964D"
+      ],
+      "outer_stroke": "#0D1719",
+      "inner_stroke": "#FFFFFF",
+      "extrude_color": "#0D1719",
+      "extrude_px_at_1080": 2,
+      "stroke_px_at_1080": [
+        11,
+        0
+      ],
+      "shadow_blur": 5,
+      "texture": "none",
+      "default_keyword_scale": 1.08,
+      "font_role": "heavy_cjk"
+    },
+    "F14": {
+      "name": "红黄白漫画资讯字",
+      "reference": "h(5)",
+      "renderer": "svg_layers",
+      "fill_gradient": [
+        "#FFF8D3",
+        "#FFE84C",
+        "#F99A27"
+      ],
+      "keyword_gradient": [
+        "#FF6267",
+        "#FA262E",
+        "#AE111D"
+      ],
+      "outer_stroke": "#111013",
+      "inner_stroke": "#FFFFFF",
+      "extrude_color": "#8C1124",
+      "extrude_px_at_1080": 8,
+      "stroke_px_at_1080": [
+        15,
+        5
+      ],
+      "shadow_blur": 1,
+      "texture": "none",
+      "default_keyword_scale": 1.22,
+      "font_role": "heavy_cjk"
+    },
+    "F24": {
+      "name": "红色笔刷横幅字",
+      "reference": "y(9)",
+      "renderer": "svg_brush_mask",
+      "fill_gradient": [
+        "#FFFFFF",
+        "#FFFFFF",
+        "#E9E9E9"
+      ],
+      "keyword_gradient": [
+        "#FFFFFF",
+        "#FFF1F1",
+        "#FFFFFF"
+      ],
+      "outer_stroke": "#07090E",
+      "inner_stroke": "#D32231",
+      "extrude_color": "#380A13",
+      "extrude_px_at_1080": 3,
+      "stroke_px_at_1080": [
+        9,
+        0
+      ],
+      "shadow_blur": 2,
+      "texture": "deterministic_vector_brush_mask",
+      "brush_fill": "#EC1E2D",
+      "default_keyword_scale": 1.17,
+      "font_role": "slanted_bold"
+    }
+  }
+}

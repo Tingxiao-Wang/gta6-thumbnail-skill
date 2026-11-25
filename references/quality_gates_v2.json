@@ -1,0 +1,82 @@
+{
+  "version": "2.1.0",
+  "must_pass": [
+    {
+      "id": "Q1",
+      "name": "title_integrity",
+      "test": "provided headline exact string; no invented extra words",
+      "repair": "use independent text overlay"
+    },
+    {
+      "id": "Q2",
+      "name": "source_fidelity",
+      "test": "uploaded protagonists, vehicle and key evidence remain recognizable when requested",
+      "repair": "re-edit from original, no unsupported recreation claim"
+    },
+    {
+      "id": "Q3",
+      "name": "platform_ratio",
+      "test": "actual image width/height ratio matches selected preset",
+      "repair": "independent re-layout / output caveat"
+    },
+    {
+      "id": "Q4",
+      "name": "full_bleed",
+      "test": "no unwanted gray backing, internal frame or platform screenshots",
+      "repair": "full-bleed fit or rerender"
+    },
+    {
+      "id": "Q5",
+      "name": "hierarchy",
+      "test": "at thumbnail scale subject + one key message legible",
+      "repair": "shorten *suggested* text only; preserve user exact title"
+    },
+    {
+      "id": "Q6",
+      "name": "rights_truth",
+      "test": "no fabricated game facts or implied Rockstar endorsement",
+      "repair": "remove unsupported claim"
+    }
+  ],
+  "scored": [
+    {
+      "id": "S1",
+      "name": "platform_fit",
+      "max": 5
+    },
+    {
+      "id": "S2",
+      "name": "composition",
+      "max": 5
+    },
+    {
+      "id": "S3",
+      "name": "typography",
+      "max": 5
+    },
+    {
+      "id": "S4",
+      "name": "reference_fidelity",
+      "max": 5
+    },
+    {
+      "id": "S5",
+      "name": "story_hook",
+      "max": 5
+    }
+  ],
+  "test_protocol": "Same subject, same platform, 3 with skill and 3 without; use random order, blind rate, log actual generations and costs. Scores are internal heuristics, not observed CTR.",
+  "max_model_retries": 2,
+  "de_ai_audit": {
+    "reference": "references/de_ai_rules.json",
+    "must_review": [
+      "冗余英文装饰字",
+      "无功能横线与竖线",
+      "重复标签/副标题",
+      "过多描边/阴影",
+      "模板化风格复用"
+    ],
+    "exceptions": "用户明确指定文字、真实信息指向、功能性分割和可读性需要优先",
+    "result": "只有能观察到的元素才能报告，AI感为主观体验，不能把风格评分声称为客观CTR提升"
+  }
+}

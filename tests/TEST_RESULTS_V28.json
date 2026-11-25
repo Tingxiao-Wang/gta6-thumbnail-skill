@@ -1,0 +1,23 @@
+{
+  "version": "2.8.0-test",
+  "test_date": "2026-11-25",
+  "test_scope": "offline structure and workflow regression only; NOT visual image generation",
+  "passed": [
+    "V2.5.2 11 intake conversations",
+    "V2.6 content atlas mapping",
+    "V2.6.1 visual case routing",
+    "V2.7 twelve-style rules and prior compiler regressions",
+    "V2.7.1 style-aware title effects and editor metadata",
+    "V2.7.2 real-photo pixel-preserving protection",
+    "V2.8 story-before-typography decision order and 3 independent design plans",
+    "V2.8 lossless three-part title segmentation",
+    "V2.8 A/B/C editor layout follows creative director, not fixed older coordinates",
+    "V2.8 no fabricated tag and truthful no-screenshot fallback"
+  ],
+  "not_yet_verified": [
+    "Real WorkBuddy/Doubao/Codex image outputs",
+    "Native versus Skill visual quality comparison",
+    "Actual thumbnail click-through-rate uplift",
+    "Codex non-generative person-background segmentation availability"
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "version": "1.8.0",
+  "recipe_type": "original_design_recipes_not_copy_of_source_skill",
+  "select_one_main_style_only": true,
+  "references": "沿用 styles.json 九种 style ID；布局与文字规则继续由 platform_layout_rules.json 控制",
+  "recipes": [
+    {
+      "style_id": "cinematic_poster",
+      "label": "电影叙事",
+      "visual_contract": "主图占80%以上；少字，主视觉与电影光线为核心",
+      "headline_strategy": "headline_at_negative_space",
+      "asset_instruction": "适合剧情/城市/高空景观；无须强行增加人脸",
+      "reference_examples": "B06 Y07",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    },
+    {
+      "style_id": "streamer_reaction",
+      "label": "主播反应",
+      "visual_contract": "有授权主播素材时左右/前后层合成；主播脸30%-42%宽",
+      "headline_strategy": "headline_bottom_or_open_corner",
+      "asset_instruction": "标题情绪明确，脸与关键事件均不能被遮挡",
+      "reference_examples": "B01 B05 B08 Y03",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    },
+    {
+      "style_id": "gameplay_question",
+      "label": "疑问钩子",
+      "visual_contract": "画面凸显视频要证明/体验的事件；一个明确焦点",
+      "headline_strategy": "headline_major_2_lines",
+      "asset_instruction": "标题提出真实问题，避免凭空造结论",
+      "reference_examples": "H01 H02",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    },
+    {
+      "style_id": "discovery_annotation",
+      "label": "事实圈选",
+      "visual_contract": "真实截图主画面＋至多2个圈选/箭头",
+      "headline_strategy": "headline_opposite_evidence",
+      "asset_instruction": "没有真证据不添加圈选和“已发现”字样",
+      "reference_examples": "B03 Y10",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    },
+    {
+      "style_id": "dense_news",
+      "label": "资讯测评",
+      "visual_contract": "标题与画面双层权重；可有小标签+1条说明",
+      "headline_strategy": "headline_left_or_top",
+      "asset_instruction": "只用用户证实的观点/数据，不主动杜撰数量",
+      "reference_examples": "B07 B09 H05",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    },
+    {
+      "style_id": "versus_split",
+      "label": "双图对比",
+      "visual_contract": "左右两个独立视觉区域，中线/斜切，真实比较对象保持",
+      "headline_strategy": "headline_top_or_center",
+      "asset_instruction": "两边主体大小相当，标注来源；不能捏造对照事实",
+      "reference_examples": "H03 Y12",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    },
+    {
+      "style_id": "clean_documentary",
+      "label": "沉浸纪实",
+      "visual_contract": "单幅高质量画面，克制调色，少字或无字",
+      "headline_strategy": "headline_small_at_negative_space",
+      "asset_instruction": "给图片叙事空间而非套浓重滤镜",
+      "reference_examples": "H06 B02",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    },
+    {
+      "style_id": "episode_live",
+      "label": "系列直播",
+      "visual_contract": "固定角落系列标签+主画面游戏情节",
+      "headline_strategy": "headline_short_beside_primary",
+      "asset_instruction": "仅真实直播时使用 LIVE；不得自动复制时长",
+      "reference_examples": "Y01 Y05",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    },
+    {
+      "style_id": "minimal_action",
+      "label": "极简动作",
+      "visual_contract": "单动作或物件占主体；高对比背景",
+      "headline_strategy": "single_keyword_or_none",
+      "asset_instruction": "短文字或无字，允许强裁切但保留动作信息",
+      "reference_examples": "Y02",
+      "platform_notes": {
+        "xiaohongshu": "按3:4重新选取主体框与标题位置；不强制主人脸",
+        "bilibili": "按16:9主构图、需要时独立4:3重新布局",
+        "youtube": "16:9单焦点，标题可更少，保留用户指定语言"
+      },
+      "forbidden": [
+        "无意义灰白边框",
+        "无意义多余文本",
+        "复制平台播放量/时长水印",
+        "关键主体被标题覆盖"
+      ]
+    }
+  ],
+  "switch_on_user_selection": "明确选择后必须采用此唯一风格，除非与上传素材真实性或比例冲突；冲突要解释并给出安全替代。",
+  "fallback": "根据视频内容与上传素材自动选择，不要罗列九种给没有明确要求的用户。"
+}

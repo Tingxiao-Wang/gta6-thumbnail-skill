@@ -1,0 +1,405 @@
+{
+  "version": "1.9.0",
+  "name": "eight_step_guided_customization",
+  "source": "用户提供的阿囤囤使用流程截图，按原有八个步骤顺序改造为GTA多平台原创工作流",
+  "priority": "when mode=guided8, this file supersedes intake_playbook previous max_questions=3 and clarification_rules limited rounds; user says immediate generate overrides",
+  "platform_context": "优先从用户输入读取小红书/B站/YouTube以及画幅。缺失但影响成品时先一次询问发布平台；已知时不额外询问。按platform_layout_rules.json执行。",
+  "entry_triggers": [
+    "按步骤来",
+    "逐步定制",
+    "一步一步选",
+    "完整定制",
+    "引导我做封面",
+    "guided",
+    "使用八步流程",
+    "8步流程"
+  ],
+  "mode_behavior": {
+    "one_question_per_assistant_turn": true,
+    "step_order": "ascending, skip if sufficient information already provided",
+    "optional_steps_skip": [
+      "person_reference",
+      "expression_action",
+      "additional_assets"
+    ],
+    "allow_global_commands": [
+      "直接生成",
+      "使用推荐",
+      "跳过",
+      "上一步",
+      "修改第N项",
+      "从头开始"
+    ],
+    "persist_state": "current conversation only; do not claim global storage or automatic persistence in Doubao/WorkBuddy",
+    "max_questions": "up to 8 distinct guided steps when none prefilled, plus platform selection only when essential; do not cap at 3",
+    "no_forced_human": "GTA截图、车辆或无人物封面可以直接跳过人物参考与表情",
+    "answer_parse": "当前步骤的编号1/2/3/4优先匹配当前问题。用户可自由输入自定义内容或上传图。解析成功则记录并推进下一未解决项；用户明确修改旧项时回退并保留其余状态。",
+    "guided_last_step": "完成第8项或用户请求直接生成后，立即编译一条完整无占位符生图提示词；根据可用生图工具决定直接出图或交付提示词。",
+    "output_mode": "默认 text_free_editor：无字底图+独立标题配置；用户明确要求直接文字入图，尝试 direct_complete_image 并校验标题准确。"
+  },
+  "state_schema": {
+    "mode": "guided8",
+    "current_step": 1,
+    "completed_steps": [],
+    "skipped_steps": [],
+    "platform": null,
+    "topic": null,
+    "content_angle": null,
+    "selected_style_id": null,
+    "asset_manifest": [],
+    "person_reference": null,
+    "expression_action": null,
+    "additional_assets": [],
+    "background_tone": null,
+    "font_style": null,
+    "font_effect": null,
+    "headline_exact": null,
+    "title_source": null,
+    "locks": []
+  },
+  "steps": [
+    {
+      "step": 1,
+      "key": "cover_style",
+      "title": "选择封面风格",
+      "question": "你希望封面呈现哪种视觉风格？",
+      "input_type": "single_choice",
+      "known_fields": [
+        "preferred_style",
+        "primary_style_id",
+        "style_id"
+      ],
+      "options_source": "references/creative_recipes.json + 用户主题 + platforms/layout rules",
+      "options_rule": "每次从既有9种风格挑出最贴题的3种，以画面结果解释区别；第4项始终为“你推荐”。已有用户明确风格则自动跳过。",
+      "example_options": [
+        {
+          "number": 1,
+          "label": "电影叙事",
+          "value": "cinematic_poster",
+          "visual_difference": "场景层次大、标题克制、氛围统一"
+        },
+        {
+          "number": 2,
+          "label": "主播反应",
+          "value": "streamer_reaction",
+          "visual_difference": "真实主播脸＋游戏主场景分区，需可用授权照片"
+        },
+        {
+          "number": 3,
+          "label": "内容解析",
+          "value": "dense_news",
+          "visual_difference": "大标题＋有证据的信息层级"
+        },
+        {
+          "number": 4,
+          "label": "你推荐",
+          "value": "auto",
+          "visual_difference": "依平台、素材与内容选最佳配方"
+        }
+      ],
+      "validation": "style_id必须存在于styles.json的9个ID内；禁止复刻第三方封面"
+    },
+    {
+      "step": 2,
+      "key": "person_reference",
+      "title": "上传人物参考图",
+      "question": "封面需要使用你提供的人物或角色照片吗？可以直接上传；没有可选“不需要人物”。",
+      "input_type": "upload_or_choice",
+      "known_fields": [
+        "host_image",
+        "person_reference",
+        "uploaded_person_image"
+      ],
+      "options": [
+        {
+          "number": 1,
+          "label": "上传主播/本人照片",
+          "value": "user_authorized_host"
+        },
+        {
+          "number": 2,
+          "label": "使用已有游戏截图里的人物",
+          "value": "source_character"
+        },
+        {
+          "number": 3,
+          "label": "不需要人物参考图",
+          "value": "none"
+        },
+        {
+          "number": 4,
+          "label": "按当前素材推荐",
+          "value": "auto"
+        }
+      ],
+      "skip_if": "用户已上传且明确指示人物角色，或者已表示不需要人物/仅使用场景。",
+      "validation": "只允许用户有权使用的人物素材；没有上传不得假称真实主播，上传图片不可访问时应提示"
+    },
+    {
+      "step": 3,
+      "key": "expression_action",
+      "title": "选择人物表情和动作",
+      "question": "封面里的人物要是什么表情或动作？",
+      "input_type": "single_choice_or_custom",
+      "known_fields": [
+        "person_action",
+        "expression",
+        "subject_pose"
+      ],
+      "options": [
+        {
+          "number": 1,
+          "label": "惊讶/激动",
+          "value": "surprised_reaction",
+          "visual_difference": "更强反应，适合实况与首玩"
+        },
+        {
+          "number": 2,
+          "label": "自信/酷感",
+          "value": "confident_pose",
+          "visual_difference": "更沉稳，适合测评与角色海报"
+        },
+        {
+          "number": 3,
+          "label": "自然/纪实",
+          "value": "natural_pose",
+          "visual_difference": "保留截图已有动作与表情"
+        },
+        {
+          "number": 4,
+          "label": "按原图保留",
+          "value": "preserve_source",
+          "visual_difference": "不强行改变人物姿态"
+        }
+      ],
+      "skip_if": "当前设计没有人物，或用户要求保持上传截图人物姿态不变。",
+      "validation": "用户要求保留的人脸、人物衣服、站位、游戏画面动作不随意修改；无法准确保持时如实告知"
+    },
+    {
+      "step": 4,
+      "key": "additional_assets",
+      "title": "选择是否有额外素材图",
+      "question": "还需要加入额外素材吗？例如第二张游戏截图、对比对象或局部细节。",
+      "input_type": "upload_or_choice",
+      "known_fields": [
+        "extra_assets",
+        "supporting_images"
+      ],
+      "options": [
+        {
+          "number": 1,
+          "label": "有，继续上传",
+          "value": "upload_more"
+        },
+        {
+          "number": 2,
+          "label": "只有主截图/人物就够",
+          "value": "none"
+        },
+        {
+          "number": 3,
+          "label": "想做对比，但还没有素材",
+          "value": "comparison_concept_only"
+        },
+        {
+          "number": 4,
+          "label": "按现有素材直接设计",
+          "value": "auto"
+        }
+      ],
+      "skip_if": "用户已明确列出全部素材，或说只用当前图、不要额外元素。",
+      "validation": "图1/图2/图3角色按用户实际指定，不生造第二张真实对比图或未经证实的游戏数据"
+    },
+    {
+      "step": 5,
+      "key": "background_tone",
+      "title": "选择背景色调",
+      "question": "你希望背景整体呈现哪一种色调？",
+      "input_type": "single_choice",
+      "known_fields": [
+        "color_intent",
+        "background_tone",
+        "palette"
+      ],
+      "options": [
+        {
+          "number": 1,
+          "label": "热带日落 / 暖粉橙",
+          "value": "warm_sunset",
+          "visual_difference": "浪漫、明快、GTA都市氛围"
+        },
+        {
+          "number": 2,
+          "label": "深蓝紫 / 夜景",
+          "value": "cool_night",
+          "visual_difference": "电影感、紧张、适合追逐或悬念"
+        },
+        {
+          "number": 3,
+          "label": "真实低饱和 / 纪录片",
+          "value": "realistic_low_sat",
+          "visual_difference": "突出截图原貌、克制的专业质感"
+        },
+        {
+          "number": 4,
+          "label": "保持原图调色",
+          "value": "preserve_source",
+          "visual_difference": "尽量不改变真实环境颜色"
+        }
+      ],
+      "skip_if": "用户提供明确色调/要求保持原图颜色；无法判断时自动选与内容最贴近的方案。",
+      "validation": "背景调色不能改变重要游戏事实或让原图主体失真"
+    },
+    {
+      "step": 6,
+      "key": "font_style",
+      "title": "选择字体风格",
+      "question": "标题希望使用哪种字体气质？",
+      "input_type": "single_choice",
+      "known_fields": [
+        "font_style",
+        "typography_style"
+      ],
+      "options": [
+        {
+          "number": 1,
+          "label": "超粗游戏封面体",
+          "value": "gaming_bold",
+          "visual_difference": "高识别度、适合游戏娱乐和B站"
+        },
+        {
+          "number": 2,
+          "label": "克制电影海报体",
+          "value": "cinematic_condensed",
+          "visual_difference": "字重更均衡、留白较多"
+        },
+        {
+          "number": 3,
+          "label": "硬朗资讯黑体",
+          "value": "editorial_sans",
+          "visual_difference": "适合测评/攻略/盘点"
+        },
+        {
+          "number": 4,
+          "label": "使用平台推荐字体",
+          "value": "auto",
+          "visual_difference": "从typography.json选择可用后备字体"
+        }
+      ],
+      "skip_if": "用户要求无字，或已指定具体字体/已在编辑器保存字层样式。",
+      "validation": "只选择本机/宿主可用且有使用权的字体；不承诺各机器完全一致"
+    },
+    {
+      "step": 7,
+      "key": "font_effect",
+      "title": "选择字体颜色效果",
+      "question": "标题更希望呈现哪种颜色和效果？",
+      "input_type": "single_choice",
+      "known_fields": [
+        "font_effect",
+        "text_color_effect",
+        "stroke",
+        "shadow"
+      ],
+      "options": [
+        {
+          "number": 1,
+          "label": "白字＋深描边",
+          "value": "white_black_stroke",
+          "visual_difference": "适用于复杂背景的中性高对比"
+        },
+        {
+          "number": 2,
+          "label": "黄字＋黑描边",
+          "value": "yellow_black_stroke",
+          "visual_difference": "更强的游戏娱乐视觉钩子"
+        },
+        {
+          "number": 3,
+          "label": "电影浅金＋柔阴影",
+          "value": "cinematic_cream",
+          "visual_difference": "适合叙事海报与夕阳场景"
+        },
+        {
+          "number": 4,
+          "label": "根据画面自动匹配",
+          "value": "auto",
+          "visual_difference": "根据标题区背景明暗选择对比度"
+        }
+      ],
+      "skip_if": "用户要求无字，或已指定字体颜色与效果。",
+      "validation": "用户显式指定标题字效优先；不得默认使文字过度发光、遮挡主角"
+    },
+    {
+      "step": 8,
+      "key": "final_headline",
+      "title": "从候选标题中选择最终标题",
+      "question": "最后确认封面标题：你更喜欢哪一句？",
+      "input_type": "single_choice_or_text",
+      "known_fields": [
+        "headline_exact",
+        "exact_headline",
+        "user_confirmed_title"
+      ],
+      "options_rule": "用户未给定标题时，按视频真实主题生成3条方向明显不同且不编造事实的候选（信息型/情绪型/悬念型），第4项为“我自己输入”；给定原标题时以“保留原文”为默认，不得擅改或强制重新选择。",
+      "example_options": [
+        {
+          "number": 1,
+          "label": "信息型：GTA6 深度体验",
+          "value": "informative"
+        },
+        {
+          "number": 2,
+          "label": "情绪型：这次真的不一样",
+          "value": "emotional"
+        },
+        {
+          "number": 3,
+          "label": "悬念型：究竟值不值得玩？",
+          "value": "question"
+        },
+        {
+          "number": 4,
+          "label": "输入自己的原文标题",
+          "value": "custom"
+        }
+      ],
+      "skip_if": "用户已明确提供标题，且未请求标题推荐或改写；用户指定无字输出。",
+      "validation": "输入的标题逐字保留（标点/大小写/错别字不擅自纠正），候选不得伪造视频内容、结论或官方声明"
+    }
+  ],
+  "question_response_contract": {
+    "header": "第{step}/8步｜{title}",
+    "body": "本轮只展示一个问题。推荐3个有区别的可选方向+自动推荐或跳过项；对于上传步骤显示上传/已有/不需要选项。不要一次列出8个问题。",
+    "footer": "回复数字、直接描述或上传图片；可说“跳过”“直接生成”“上一步”。",
+    "do_not_do": [
+      "同一轮同时询问颜色字体标题等多个问题",
+      "用户已经提供了标题却要求重新选择",
+      "没有人物仍必须上传自拍",
+      "将品牌logo/播放数/时长加进封面",
+      "最终给模型留下待填空占位符"
+    ]
+  },
+  "compilation_contract": {
+    "input": "all known state fields + platform rules + one creative recipe + real image roles",
+    "output": "one fully specified prompt: ratio/platform -> assets and protection -> composition -> characters/action -> tone -> typography placement (or editor JSON handoff) -> editing -> exclusions -> output",
+    "must_include": [
+      "chosen_style_id",
+      "platform_and_ratio",
+      "actual_source_roles",
+      "subject_and_composition",
+      "background_tone",
+      "exact_user_title_or_selected_candidate",
+      "font_style_and_effect_if_text",
+      "screenshot_preservation",
+      "negative_constraints"
+    ],
+    "text_free_editor_handoff": "图片生成只生产无字底图；标题和字号字效交给本地HTML编辑器，不能声称仅凭图片文字提示保证精确像素。",
+    "avoid_false_promises": [
+      "If image tool unavailable, output prompt only.",
+      "If uploaded photo cannot be accessed, never say it was used."
+    ]
+  },
+  "v252_precedence": "references/interaction_gate_v252.json has highest priority and supersedes conflicting older priority/skip rules.",
+  "v252_generation_guard": "No generation when required image roles or pending essential question unresolved; guided8 one-step-per-turn."
+}

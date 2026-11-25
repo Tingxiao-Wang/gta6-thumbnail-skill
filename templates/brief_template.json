@@ -1,0 +1,37 @@
+{
+  "platform": "bilibili",
+  "preset_id": "bili16",
+  "topic": "GTA6城市探索与初体验",
+  "content_type": "cinematic",
+  "style_id": "cinematic_poster",
+  "image_mode": "screenshot_based_cover",
+  "output_mode": "editable",
+  "exact_headline": "孩子们真正的史一游来了",
+  "tag": "",
+  "subtitle": "",
+  "assets": [
+    {
+      "id": "image_1",
+      "role": "main_screenshot",
+      "description": "用户上传的城市俯瞰截图"
+    }
+  ],
+  "protected_elements": [
+    "背对镜头的人物",
+    "城市天际线",
+    "高处俯瞰的视角"
+  ],
+  "composition_note": "保持满版，标题避开人物轮廓和城市重要地标",
+  "color_tone": "电影化暖冷对比；不过度霓虹",
+  "requested_changes": [],
+  "background_image_path": "",
+  "typography_recipe_ids": [
+    "F01",
+    "F02",
+    "F09"
+  ],
+  "emphasis_keyword": "史一游",
+  "portrait_gaze": "unknown",
+  "grade_preset": "vice_sunset",
+  "grade_intensity": 32
+}

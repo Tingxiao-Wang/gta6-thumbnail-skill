@@ -1,0 +1,48 @@
+{
+  "version": "2.4.2",
+  "name": "人物朝向与视觉回流",
+  "directions": {
+    "left": {
+      "preferred_side": "right",
+      "reason": "Face points toward interior left"
+    },
+    "right": {
+      "preferred_side": "left",
+      "reason": "Face points toward interior right"
+    },
+    "front": {
+      "preferred_side": "adaptive",
+      "reason": "Use headline and negative space"
+    },
+    "unknown": {
+      "preferred_side": "keep",
+      "reason": "Do not infer without evidence"
+    }
+  },
+  "scene_priority": [
+    "user_direct_instruction",
+    "original_subject_integrity",
+    "visual_gaze_inward",
+    "headline_legibility",
+    "decorative_asymmetry"
+  ],
+  "separate_asset": {
+    "allowed_types": [
+      "transparent_png",
+      "transparent_webp"
+    ],
+    "can_reposition": true,
+    "do_not_flip_automatically": true
+  },
+  "baked_person_in_background": {
+    "can_reposition": false,
+    "alternative": "recompose via source image editor, or upload separate cutout"
+  },
+  "multi_person": "Treat creator head/gaze as primary if supplied, otherwise balance the dominant character and main title.",
+  "editor_controls": [
+    "gazeDirection",
+    "portraitUploadBtn",
+    "gazeArrangeBtn",
+    "portraitDragBtn"
+  ]
+}

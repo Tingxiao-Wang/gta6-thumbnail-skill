@@ -1,0 +1,24 @@
+{
+  "platform": "bilibili",
+  "preset_id": "bili16",
+  "style_id": "cinematic_poster",
+  "topic": "GTA6 剧情解析",
+  "exact_headline": "万字解析：GTA6到底讲了什么故事？",
+  "tag": "",
+  "subtitle": "",
+  "composition_note": "",
+  "color_tone": "",
+  "output_mode": "editable",
+  "image_mode": "concept",
+  "assets": [],
+  "protected_elements": [],
+  "intake_state": {
+    "generation_allowed": true,
+    "pending_question": null,
+    "answers": {
+      "platform": "bilibili",
+      "headline_exact": "万字解析：GTA6到底讲了什么故事？"
+    },
+    "assets": []
+  }
+}

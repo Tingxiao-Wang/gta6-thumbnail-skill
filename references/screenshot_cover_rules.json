@@ -1,0 +1,125 @@
+{
+  "version": "1.6.0",
+  "purpose": "跨小红书、B站、YouTube的上传截图封面再设计。它是共同能力，不属于任一单独平台；具体比例和包装由 platforms.json 决定。",
+  "trigger": {
+    "positive": [
+      "用户上传截图并要求做封面",
+      "使用这张截图",
+      "用原图做封面",
+      "基于上传图片",
+      "保留我这张图",
+      "把之前封面改成电影感",
+      "screenshot-based thumbnail",
+      "use my screenshot",
+      "cinematic poster-style thumbnail"
+    ],
+    "prioritize": "实际附件存在且用户要求以该素材创作时，优先走 screenshot_based_cover；仅有文字自称附图但无可读附件，不得宣称已使用图片。"
+  },
+  "default_interaction": {
+    "platform_title_source_present": "GENERATE_NOW；不得因未给字体/灯光/构图而追问",
+    "source_missing": "如用户要求严格保留特定截图主体，先请求上传截图；否则可提供原创概念图且明确不是原图再设计",
+    "user_requests_direct": "生成，不进行多轮设计问卷",
+    "user_explicit_style_overrides_default": true
+  },
+  "core_semantics": {
+    "cinematic_poster": "电影海报感 = 高级叙事构图、电影化调色、主视觉权重、画面层次及协调文字；对于平台封面依然是全画幅内容，不是画中画、实物海报、墙上海报、相框。",
+    "screenshot_based_cover": "截图是主要内容和证据。必须分析人物/车辆/场景地标、地平线、负空间、裁切可用空间后再包装。不得把截图当一张小照片嵌在灰白页面上。",
+    "full_bleed": "默认画面内容填满目标画布至四边，没有外部灰色/白色底纸、厚边框、画廊陈列、样机、平台 UI；只有用户明确要求才允许边框。",
+    "not_photo_replacement": "二次包装优先于替换主体：通过区域明暗、景深、色彩、天空层次、轻微景别优化提升，而不是任意更换人物、车辆、建筑和镜头机位。"
+  },
+  "ordered_pipeline": [
+    "确认可访问上传素材。读取尺寸/比例并识别主体、地平线、镜头方向、关键证据及天然负空间；未知部分保持未知。",
+    "锁定真实内容：用户要求保留的人物身份、服装/背影、车型/车色、重要地标、事件证据与镜头故事。",
+    "确定平台画幅和风格；先把原图铺满目标比例，如裁切会破坏主体，优先有限画面延展或重构构图，不允许拉伸失真。",
+    "定义视觉钩子：主体是人物、车、城市全景还是游戏事件？只强化一个核心焦点；避免无故加入新车、爆炸、真实人物。",
+    "进行二次包装：有节制地进行局部明暗、背景对比、轮廓分离、统一调色、远近景层次。不能伪造游戏内发生的事实。",
+    "按平台确定负空间和文字排版；用户提供标题必须逐字保留。默认不擅自增添事实性副标题/游戏版本/官方评测角标。",
+    "优先在宿主实际支持时使用“原图编辑→无字或少字画面→独立文字叠加”；只能一次生成时按约束直接生成，效果不符应如实告知。",
+    "生成后检查全画幅、画幅比例、角色和场景保留、标题准确、缩略可读、无平台水印/UI；若宿主只能输出带框的聊天预览，不应误判为图片本身带框，需检查导出原图。"
+  ],
+  "source_preservation": {
+    "must_preserve_if_visible": [
+      "指定主角/主播身份特征和重要服装",
+      "主要车辆外形、颜色及大致视角",
+      "城市关键地标和地平线关系",
+      "用户提供的真实游戏事件或截图证据",
+      "用户原文标题"
+    ],
+    "allowed_if_not_forbidden": [
+      "局部曝光和对比度",
+      "渐变式标题区暗化",
+      "适度色彩分级",
+      "有限景深和氛围强化",
+      "为目标比例作合理延展"
+    ],
+    "forbid_without_permission": [
+      "换成另一辆跑车",
+      "把背影改为陌生面孔",
+      "重画不存在的地标或把视频情节改成别的事",
+      "增加虚假的截图事件/警方追逐/官方字样",
+      "让主角消失以换取干净版面"
+    ]
+  },
+  "packaging_defaults": {
+    "edge_to_edge": true,
+    "outer_canvas_border": false,
+    "picture_in_picture_frame": false,
+    "add_watermarks": false,
+    "random_ui_labels": false,
+    "visual_focus": "one_primary",
+    "lighting": "local_adjustment_over_global_glow",
+    "headline": "use_negative_space_and_exact_user_text",
+    "secondary_text": "only_when_user_provided_or_nonfactual_and_composition_needs_it; do not invent factual claims"
+  },
+  "fallbacks": [
+    {
+      "condition": "image editing available and attached screenshot accessible",
+      "action": "image_to_image_edit preserve protected subjects, then separate title if available"
+    },
+    {
+      "condition": "only image generation, reference image accepted",
+      "action": "reference-based generation with locks and fullbleed constraints; verify preservation, no guarantee exact pixels"
+    },
+    {
+      "condition": "only text-to-image, uploaded source cannot be passed to tool",
+      "action": "do not pretend source is preserved; explain limitation and offer copy-ready prompt without claiming exact match"
+    },
+    {
+      "condition": "text overlay unavailable and title hallucinated",
+      "action": "return clean no-text artwork plus precise title/position instructions; do not call an inaccurate title completed"
+    },
+    {
+      "condition": "platform ratio cannot be controlled",
+      "action": "provide actual supported ratio and disclose difference; do not assert target export dimensions"
+    }
+  ],
+  "anti_patterns": [
+    "灰白大画布中居中一张小截图",
+    "截图四周细边框如幻灯片",
+    "电影海报=墙上挂画或纸张外框",
+    "标题悬浮在图片外部空白区域",
+    "极端滤镜覆盖画面导致主体消失",
+    "凭空添加事实性副标题或GTA6官方LOGO",
+    "统一套用紫粉日落+豪车+黄字",
+    "只扩大文字不处理画面层次"
+  ],
+  "platform_profiles_ref": "references/platforms.json::platforms[*].screenshot_cover",
+  "style_compatibility_ref": "references/styles.json::recipes[*].screenshot_adaptation",
+  "quality_gates": {
+    "full_bleed": "图像内容触达画布四边，无无意外框或纸张背景",
+    "subject_integrity": "和上传图的关键人物/车辆/事件一致",
+    "text_exact": "用户标题字符准确，无篡改",
+    "platform_recomposition": "比例适配不是拉伸，标题不能遮挡关键焦点",
+    "cinematic_not_mockup": "电影海报感不被解释为实体海报/相框",
+    "no_fake_claim": "不新增未经证实的游戏事实",
+    "export_truth": "仅在实际核验后声明分辨率"
+  },
+  "v16_visual_contract": "references/platform_layout_rules.json",
+  "v16_must_not_skip": [
+    "选择平台布局ID并落位标题/主体",
+    "截图满版且主角保真",
+    "至少实施与原图有关的局部层次/对比/负空间处理；原图已经足够好时不做伤害性滤镜",
+    "缩略图视角审核；不止截图+标题",
+    "精确标题字形检查与二次修改边界"
+  ]
+}

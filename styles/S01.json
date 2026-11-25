@@ -1,0 +1,29 @@
+{
+  "id": "S01",
+  "english_name": "Cinematic Story",
+  "name": "电影叙事风",
+  "intended_content": "剧情、角色、实况",
+  "composition": "人物偏侧，环境远景与人物前景；主体高度45–85%",
+  "palette": "暖橙冷蓝、暗红深黑",
+  "typography": "电影窄体或衬线体",
+  "required_visual_anchors": [
+    "人物叙事构图",
+    "空间纵深",
+    "统一光影"
+  ],
+  "optional_visual_elements": [
+    "雨夜",
+    "城市",
+    "公路",
+    "胶片颗粒"
+  ],
+  "forbidden_elements": [
+    "夸张箭头",
+    "无意义光效"
+  ],
+  "preview_svg": "references/design_principles/style_previews/S01.svg",
+  "reference_assets": [],
+  "reference_image_type": "original_abstract_svg_design_schematic",
+  "source": "GTA6封面设计原则_V1.0.html",
+  "user_document_data_not_performance_validated": true
+}

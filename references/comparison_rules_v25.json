@@ -1,0 +1,26 @@
+{
+  "version": "2.5",
+  "checks": [
+    {
+      "id": "composition",
+      "question": "Does the result preserve the reference layout logic (title zone, subject split, negative space)?"
+    },
+    {
+      "id": "typography",
+      "question": "Does the title hierarchy and emphasis resemble the chosen reference style?"
+    },
+    {
+      "id": "palette",
+      "question": "Does the result keep the reference mood and color logic?"
+    },
+    {
+      "id": "subject_direction",
+      "question": "Are portrait gaze and subject arrangement flowing inward?"
+    },
+    {
+      "id": "finish",
+      "question": "Has a final GTA6-style finish filter unified the materials?"
+    }
+  ],
+  "revision_policy": "Revise the most deviating dimension first, using previous_result as the edit base."
+}

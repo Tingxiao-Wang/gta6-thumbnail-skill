@@ -1,0 +1,37 @@
+{
+  "priority": {
+    "questionnaire": "mandatory_gate_first",
+    "manual": "canonical_content_design_reference",
+    "user_reference": "overrides atlas imagery but not safety and format constraints"
+  },
+  "type_ids": [
+    "bili_A",
+    "bili_B",
+    "bili_C",
+    "bili_D",
+    "bili_E",
+    "bili_F",
+    "bili_G",
+    "bili_H",
+    "xhs_A",
+    "xhs_B",
+    "xhs_C",
+    "xhs_D",
+    "xhs_E",
+    "xhs_F",
+    "xhs_G"
+  ],
+  "fallback": {
+    "youtube": "platform and existing typography rules, not manual examples",
+    "unreadable_manual": "explicit text-only fallback"
+  },
+  "quality_check": [
+    "one_message_one_focus",
+    "headline_legible",
+    "subject_role_preserved",
+    "gaze_into_frame",
+    "platform_dimensions",
+    "no_fabricated_facts"
+  ],
+  "no_autogen_claim": true
+}

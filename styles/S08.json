@@ -1,0 +1,27 @@
+{
+  "id": "S08",
+  "english_name": "Breaking News",
+  "name": "快讯爆料风",
+  "intended_content": "公告、更新、价格",
+  "composition": "资讯色块与游戏主体分区",
+  "palette": "黑红黄或深蓝白",
+  "typography": "高密度粗体，最多两级",
+  "required_visual_anchors": [
+    "资讯区域",
+    "核心消息",
+    "新闻属性"
+  ],
+  "optional_visual_elements": [
+    "日期",
+    "来源",
+    "新闻条"
+  ],
+  "forbidden_elements": [
+    "未经证实标注官宣"
+  ],
+  "preview_svg": "references/design_principles/style_previews/S08.svg",
+  "reference_assets": [],
+  "reference_image_type": "original_abstract_svg_design_schematic",
+  "source": "GTA6封面设计原则_V1.0.html",
+  "user_document_data_not_performance_validated": true
+}

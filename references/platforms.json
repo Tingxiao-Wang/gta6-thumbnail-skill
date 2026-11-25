@@ -1,0 +1,282 @@
+{
+  "version": "2.1.0",
+  "last_verified": "2026-11-21",
+  "principle": "平台决定输出画幅和可能的 UI 覆盖；内容类型决定风格；用户指令决定标题语言。样本尺寸不可替代官方规格。",
+  "priority_order": [
+    "user_explicit_ratio_and_size",
+    "content_publishing_context",
+    "platform_preset",
+    "reference_image_original_ratio"
+  ],
+  "title_language_priority": [
+    "user_explicit_language",
+    "user_supplied_title_original_language",
+    "audience_language_when_given",
+    "message_language",
+    "fallback_zh"
+  ],
+  "platforms": {
+    "xiaohongshu": {
+      "aliases": [
+        "小红书",
+        "xhs",
+        "rednote",
+        "RED"
+      ],
+      "default_preset": "note_3_4",
+      "presets": {
+        "note_3_4": {
+          "width": 1080,
+          "height": 1440,
+          "ratio": "3:4",
+          "status": "industry_workflow_recommendation_not_verified_official_mandate"
+        },
+        "square_1_1": {
+          "width": 1080,
+          "height": 1080,
+          "ratio": "1:1",
+          "status": "optional_workflow_preset"
+        },
+        "wide_16_9": {
+          "width": 1920,
+          "height": 1080,
+          "ratio": "16:9",
+          "status": "user_selected_optional"
+        }
+      },
+      "observations_from_user_zip": [
+        "H02 H03 H05 H06 H07 是近似竖幅",
+        "H01/H04 是同一张偏横幅图片，平台样本并非一律竖幅",
+        "字体和视觉密度差异明显，不能一律大红大黄"
+      ],
+      "design_guidance": {
+        "title": "中文通常直给但保留原文",
+        "layout": "竖版优先将主体置于中部，避免底部重要内容；画面上方预留标题区",
+        "safe_guidance": "所有边界保留约 6%～8% 内边距；底部 15%～20% 不放最关键小字（仅设计建议）",
+        "style_priorities": [
+          "gameplay_question",
+          "dense_news",
+          "versus_split",
+          "clean_documentary"
+        ]
+      },
+      "source_urls": [
+        "https://www.hubstudio.ai/zh/resources/insights/rednote-note-cover-specs"
+      ],
+      "screenshot_cover": {
+        "default_ratio": "3:4",
+        "film_poster_interpretation": "电影感竖版内容封面，不是把横版电影海报贴在竖版白纸中。",
+        "source_treatment": [
+          "横版原截图先评估人物/车辆能否完整保留；优先主体居中或中下，背景向上/下合理延展以容纳竖版标题。",
+          "原图不适合竖版且延展不可用时，进行保主体的竖向重裁，并明确牺牲了哪些非关键边缘；不要把横图缩成小框。",
+          "适度压暗标题背后区域，突出画面层次，不以泛粉紫霓虹替代截图色调。"
+        ],
+        "title_hierarchy": "用户原文精确保留；优先上部或上中部易读主标题，关键词可高亮1处；副标题仅在提供或内容真实且有明确需求时增加；小标签可选、不能喧宾夺主。",
+        "hero_placement": "人物/车辆主焦点优先中部偏下，真实截图里若已有更好的负空间可按实际情况调整。",
+        "thumbnail_readability": "手机小图优先大字号和有限文字块，底部不要放关键小字。",
+        "safe_inset": "遵循该平台 design_guidance 的工作建议；非官方硬性值。",
+        "avoid": [
+          "横图嵌进大竖白底",
+          "切断人物头部或车辆前后部",
+          "为了填满竖版凭空制造新主角",
+          "无关贴纸堆叠",
+          "盲目给每张图加三行感叹号"
+        ],
+        "checklist": [
+          "3:4满画幅优先",
+          "原图主体保留",
+          "标题字形与手机可读性",
+          "不丢失截图事件事实"
+        ]
+      },
+      "de_ai_mode": "balanced_cleanup",
+      "de_ai_reference": "references/de_ai_rules.json#/platform_rules/xiaohongshu",
+      "de_ai_rules": {
+        "ratio_default": "3:4",
+        "max_auto_tag_count": 1,
+        "subtitle_policy": "只有讲得清攻略/对比信息时新增",
+        "remove_unrequested_english": true,
+        "visual_focus": "手机尺寸第一眼看清标题和主体，不使用大面积标语堆叠",
+        "avoid": "红黄贴纸多层堆叠、无意义字框与装饰线"
+      }
+    },
+    "bilibili": {
+      "aliases": [
+        "哔哩哔哩",
+        "b站",
+        "bilibili",
+        "B站"
+      ],
+      "default_preset": "player_16_9",
+      "presets": {
+        "feed_4_3": {
+          "width": 1200,
+          "height": 900,
+          "ratio": "4:3",
+          "usage": "稿件列表常见",
+          "status": "official_aspect_ratio; pixel_size_workflow_preset"
+        },
+        "player_16_9": {
+          "width": 1920,
+          "height": 1080,
+          "ratio": "16:9",
+          "usage": "播放页常见",
+          "status": "official_aspect_ratio; pixel_size_workflow_preset"
+        }
+      },
+      "observations_from_user_zip": [
+        "B01–B10 均接近16:9截图，不能代替平台的4:3列表图要求",
+        "主播出镜、资讯标题和海报纯图多种类型并存"
+      ],
+      "default_output": "product_creative_main_player_16_9; feed_4_3_on_request_or_when_target_is_feed; dual_only_when_requested",
+      "design_guidance": {
+        "title": "剧情钩子/挑战目标/事件信息，按类型控制字数",
+        "layout": "V1.6创作主版默认16:9；有4:3列表需求时单独重构；若双端输出需分别排版，不把预览裁切当成最终成品。",
+        "safe_guidance": "避免右下角时长 UI 区放重要文字；此规则为设计建议",
+        "style_priorities": [
+          "streamer_reaction",
+          "discovery_annotation",
+          "dense_news",
+          "cinematic_poster"
+        ]
+      },
+      "source_urls": [
+        "https://www.bilibili.com/opus/1106096748969852979"
+      ],
+      "screenshot_cover": {
+        "default_ratio": "16:9",
+        "secondary_ratio_if_requested": "4:3",
+        "film_poster_interpretation": "横版 B站封面中的电影化画面包装：场景层次、光影、对焦、情绪及与画面融合的标题；不是居中海报框或灰底 PPT。",
+        "source_treatment": [
+          "截图始终铺满 4:3 或16:9画布；优先保留主角/车辆/城市作为封面事件的视觉证据。",
+          "如果原截图是16:9而要求4:3，先寻找不伤害主体的裁切/局部扩图方案，不能横向压缩；双比例分别重新构图。",
+          "电影感加强方向为景深与透视层次、局部光线/色彩分级、标题区对比；避免简单贴一层暗滤镜或堆满炫光。"
+        ],
+        "title_hierarchy": "保留用户原文；有内容依据时可选小标签 + 主标题 + 非事实性短补充，但电影感/氛围类不强制加副标题。长标题按语义断行，标题与负空间相互配合。",
+        "hero_placement": "优先强化人物背影、车辆或城市全景等原图视觉焦点；标题应避开关键主体，若负空间不在左侧则灵活调整。",
+        "thumbnail_readability": "小缩略图先看主体、标题和情绪，避免标题放在最复杂的城市轮廓上。",
+        "safe_inset": "右下角避免放关键小字；为设计建议。",
+        "avoid": [
+          "灰底或白底包裹图片",
+          "把横版封面做成实体电影海报贴纸",
+          "强行加入与视频无关跑车",
+          "统一红黄大字压过城市景观",
+          "自行编造实机/测评/史一游的事实性结论"
+        ],
+        "checklist": [
+          "16:9主版适配",
+          "按需4:3独立构图",
+          "无意外边框",
+          "电影质感而非截图+顶字",
+          "原图角色与地标保留"
+        ]
+      },
+      "de_ai_mode": "balanced_cleanup",
+      "de_ai_reference": "references/de_ai_rules.json#/platform_rules/bilibili",
+      "de_ai_rules": {
+        "ratio_default": "16:9",
+        "max_auto_tag_count": 1,
+        "subtitle_policy": "深度测评/教程可以增加真实内容维度；电影叙事默认关闭",
+        "remove_unrequested_english": true,
+        "visual_focus": "真实游戏信息与主视觉并重，标签应承担分类功能，不要再加翻译 REVIEW",
+        "avoid": "固定左上黄标签+旁边REVIEW+左下竖线+副标题的机械组合"
+      }
+    },
+    "youtube": {
+      "aliases": [
+        "youtube",
+        "YouTube",
+        "yt",
+        "油管"
+      ],
+      "default_preset": "video_16_9",
+      "presets": {
+        "video_16_9": {
+          "width": 3840,
+          "height": 2160,
+          "ratio": "16:9",
+          "usage": "long_form_video",
+          "status": "official_recommendation"
+        },
+        "shorts_9_16": {
+          "width": 2160,
+          "height": 3840,
+          "ratio": "9:16",
+          "usage": "Shorts",
+          "status": "official_recommendation"
+        }
+      },
+      "observations_from_user_zip": [
+        "Y01/Y10 使用中文，Y09 非英文标题；语言不由平台决定",
+        "游戏画面+大主播表情、纯画面动作与对比图都有",
+        "Y04 是视频搜索/结果拼图而非单张封面"
+      ],
+      "design_guidance": {
+        "title": "简短强对比并非一律英文，沿用用户标题的语言",
+        "layout": "优先一个主焦点；真人反应或事件对比需要分明的前景层次",
+        "safe_guidance": "四边留出约5%–7%边距，右下角避免被时长 UI 遮住（设计建议）",
+        "style_priorities": [
+          "streamer_reaction",
+          "minimal_action",
+          "versus_split",
+          "episode_live"
+        ]
+      },
+      "upload_note": "Shorts 自定义封面上传当前见官方说明为电脑端 YouTube Studio；最终以账号界面功能为准。",
+      "source_urls": [
+        "https://support.google.com/youtube/answer/72431?hl=en"
+      ],
+      "screenshot_cover": {
+        "default_ratio": "16:9",
+        "shorts_if_requested": "9:16",
+        "film_poster_interpretation": "16:9 cinematic game thumbnail that fills the whole frame: decisive focal subject, controlled grading, dramatic depth; NOT a framed printed poster mockup.",
+        "source_treatment": [
+          "源截图优先全画幅覆盖16:9；保留可辨认的游戏事件、车辆或角色。",
+          "如需9:16 Shorts，重新构图主体和标题，使用可行的上下/左右延展而非缩放成窄条。",
+          "对原截图做适度主体与背景分离、光影层次和色彩校正；缩小后焦点仍然明确。"
+        ],
+        "title_hierarchy": "标题语言按用户原文，不强制英文；默认一个主标题块，可突出关键词。只有用户内容真实且明确需要时才加短副标签，不自动注入虚假\"INSANE\"或性能结论。",
+        "hero_placement": "主体尽量占据明确的中心/一侧焦点，标题在另一侧负空间；不遮挡重要动作证据。",
+        "thumbnail_readability": "小尺寸预览优先单一焦点、少量高对比文字；避免复杂景深导致截图失真。",
+        "safe_inset": "四周留可读安全空间，右下角时长UI附近避免小字；为设计建议。",
+        "avoid": [
+          "外部相框/样机/灰底",
+          "来源视频截图被替换为随意AI幻想画面",
+          "强制翻译用户标题",
+          "无关惊讶人脸/箭头",
+          "虚假的官方截图暗示"
+        ],
+        "checklist": [
+          "16:9全画幅",
+          "缩略图单焦点",
+          "原图证据保真",
+          "标题语言/文字准确",
+          "Shorts不直接拉伸"
+        ]
+      },
+      "de_ai_mode": "balanced_cleanup",
+      "de_ai_reference": "references/de_ai_rules.json#/platform_rules/youtube",
+      "de_ai_rules": {
+        "ratio_default": "16:9",
+        "max_auto_tag_count": 1,
+        "subtitle_policy": "默认不新增",
+        "remove_unrequested_english": true,
+        "visual_focus": "一眼看懂人物/事件+短标题，保留用户原文语言",
+        "avoid": "无意义LIVE/PLAY/Day N装饰、过多贴图和多组小字"
+      }
+    }
+  },
+  "v13_additions": {
+    "rendering": "size fields are desired export presets, not a guarantee of platform or tool output capabilities",
+    "layout_source": "references/composition.json",
+    "typography_source": "references/typography.json",
+    "multi_platform": "same core story/hero as creative master; redesign subject/title relative geometry for each ratio",
+    "bilibili_dual_ratio": "4:3 + 16:9 are both supported work presets; generate two image compositions only when user requests or capability permits",
+    "platform_style_language": "platform does not uniquely determine style or title language"
+  },
+  "v15_screenshot_shared": "references/screenshot_cover_rules.json",
+  "cross_platform_screenshot_principle": "保持同一原始事件/主体与原文标题，针对三平台分别重构画幅、视觉焦点和字区；禁止拉伸/套灰底相框。电影海报感指视觉质感而非实体海报边框。",
+  "layout_contract": "references/platform_layout_rules.json",
+  "baseline_selection": "When user does not specify, use platform_layout_rules.json platform output default. For Bilibili creative main output 16:9, feed 4:3 optional/dual as required. Not an official upload rule.",
+  "v16_layout_guide": "Hard layout contract and title scales: references/platform_layout_rules.json; overrides previous qualitative platform typography defaults."
+}

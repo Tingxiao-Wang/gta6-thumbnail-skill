@@ -1,0 +1,1441 @@
+{
+  "version": "2.3.0",
+  "name": "GTA Thumbnail Pro - source-anchored typography recipe atlas",
+  "source_basis": "用户上传 gta6_fengmiancankao.zip，29张PNG，2组重复，1张多封面合集；26张可独立对应到封面版式的去重参考。",
+  "method": "人工观察可见文字、效果和布局，构造可执行近似参数。未使用字体识别；不能保证原字体名称或任何点击率提升。",
+  "units": {
+    "position": "normalized_0_to_1",
+    "fontSize": "canvas_height_ratio",
+    "strokeWidth_at_1080h": "at_1080_height_PX_approximate",
+    "colors": "approximate_design_values_not_pixel_sample"
+  },
+  "routing": {
+    "default_3": "根据任务与平台从26套中选3个显著不同且适合该素材的配方。优先选有文字的三套；内容是Logo/无字图时允许选择logo_only，不额外造标题。",
+    "only_1": "用户指定张数为1则只选1套",
+    "same_subject": "有原截图时锁定底图主体和用户标题，三张只改字体、排版与必要局部包装。",
+    "preserve_user_headline": true,
+    "no_fake_logos": true,
+    "no_platform_ui": true,
+    "fallback_for_logo_only": "没有用户提供授权标识时，用可编辑的普通游戏名称文字或取消标识。",
+    "do_not_force_all_styles": "每个配方是可选能力；不要求一次把全部风格强行叠加。"
+  },
+  "recipes": [
+    {
+      "id": "F01",
+      "label": "粉紫立体情绪粗体",
+      "source_reference": "b(1)",
+      "source_file": "billbill/b (1).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "反应",
+        "首曝",
+        "期待",
+        "主播"
+      ],
+      "observed_typography": "底部白色厚字与紫粉光影叠层；感叹号高彩色，人物拼贴占据中上区",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "gradient_3d_outline",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#211235",
+        "strokeWidth_at_1080h": 7,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 9,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.087,
+        "fontSize_portrait": 0.106,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.08,
+          "y": 0.69,
+          "width": 0.67
+        },
+        "portrait": {
+          "x": 0.08,
+          "y": 0.69,
+          "width": 0.67
+        }
+      },
+      "emphasis": {
+        "fill": "#EF4DA7",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "底部大号白色粗黑体，深紫描边叠粉紫立体阴影，末尾感叹号用洋红强调，紧凑不规则错位但保证可读。",
+      "avoid": "不要画假直播时长和播放量。",
+      "require_asset_for_logo": false,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F02",
+      "label": "下压式柔白写实标题",
+      "source_reference": "b(2)",
+      "source_file": "billbill/b (2).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "场景实况",
+        "解说",
+        "游戏角色"
+      ],
+      "observed_typography": "白色厚重短标题叠在画面下三分之一，灰影低对比，图像比文字更大",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "none",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#F8FAFC",
+        "stroke": "#55565C",
+        "strokeWidth_at_1080h": 2,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 4,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.085,
+        "fontSize_portrait": 0.08,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.32,
+          "y": 0.7,
+          "width": 0.49
+        },
+        "portrait": {
+          "x": 0.32,
+          "y": 0.7,
+          "width": 0.49
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "在画面下方用短行白字，灰黑柔阴影，主体居中留出场景。",
+      "avoid": "不要增加大色块或角标。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F03",
+      "label": "橙黄BUG双描边爆点",
+      "source_reference": "b(3)",
+      "source_file": "billbill/b (3).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "BUG",
+        "彩蛋",
+        "异常",
+        "细节"
+      ],
+      "observed_typography": "两行黄色/橙金色粗字、浓黑描边，靠右下，红圈箭头指向实况事件",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "gradient_outline",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFCB32",
+        "stroke": "#1C1105",
+        "strokeWidth_at_1080h": 9,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 3,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.105,
+        "fontSize_portrait": 0.105,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.48,
+          "y": 0.48,
+          "width": 0.49
+        },
+        "portrait": {
+          "x": 0.48,
+          "y": 0.48,
+          "width": 0.49
+        }
+      },
+      "emphasis": {
+        "fill": "#FF742A",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "橙黄填充的特粗两行标题，厚黑外轮廓，重点词更大；仅有真实证据时在图上使用红圈或箭头。",
+      "avoid": "不能凭空制造BUG证据或箭头目标。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F04",
+      "label": "核心标识拼图型",
+      "source_reference": "b(4)",
+      "source_file": "billbill/b (4).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "游戏新作",
+        "游戏介绍",
+        "预告盘点"
+      ],
+      "observed_typography": "中央是巨大官方游戏字标，周围多分格画面；没有独立普通标题",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "logo_only",
+      "effect_family": "requires_licensed_asset",
+      "font_recipe": {
+        "family_preference": [
+          "Arial Black",
+          "Impact",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#160C25",
+        "strokeWidth_at_1080h": 4,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 2,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.1,
+        "fontSize_portrait": 0.1,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.23,
+          "y": 0.36,
+          "width": 0.54
+        },
+        "portrait": {
+          "x": 0.23,
+          "y": 0.36,
+          "width": 0.54
+        }
+      },
+      "emphasis": {
+        "fill": "#AC7CED",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "中央留出醒目的游戏名称/授权标识位置，周围拼贴多张相关画面；若用户无授权标识素材则改用普通游戏名称文字。",
+      "avoid": "不可生成仿冒官方授权LOGO或复制别人的拼贴。",
+      "require_asset_for_logo": true,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F05",
+      "label": "奶油立体双人反应大字",
+      "source_reference": "b(5)",
+      "source_file": "billbill/b (5).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "整活",
+        "双人反应",
+        "游戏测评"
+      ],
+      "observed_typography": "底部一整排米黄色立体粗字，浅棕描边，左侧人物反应与右侧人物互动",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "soft_3d_outline",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#F6E7AD",
+        "stroke": "#4D3232",
+        "strokeWidth_at_1080h": 6,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 5,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.1,
+        "fontSize_portrait": 0.107,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.05,
+          "y": 0.74,
+          "width": 0.78
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.74,
+          "width": 0.78
+        }
+      },
+      "emphasis": {
+        "fill": "#FFDC9C",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "底部巨大奶油白/浅金厚字，温暖棕色外边与微立体阴影，文字随人物横向延伸。",
+      "avoid": "不必加英文小标签。",
+      "require_asset_for_logo": false,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F06",
+      "label": "电影群像仅标识型",
+      "source_reference": "b(6)",
+      "source_file": "billbill/b (6).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "剧情",
+        "电影",
+        "角色群像"
+      ],
+      "observed_typography": "群像电影化场景，左中小面积白色游戏标识，普通大标题缺席",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "logo_only",
+      "effect_family": "requires_licensed_asset",
+      "font_recipe": {
+        "family_preference": [
+          "Georgia",
+          "Songti SC",
+          "serif"
+        ],
+        "weight": 700,
+        "fill": "#E9E6DB",
+        "stroke": "#222329",
+        "strokeWidth_at_1080h": 1,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 1,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.05,
+        "fontSize_portrait": 0.055,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.04,
+          "y": 0.54,
+          "width": 0.25
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.54,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#F3EBE0",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "电影群像与质感背景为主，文字极少；只有用户提供的合法标识才放在左侧空白处。",
+      "avoid": "不能强制生成巨大黄色主标题。",
+      "require_asset_for_logo": true,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F07",
+      "label": "荧光绿白双层资讯",
+      "source_reference": "b(7)",
+      "source_file": "billbill/b (7).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "资讯",
+        "盘点",
+        "整活",
+        "事件"
+      ],
+      "observed_typography": "上方醒目荧光绿粗字体，下一行白色较小文字，全局背景接近实况截图",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "two_line_two_tone",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#ACFD31",
+        "stroke": "#07180B",
+        "strokeWidth_at_1080h": 6,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 1,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.083,
+        "fontSize_portrait": 0.092,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.05,
+          "y": 0.06,
+          "width": 0.85
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.06,
+          "width": 0.85
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "顶部两行资讯文字，首行荧光绿高对比，下行白色较小，贴近原视频真实事件。",
+      "avoid": "不默认用红圈或装饰线。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F08",
+      "label": "真人表情小图标极简型",
+      "source_reference": "b(8)",
+      "source_file": "billbill/b (8).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "人脸反应",
+        "剧情讲解",
+        "案例盘点"
+      ],
+      "observed_typography": "右侧大表情主体，左侧是倾斜图片组，左上绿色数值小块；没有大号主标题",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "tiny_label",
+      "effect_family": "no_headline",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 800,
+        "fill": "#C5FF63",
+        "stroke": "#103B35",
+        "strokeWidth_at_1080h": 4,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 3,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.058,
+        "fontSize_portrait": 0.062,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.05,
+          "y": 0.07,
+          "width": 0.25
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.07,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#65F29F",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "用大面积人物表情替代大标题，最多一个小号数字或短标签；字幕不要遮挡五官。",
+      "avoid": "不生成假价签/假游戏折扣。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F09",
+      "label": "多色斜排资讯字",
+      "source_reference": "b(9)",
+      "source_file": "billbill/b (9).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "攻略",
+        "五十项盘点",
+        "新玩法"
+      ],
+      "observed_typography": "画面左上角多行倾斜粗黑体，白黄红按语义分色，单词大小不均",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "slanted_multicolor",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#181015",
+        "strokeWidth_at_1080h": 7,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 4,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.085,
+        "fontSize_portrait": 0.089,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.04,
+          "y": 0.03,
+          "width": 0.75
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.03,
+          "width": 0.75
+        }
+      },
+      "emphasis": {
+        "fill": "#FAD431",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "上方偏左紧凑三行大字，白黄红关键词分色，字块轻微斜向变化，背景仍可看见玩法截图。",
+      "avoid": "不能添加没有证据的数字/卖点。",
+      "require_asset_for_logo": false,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F10",
+      "label": "左侧超大游戏字标型",
+      "source_reference": "b(10)",
+      "source_file": "billbill/b (10).png",
+      "observed_platform": "bilibili",
+      "applicable_topics": [
+        "游戏介绍",
+        "角色展示",
+        "宣发"
+      ],
+      "observed_typography": "左侧叠排厚白英文游戏字样，深蓝阴影轮廓，右侧两名角色",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "logo_only",
+      "effect_family": "requires_licensed_asset",
+      "font_recipe": {
+        "family_preference": [
+          "Arial Black",
+          "Impact",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#202D75",
+        "strokeWidth_at_1080h": 6,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 4,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.124,
+        "fontSize_portrait": 0.11,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.04,
+          "y": 0.17,
+          "width": 0.41
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.17,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#A762E6",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "左侧竖向堆叠游戏名称文字，右侧完整角色构图；若无授权不能仿造官方标识字样。",
+      "avoid": "只复制字标的空间功能，不复制商标字形。",
+      "require_asset_for_logo": true,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F11",
+      "label": "底部白绿双色结论字",
+      "source_reference": "h(1)",
+      "source_file": "xiaohongshu/h (1).png",
+      "observed_platform": "xiaohongshu",
+      "applicable_topics": [
+        "第一印象",
+        "评价",
+        "场景发现"
+      ],
+      "observed_typography": "低位白色粗黑体末尾关键词绿色；上方小号白字斜体提示",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "keyword_color",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#202321",
+        "strokeWidth_at_1080h": 3,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 4,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.097,
+        "fontSize_portrait": 0.079,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.3,
+          "y": 0.74,
+          "width": 0.62
+        },
+        "portrait": {
+          "x": 0.3,
+          "y": 0.74,
+          "width": 0.62
+        }
+      },
+      "emphasis": {
+        "fill": "#47E59A",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "画面底部大号白色粗字，末尾真实关键词单独高亮鲜绿色，上方可有短小事实辅助行。",
+      "avoid": "无必要不加卡片、贴纸、横线。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F12",
+      "label": "白黑描边情绪爆字",
+      "source_reference": "h(2)",
+      "source_file": "xiaohongshu/h (2).png",
+      "observed_platform": "xiaohongshu",
+      "applicable_topics": [
+        "搞笑",
+        "任务",
+        "实况"
+      ],
+      "observed_typography": "画面下中超粗白字，厚黑边；下面有一行细小白色描边说明，背景有速度线",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "thick_white_stroke",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#090909",
+        "strokeWidth_at_1080h": 10,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 2,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.13,
+        "fontSize_portrait": 0.11,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.09,
+          "y": 0.58,
+          "width": 0.82
+        },
+        "portrait": {
+          "x": 0.09,
+          "y": 0.58,
+          "width": 0.82
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "中下部近全宽的大白字厚黑描边，最多一行小字幕补充，文字前景压住部分背景但不遮脸。",
+      "avoid": "不添加不必要的速度线；若已有才保留。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F13",
+      "label": "英文斜体VS黑条对比字",
+      "source_reference": "h(3)",
+      "source_file": "xiaohongshu/h (3).png",
+      "observed_platform": "xiaohongshu",
+      "applicable_topics": [
+        "现实对比",
+        "画质对比",
+        "双场景"
+      ],
+      "observed_typography": "顶端大写英文窄斜体白字与洋红VS，黑色横条；两张对比图片有细小白字标签",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "italic_banner_vs",
+      "font_recipe": {
+        "family_preference": [
+          "Impact",
+          "Arial Black",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#040404",
+        "strokeWidth_at_1080h": 2,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 2,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.087,
+        "fontSize_portrait": 0.068,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.06,
+          "y": 0.16,
+          "width": 0.89
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.16,
+          "width": 0.89
+        }
+      },
+      "emphasis": {
+        "fill": "#FD5DAB",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "黑色横向信息带上的窄斜体大写英文字，中心VS用洋红高亮，左右对照对象信息清楚。",
+      "avoid": "不要用在没有真实两侧素材的单图任务上。",
+      "require_asset_for_logo": false,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F14",
+      "label": "红黄多层漫画资讯字",
+      "source_reference": "h(5)",
+      "source_file": "xiaohongshu/h (5).png",
+      "observed_platform": "xiaohongshu",
+      "applicable_topics": [
+        "硬件测评",
+        "综合分析",
+        "细节盘点"
+      ],
+      "observed_typography": "竖版中下部4层红黄白粗字压缩排版，局部色块像涂抹笔刷，黑描边",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "color_block_stack",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FF4035",
+        "stroke": "#161616",
+        "strokeWidth_at_1080h": 7,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 3,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.091,
+        "fontSize_portrait": 0.084,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.05,
+          "y": 0.41,
+          "width": 0.92
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.41,
+          "width": 0.9
+        }
+      },
+      "emphasis": {
+        "fill": "#FFEC31",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "竖版红黄白三色多行粗字：关键数字红、评判黄、说明白；用少量手绘色块提升信息层次，最多三层，别挤满。",
+      "avoid": "不凭空写PS5性能结论；禁止乱加未核实参数。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F15",
+      "label": "极简风景对照字幕",
+      "source_reference": "h(6)",
+      "source_file": "xiaohongshu/h (6).png",
+      "observed_platform": "xiaohongshu",
+      "applicable_topics": [
+        "环境对比",
+        "风景",
+        "实景"
+      ],
+      "observed_typography": "上下两个风景截图在接近画面边缘位置各有一个很小的白色版本标识",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "tiny_label",
+      "effect_family": "minimal_caption",
+      "font_recipe": {
+        "family_preference": [
+          "Arial",
+          "sans-serif"
+        ],
+        "weight": 500,
+        "fill": "#F4F4F4",
+        "stroke": "#1F1F1F",
+        "strokeWidth_at_1080h": 1,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 1,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.023,
+        "fontSize_portrait": 0.029,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.35,
+          "y": 0.02,
+          "width": 0.3
+        },
+        "portrait": {
+          "x": 0.35,
+          "y": 0.02,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "上下场景对比仅在中心上沿放小号白色分类标签；以画面本身说话，不生成大标题。",
+      "avoid": "不能为了点击而追加粗体大字。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F16",
+      "label": "黄顶白中粉底三段标题",
+      "source_reference": "h(7)",
+      "source_file": "xiaohongshu/h (7).png",
+      "observed_platform": "xiaohongshu",
+      "applicable_topics": [
+        "资讯",
+        "福利",
+        "车辆资讯"
+      ],
+      "observed_typography": "顶部黄色大字，中间白色带黑边粗标题，下面洋红色高亮奖励短语",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "top_mid_bottom_three_tone",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFDB22",
+        "stroke": "#0B0B0B",
+        "strokeWidth_at_1080h": 7,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 2,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.097,
+        "fontSize_portrait": 0.081,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.09,
+          "y": 0.04,
+          "width": 0.82
+        },
+        "portrait": {
+          "x": 0.09,
+          "y": 0.04,
+          "width": 0.82
+        }
+      },
+      "emphasis": {
+        "fill": "#FF3FD8",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "竖版上黄字吸睛，中段白字黑描边说明主题，底端粉红强调补充信息；只有用户确有三项真实信息才展示全三段。",
+      "avoid": "不可自动编造福利/倒计时/抽奖。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F17",
+      "label": "直播顶栏红白高反差标题",
+      "source_reference": "y(1)",
+      "source_file": "youtube/y (1).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "直播",
+        "连续实况",
+        "单日挑战"
+      ],
+      "observed_typography": "顶部一行很粗的白字黑红边，底部左角Day3，右上红LIVE角标",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "stream_headline",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#121012",
+        "strokeWidth_at_1080h": 7,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 3,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.085,
+        "fontSize_portrait": 0.09,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.02,
+          "y": 0.02,
+          "width": 0.95
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.02,
+          "width": 0.9
+        }
+      },
+      "emphasis": {
+        "fill": "#EE3E43",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "顶部横向超粗白字黑描边，关键词可红色提亮；真实直播时才放LIVE，真实章节时才写Day。",
+      "avoid": "不生成假LIVE或假Day序号。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F18",
+      "label": "单个巨大数字主视觉",
+      "source_reference": "y(2)",
+      "source_file": "youtube/y (2).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "挑战",
+        "零成本挑战",
+        "数值对比"
+      ],
+      "observed_typography": "右上空间仅有超大的白色数字/货币符号，极淡灰黑阴影，场景简洁",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "large_numeric",
+      "font_recipe": {
+        "family_preference": [
+          "Arial Black",
+          "Impact",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#404852",
+        "strokeWidth_at_1080h": 2,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 5,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.18,
+        "fontSize_portrait": 0.18,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.58,
+          "y": 0.14,
+          "width": 0.36
+        },
+        "portrait": {
+          "x": 0.58,
+          "y": 0.14,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "一组用户明确给出的巨大数字为唯一标题，白字微灰影，行动主体位于另一侧。",
+      "avoid": "不得编造金额或数据，若无实际数字则不采用此配方。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F19",
+      "label": "像素方块章节文字",
+      "source_reference": "y(3)",
+      "source_file": "youtube/y (3).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "游戏章节",
+        "实况系列",
+        "主播反应"
+      ],
+      "observed_typography": "左上角小号方块游戏字体大写PARTIE 3，白字黑描边，与巨大反应头像形成对比",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "tiny_label",
+      "effect_family": "arcade_chapter",
+      "font_recipe": {
+        "family_preference": [
+          "Impact",
+          "Arial Black",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#221523",
+        "strokeWidth_at_1080h": 4,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 2,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.061,
+        "fontSize_portrait": 0.067,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.03,
+          "y": 0.03,
+          "width": 0.45
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.03,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "左上小号块状章节文字与右侧大脸组合，标题短而粗，留出人脸空白。",
+      "avoid": "不编造集数。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F20",
+      "label": "红色LIVE矩形角标",
+      "source_reference": "y(5)",
+      "source_file": "youtube/y (5).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "直播",
+        "实况",
+        "首播"
+      ],
+      "observed_typography": "右上角红底白字LIVE角标、左上游戏标识，主视觉是实机场景，普通大标题缺席",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "tiny_label",
+      "effect_family": "red_live_badge",
+      "font_recipe": {
+        "family_preference": [
+          "Arial Black",
+          "Impact",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#D21C2C",
+        "strokeWidth_at_1080h": 0,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 0,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.052,
+        "fontSize_portrait": 0.052,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.75,
+          "y": 0.04,
+          "width": 0.2
+        },
+        "portrait": {
+          "x": 0.75,
+          "y": 0.04,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "把真正的直播状态显示为右上红底白色无描边短标签，画面主体尽量满版；无正题也成立。",
+      "avoid": "未经核实不能加LIVE。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F21",
+      "label": "斜黄行动词压底型",
+      "source_reference": "y(6)",
+      "source_file": "youtube/y (6).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "实况开玩",
+        "强观点",
+        "短挑战"
+      ],
+      "observed_typography": "底部偏中央有亮黄色斜切横幅，黑色粗斜体PLAY!，红箭头指向主体",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "slanted_yellow_action_plate",
+      "font_recipe": {
+        "family_preference": [
+          "Impact",
+          "Arial Black",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#05070A",
+        "stroke": "#111111",
+        "strokeWidth_at_1080h": 0,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 2,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.15,
+        "fontSize_portrait": 0.13,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.34,
+          "y": 0.73,
+          "width": 0.45
+        },
+        "portrait": {
+          "x": 0.34,
+          "y": 0.73,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#FFDD26",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "底部偏中央黑色全大写粗斜体短动词，压在亮黄色有限宽横幅上；仅必要时用箭头指向真实主体。",
+      "avoid": "不要无原因添加黄色条或误导性箭头。",
+      "require_asset_for_logo": false,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F22",
+      "label": "底部粗白期数体",
+      "source_reference": "y(7)",
+      "source_file": "youtube/y (7).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "系列视频",
+        "长期实况"
+      ],
+      "observed_typography": "左下角大号白色带黑边章节编号/集数，左侧Logo在天幕上，人物主视觉右侧",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "tiny_label",
+      "effect_family": "footer_episode",
+      "font_recipe": {
+        "family_preference": [
+          "Arial Black",
+          "Impact",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#111013",
+        "strokeWidth_at_1080h": 6,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 2,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.071,
+        "fontSize_portrait": 0.071,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.01,
+          "y": 0.82,
+          "width": 0.48
+        },
+        "portrait": {
+          "x": 0.06,
+          "y": 0.82,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "底部左角白字粗黑描边写真实章节信息，不遮挡人物；不需要再添加另一个大标题。",
+      "avoid": "不得把平台时长角标当成封面层。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F23",
+      "label": "DAY3右上方块标题",
+      "source_reference": "y(8)",
+      "source_file": "youtube/y (8).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "系列挑战",
+        "实况续集"
+      ],
+      "observed_typography": "右上角巨大白色厚方块大写DAY 3，深色边缘，画面左侧人物巨大表情",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "tiny_label",
+      "effect_family": "top_right_day",
+      "font_recipe": {
+        "family_preference": [
+          "Impact",
+          "Arial Black",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#141D26",
+        "strokeWidth_at_1080h": 5,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 1,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.078,
+        "fontSize_portrait": 0.077,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.72,
+          "y": 0.025,
+          "width": 0.26
+        },
+        "portrait": {
+          "x": 0.72,
+          "y": 0.025,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "右上以块状紧缩白字放章节 DAY 3；人物强反应占据左侧，别另外添长标题。",
+      "avoid": "用户未提供天数不能编造。",
+      "require_asset_for_logo": false,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    },
+    {
+      "id": "F24",
+      "label": "红色笔刷粗斜体政治标语式",
+      "source_reference": "y(9)",
+      "source_file": "youtube/y (9).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "观点",
+        "禁止/争议",
+        "事件解读"
+      ],
+      "observed_typography": "白色斜向大写标题分层，中央穿插红色刷痕宽条与黑色斜体，三行压底",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "red_brush_slogan",
+      "font_recipe": {
+        "family_preference": [
+          "Impact",
+          "Arial Black",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#0E0E0E",
+        "strokeWidth_at_1080h": 5,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 3,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.087,
+        "fontSize_portrait": 0.085,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.08,
+          "y": 0.6,
+          "width": 0.84
+        },
+        "portrait": {
+          "x": 0.08,
+          "y": 0.6,
+          "width": 0.84
+        }
+      },
+      "emphasis": {
+        "fill": "#ED1D2F",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "底部三行斜切粗白字，核心词落在红色笔刷质感底上，黑白极强反差，层级错落；用户标题保持准确。",
+      "avoid": "不要自动添加无根据的争议和禁止标志。",
+      "require_asset_for_logo": false,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F25",
+      "label": "红黑双框中文惊讶字",
+      "source_reference": "y(10)",
+      "source_file": "youtube/y (10).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "主播惊讶",
+        "强情绪",
+        "视频首见"
+      ],
+      "observed_typography": "上方和底部各一行白色超粗中文，厚黑外轮廓及红色强调边，画面有主播半身抠图",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "headline",
+      "effect_family": "white_red_double_outline",
+      "font_recipe": {
+        "family_preference": [
+          "Microsoft YaHei",
+          "PingFang SC",
+          "Noto Sans CJK SC",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#080808",
+        "strokeWidth_at_1080h": 8,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 4,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.094,
+        "fontSize_portrait": 0.09,
+        "maxLines": 3
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.45,
+          "y": 0.02,
+          "width": 0.54
+        },
+        "portrait": {
+          "x": 0.45,
+          "y": 0.02,
+          "width": 0.54
+        }
+      },
+      "emphasis": {
+        "fill": "#FF3737",
+        "strategy": "single_real_keyword_only",
+        "max_keywords": 1
+      },
+      "visual_prompt": "顶部或底部大白字厚黑边，外层红色细强调，一句标题切成上下一处但不拆词；人物脸保持清晰。",
+      "avoid": "不能自动添加时长、主播肖像或平台图标。",
+      "require_asset_for_logo": false,
+      "editor_note": "编辑器能精确实现普通文字、单一关键词高亮、描边、阴影与位置；斜切字、复杂多层渐变/真实笔刷、3D字或官方Logo需要生图/授权素材/专业外部图形工具，不虚报为已实现。"
+    },
+    {
+      "id": "F26",
+      "label": "左右游戏标识对照型",
+      "source_reference": "y(12)",
+      "source_file": "youtube/y (12).png",
+      "observed_platform": "youtube",
+      "applicable_topics": [
+        "版本对比",
+        "新旧游戏",
+        "画质对比"
+      ],
+      "observed_typography": "左右分区顶部各一枚游戏标志，画面构图由游戏对比和版面分割主导，没有普通大字",
+      "spec_provenance": "可见字效为源图观察；字号、颜色、位置和描边数值是为了可执行生成所做的人工近似，并非原图像素测量或实际字体识别结果。",
+      "title_mode": "logo_only",
+      "effect_family": "comparison_logo_only",
+      "font_recipe": {
+        "family_preference": [
+          "Arial Black",
+          "Impact",
+          "sans-serif"
+        ],
+        "weight": 900,
+        "fill": "#FFFFFF",
+        "stroke": "#141414",
+        "strokeWidth_at_1080h": 3,
+        "shadowColor": "#000000",
+        "shadowBlur_at_1080h": 1,
+        "letterSpacing": 0,
+        "fontSize_landscape": 0.05,
+        "fontSize_portrait": 0.05,
+        "maxLines": 1
+      },
+      "layout": {
+        "landscape": {
+          "x": 0.08,
+          "y": 0.08,
+          "width": 0.26
+        },
+        "portrait": {
+          "x": 0.08,
+          "y": 0.08,
+          "width": 0.48
+        }
+      },
+      "emphasis": {
+        "fill": "#FFFFFF",
+        "strategy": "none",
+        "max_keywords": 1
+      },
+      "visual_prompt": "左右真实对比素材各自用很短的版本文字标签，不强制加一句大标题；有许可才能引用官方Logo。",
+      "avoid": "不要伪造版本Logo或游戏画面差异。",
+      "require_asset_for_logo": true,
+      "editor_note": "支持使用编辑器近似实现位置、字重、颜色、描边和阴影。"
+    }
+  ]
+}

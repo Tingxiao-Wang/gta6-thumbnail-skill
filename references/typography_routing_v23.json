@@ -1,0 +1,207 @@
+{
+  "version": "2.3.0",
+  "policy": {
+    "default_variants": 3,
+    "user_explicit_ids_override": true,
+    "no_auto_fake_assets": true,
+    "avoid_logo_and_live_without_user_assets": true,
+    "avoid_numeric_without_verified_number": true,
+    "same_user_text": true
+  },
+  "triggers_ordered": [
+    {
+      "id": "comparisons",
+      "keywords": [
+        "VS",
+        "对比",
+        "现实",
+        "新旧",
+        "画质对比",
+        "vs"
+      ],
+      "variants": {
+        "xiaohongshu": [
+          "F13",
+          "F11",
+          "F16"
+        ],
+        "bilibili": [
+          "F09",
+          "F07",
+          "F03"
+        ],
+        "youtube": [
+          "F25",
+          "F24",
+          "F17"
+        ]
+      },
+      "note": "需要真实对比素材才能使用F13的左右双图，否则只取斜体字效，不编造对比画面"
+    },
+    {
+      "id": "bug",
+      "keywords": [
+        "BUG",
+        "bug",
+        "彩蛋",
+        "细节",
+        "隐藏",
+        "盘点",
+        "教程"
+      ],
+      "variants": {
+        "xiaohongshu": [
+          "F14",
+          "F12",
+          "F16"
+        ],
+        "bilibili": [
+          "F03",
+          "F09",
+          "F07"
+        ],
+        "youtube": [
+          "F25",
+          "F24",
+          "F17"
+        ]
+      }
+    },
+    {
+      "id": "reaction",
+      "keywords": [
+        "反应",
+        "期待",
+        "首曝",
+        "预告",
+        "直播",
+        "震惊",
+        "主播"
+      ],
+      "variants": {
+        "xiaohongshu": [
+          "F12",
+          "F16",
+          "F11"
+        ],
+        "bilibili": [
+          "F01",
+          "F05",
+          "F03"
+        ],
+        "youtube": [
+          "F25",
+          "F17",
+          "F24"
+        ]
+      }
+    },
+    {
+      "id": "review",
+      "keywords": [
+        "测评",
+        "评测",
+        "值不值",
+        "解析",
+        "深度",
+        "优缺点",
+        "review"
+      ],
+      "variants": {
+        "xiaohongshu": [
+          "F11",
+          "F14",
+          "F16"
+        ],
+        "bilibili": [
+          "F09",
+          "F07",
+          "F02"
+        ],
+        "youtube": [
+          "F25",
+          "F24",
+          "F17"
+        ]
+      }
+    },
+    {
+      "id": "cinematic",
+      "keywords": [
+        "电影",
+        "海报",
+        "沉浸",
+        "城市",
+        "探索",
+        "背影",
+        "风景",
+        "史诗",
+        "cinematic"
+      ],
+      "variants": {
+        "xiaohongshu": [
+          "F11",
+          "F12",
+          "F15"
+        ],
+        "bilibili": [
+          "F02",
+          "F05",
+          "F01"
+        ],
+        "youtube": [
+          "F25",
+          "F24",
+          "F22"
+        ]
+      }
+    },
+    {
+      "id": "gaming",
+      "keywords": [
+        "游戏",
+        "实况",
+        "任务",
+        "逃亡",
+        "车辆",
+        "挑战",
+        "GTA"
+      ],
+      "variants": {
+        "xiaohongshu": [
+          "F11",
+          "F12",
+          "F16"
+        ],
+        "bilibili": [
+          "F01",
+          "F02",
+          "F09"
+        ],
+        "youtube": [
+          "F25",
+          "F24",
+          "F17"
+        ]
+      }
+    }
+  ],
+  "fallback": {
+    "xiaohongshu": [
+      "F11",
+      "F12",
+      "F16"
+    ],
+    "bilibili": [
+      "F02",
+      "F09",
+      "F01"
+    ],
+    "youtube": [
+      "F25",
+      "F24",
+      "F17"
+    ]
+  },
+  "important_note": "风格配方只约束排版/色彩字效；如果引用的是人物反应或数据视觉样例，未上传真实人物、数值和事件证据时只使用其文字设计语言，不创造事实或素材。"
+}

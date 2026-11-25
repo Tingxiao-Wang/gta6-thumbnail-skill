@@ -1,0 +1,217 @@
+{
+  "version": "2.1.0",
+  "name": "GTA Thumbnail Pro · 去AI味 / 人工精修约束",
+  "principle": "去AI味不是固定减少画面冲击力，而是消除无法解释用途的装饰和模板化堆叠。保留真正承担情绪、品牌识别、新闻证据或可读性作用的元素。",
+  "execution_priority": [
+    "用户明确要求与用户原文/素材保护",
+    "可辨识的主视觉与可读主标题",
+    "内容真实且不编造事实",
+    "合理的风格/平台差异",
+    "去AI味减法偏好"
+  ],
+  "default_mode": "balanced_cleanup",
+  "modes": {
+    "balanced_cleanup": {
+      "label": "默认人工精修",
+      "description": "不改用户原文；移除无用模板装饰、减少重复副信息、保留主体的画面张力。"
+    },
+    "clean_cinematic": {
+      "label": "电影感克制",
+      "description": "只有主标题（可选必要信息）；强调氛围与负空间，不自动添加标签、线条与英文。"
+    },
+    "editorial_info": {
+      "label": "资讯明确",
+      "description": "可保留有真实信息增益的标签/副标题、证据圈选；拒绝纯装饰线和英文点缀。"
+    },
+    "intentional_hype": {
+      "label": "有目的的强刺激",
+      "description": "主播反应/挑战允许高对比、夸张字效，但不叠无意义组件。"
+    }
+  },
+  "global_hard_constraints": {
+    "text": {
+      "exact_user_headline_immutable": true,
+      "never_translate_or_rewrite_user_text_unasked": true,
+      "default_max_text_roles": 3,
+      "roles": [
+        "headline_required_if_text_requested",
+        "tag_optional",
+        "subtitle_only_when_new_information"
+      ],
+      "never_invent_subtitle_facts": true,
+      "duplicate_role_handling": "仅对模型自行生成、无信息增益的冗余文字建议删除；用户提供文字保留并提示可选精简。",
+      "unrequested_english_auxiliary_words": "禁止默认加入 REVIEW / OFFICIAL / REAL / GAMEPLAY / PRO / CINEMATIC 等英文装饰词；只有视频栏目、主题、用户指定的真实身份标签可保留。",
+      "punctuation": "不无故给标题增加多重感叹号、重复问号、emoji或随机英文"
+    },
+    "decoration": {
+      "default_unmotivated_line_budget": 0,
+      "default_irrelevant_arrows_or_circles": 0,
+      "arrows_or_circles_when_actual_evidence_and_user_need": 2,
+      "tags_default_when_unspecified": 0,
+      "extra_graphic_accents_default": 0,
+      "allowed_if_functional": [
+        "用户指定的系列品牌标记",
+        "有真实指向对象的箭头和圈选",
+        "对比画面的明确分区边界",
+        "保持可读性必须的底色块",
+        "明确分隔多列数据的信息分隔线"
+      ],
+      "forbidden_by_default": [
+        "无意义黄色竖线",
+        "图像顶部和底部装饰横线",
+        "与标题同义的英文小字",
+        "不承担区分作用的空标签",
+        "无来源的播放量/时长/UI/假数据",
+        "AI随机生成的二维码、角标、水印"
+      ]
+    },
+    "typography": {
+      "prefer": [
+        "字体形状和字号层级",
+        "画面留白及局部压暗",
+        "统一一套字效",
+        "重要词适度强调"
+      ],
+      "avoid": [
+        "多层外描边叠加发光",
+        "每个字不同颜色",
+        "不自然的厚重浮雕/渐变",
+        "标题重复多处出现",
+        "无法读取的小字装饰"
+      ],
+      "text_effect_rule": "使用最少的描边、阴影和背景修正达到小尺寸可读；在缩略图尺度校验，不为追求克制而牺牲可读性。"
+    },
+    "image": {
+      "use_full_bleed": true,
+      "protect_uploaded_subject_and_real_facts": true,
+      "not_equal_to_flat_or_low_contrast": true,
+      "do_not_invent_new_vehicle_character_or_logo": true,
+      "avoid_generic_gta_default": [
+        "每张都用紫粉霓虹跑车",
+        "不必要的爆炸粒子",
+        "无依据增加棕榈树/警车/烟雾",
+        "只有海报构图没有视频内容看点"
+      ],
+      "screenshot_based": "在原有截图上进行克制的局部明暗、主体信息分离和调色。若用户希望真正修改原图像素，必须使用有权且可用的图像编辑工具；HTML 只会调色与叠可编辑文字。"
+    }
+  },
+  "platform_rules": {
+    "xiaohongshu": {
+      "ratio_default": "3:4",
+      "max_auto_tag_count": 1,
+      "subtitle_policy": "只有讲得清攻略/对比信息时新增",
+      "remove_unrequested_english": true,
+      "visual_focus": "手机尺寸第一眼看清标题和主体，不使用大面积标语堆叠",
+      "avoid": "红黄贴纸多层堆叠、无意义字框与装饰线"
+    },
+    "bilibili": {
+      "ratio_default": "16:9",
+      "max_auto_tag_count": 1,
+      "subtitle_policy": "深度测评/教程可以增加真实内容维度；电影叙事默认关闭",
+      "remove_unrequested_english": true,
+      "visual_focus": "真实游戏信息与主视觉并重，标签应承担分类功能，不要再加翻译 REVIEW",
+      "avoid": "固定左上黄标签+旁边REVIEW+左下竖线+副标题的机械组合"
+    },
+    "youtube": {
+      "ratio_default": "16:9",
+      "max_auto_tag_count": 1,
+      "subtitle_policy": "默认不新增",
+      "remove_unrequested_english": true,
+      "visual_focus": "一眼看懂人物/事件+短标题，保留用户原文语言",
+      "avoid": "无意义LIVE/PLAY/Day N装饰、过多贴图和多组小字"
+    }
+  },
+  "functional_exceptions": [
+    {
+      "type": "arrow_circle",
+      "if": "真实游戏攻略或BUG细节存在明确可圈选目标",
+      "action": "最多2处，必须指向真实对象"
+    },
+    {
+      "type": "series_label",
+      "if": "用户明确指定且系列运营需要",
+      "action": "保留且限制尺寸"
+    },
+    {
+      "type": "comparison_separator",
+      "if": "两组真实素材直接对照且需要标识区域",
+      "action": "保留功能性分隔，不附加无意义线"
+    },
+    {
+      "type": "logo",
+      "if": "用户提供合法使用权限或自主品牌标识",
+      "action": "按要求保留，不擅自删除"
+    },
+    {
+      "type": "bold_typography",
+      "if": "极小预览仍需要强描边和阴影才能辨识",
+      "action": "允许必要加粗，不强制极简"
+    }
+  ],
+  "decision_checks": [
+    {
+      "id": "T1",
+      "question": "这行字是否提供视频新信息？",
+      "if_no": "模型生成的删除；用户提供的保留并可建议缩减"
+    },
+    {
+      "id": "T2",
+      "question": "线/箭头/矩形是否承担信息分区、真实指向或可读性？",
+      "if_no": "删除或不生成"
+    },
+    {
+      "id": "T3",
+      "question": "英文装饰词是否是用户提供的栏目/真实名称？",
+      "if_no": "不生成"
+    },
+    {
+      "id": "T4",
+      "question": "主标题离开多层描边发光是否仍可读？",
+      "if_yes": "优先减少字效"
+    },
+    {
+      "id": "T5",
+      "question": "是否为了GTA印象而无端加入跑车、棕榈树、霓虹和爆炸？",
+      "if_yes": "删除未授权的新增元素，回归素材主题"
+    },
+    {
+      "id": "T6",
+      "question": "缩成小图能否一眼识别主体与标题？",
+      "if_no": "放大主体/调整负空间，不能单纯再加装饰"
+    }
+  ],
+  "editor_action_contract": {
+    "button_id": "deAiOptimizeBtn",
+    "undo_id": "deAiUndoBtn",
+    "scope": "只操作 HTML 编辑器可编辑图层与可控字效，不能移除底图中已烘焙的横线、Logo或文字",
+    "must_preserve": [
+      "headline.text",
+      "图片像素源",
+      "用户输入的tag.text和subtitle.text",
+      "原始主体坐标",
+      "用户选定平台和画幅"
+    ],
+    "allowed_changes": [
+      "隐藏默认通用占位标签（没有人工修改时）",
+      "减弱可编辑文字的描边和阴影",
+      "保持文案不变时提高排版克制度"
+    ],
+    "report_and_undo": true,
+    "idempotency": "重复点击不得逐次继续破坏标题或素材"
+  },
+  "acceptance": {
+    "hard": [
+      "不存在模型额外添加的英文REVIEW装饰",
+      "不出现无功能的横竖线",
+      "尊重用户原文与用户标签",
+      "不自动改变底图主体",
+      "纯电影型模板不强制标签与副标题",
+      "回退按钮可还原本次修改"
+    ],
+    "conditional": [
+      "功能性箭头和对比线可以保留",
+      "用户主动要求强装饰时允许覆盖默认模式"
+    ],
+    "limitations": "基于宿主模型的自动生图无法保证像素级严格执行；编辑器的撤销功能仅对可编辑图层有效。"
+  }
+}

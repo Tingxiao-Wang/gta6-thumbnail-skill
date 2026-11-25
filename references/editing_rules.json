@@ -1,0 +1,193 @@
+{
+  "version": "1.6.0",
+  "memory_scope": "conversation_only_or_host_supported_state; no claim of cross-session saving",
+  "state_schema": {
+    "platform": "xiaohongshu|bilibili|youtube|multi",
+    "aspect_ratio": "16:9|4:3|3:4|9:16|1:1",
+    "style_id": "one_of_styles.json_recipe_ids",
+    "user_title_exact": "string|null",
+    "title_language": "zh|en|other",
+    "source_assets": [
+      {
+        "asset_ref": "host_uploaded_asset_reference",
+        "type": "gameplay|portrait|comparison",
+        "rights_confirmed": "user_asserted_or_not_known"
+      }
+    ],
+    "hero_subject": "identity_and_geometry_summary",
+    "evidence_object": "only_if_visibly_verified",
+    "palette": "colors_or_mood",
+    "effects": "description",
+    "current_image_ref": "host_current_image_reference_if_available",
+    "locked_fields": [
+      "user_title_exact",
+      "source_assets",
+      "hero_subject",
+      "evidence_object"
+    ],
+    "last_change": "description",
+    "input_mode": "text_to_image|screenshot_based_cover|reference_style|edit_existing",
+    "screenshot_hero_locks": "identity|vehicle_shape|color|city_landmarks|horizon|event_evidence|title_exact",
+    "full_bleed_expected": true,
+    "platform_layout_id": "platform_layout_rules.json layout id",
+    "headline_rect": "normalized_title_region",
+    "hero_rect": "normalized_subject_region"
+  },
+  "patch_algorithm": [
+    "extract user requested change into a concise diff",
+    "compare with previous design state; preserve unspecified fields as locked",
+    "check user request for explicit override of a previous lock",
+    "prefer editing original rendered asset instead of text-to-image regeneration when host supports it",
+    "after edit, verify requested change occurred and locked parts are preserved",
+    "update conversation-local state and report unsupported precision honestly"
+  ],
+  "edit_intents": {
+    "change_headline": {
+      "editable": [
+        "user_title_exact",
+        "typography_layout"
+      ],
+      "lock": [
+        "hero_subject",
+        "source_assets",
+        "camera",
+        "palette"
+      ],
+      "preferred": "editable_text_overlay"
+    },
+    "reduce_glow": {
+      "editable": [
+        "effects",
+        "saturation",
+        "light_intensity"
+      ],
+      "lock": [
+        "hero_subject",
+        "title",
+        "camera",
+        "platform_ratio"
+      ],
+      "preferred": "image_edit_or_adjustments"
+    },
+    "replace_background": {
+      "editable": [
+        "background",
+        "environment",
+        "lighting_if_requested"
+      ],
+      "lock": [
+        "portrait_identity",
+        "main_vehicle_identity",
+        "title"
+      ],
+      "preferred": "masked_edit_with_source"
+    },
+    "move_subject": {
+      "editable": [
+        "hero_position",
+        "crop",
+        "title_zone_if_necessary"
+      ],
+      "lock": [
+        "hero_identity",
+        "user_title_exact",
+        "story_fact"
+      ],
+      "preferred": "recompose_with_original_asset"
+    },
+    "change_platform": {
+      "editable": [
+        "aspect_ratio",
+        "composition_zones",
+        "title_position",
+        "safe_area"
+      ],
+      "lock": [
+        "core_story",
+        "portrait_identity",
+        "title_original_text_unless_user_requests_translation"
+      ],
+      "preferred": "recompose_not_stretch"
+    },
+    "remove_streamer": {
+      "editable": [
+        "portrait_layer",
+        "style_id",
+        "composition"
+      ],
+      "lock": [
+        "gameplay_event",
+        "user_title_exact"
+      ],
+      "preferred": "remove_layer_and_reroute"
+    },
+    "enhance_contrast": {
+      "editable": [
+        "contrast",
+        "background_separation"
+      ],
+      "lock": [
+        "scene_facts",
+        "user_title_exact",
+        "human_features"
+      ],
+      "preferred": "local_adjustment"
+    },
+    "screenshot_cinematic_enhance": {
+      "editable": [
+        "tone_mapping",
+        "local_contrast",
+        "light_and_depth",
+        "nonfactual_atmosphere",
+        "text_position_if_needed"
+      ],
+      "lock": [
+        "source_hero_subject",
+        "vehicle_shape",
+        "character_identity",
+        "scene_landmarks",
+        "user_title_exact",
+        "gameplay_evidence"
+      ],
+      "preferred": "image_edit_with_source_and_mask_or_reference",
+      "forbid": "poster_mockup_or_arbitrary_scene_replacement"
+    },
+    "remove_frame_or_margins": {
+      "editable": [
+        "outer_canvas",
+        "background_extend",
+        "crop",
+        "content_fill"
+      ],
+      "lock": [
+        "source_hero_subject",
+        "user_title_exact",
+        "core_scene"
+      ],
+      "preferred": "source_aware_crop_or_outpaint_to_fullbleed"
+    }
+  },
+  "identity_guardrail": "没有已上传可用原始图/局部编辑能力时，无法保证完全像素一致；不要承诺“脸绝对不变”。",
+  "return_format": "优先图像与一句简短说明；如仅输出提示词需明确未生成图片。",
+  "v14_decision_memory": {
+    "scope": "current_conversation_only",
+    "remember_if_available": [
+      "question_id_and_user_option",
+      "user_selected_review_subtype",
+      "explicit_user_headline",
+      "chosen_platform",
+      "last_generated_subject",
+      "last_image_ref"
+    ],
+    "do_not_reask": "If user only edits previous image, preserve review focus and other design decisions. Question count is not reset by edit.",
+    "apply_edit_first": "EDIT_EXISTING has priority over new-question routing; only revisit content if user explicitly asks to change content goal.",
+    "fallback": "If the previous image/state is unavailable, say what is unavailable rather than asserting persistence."
+  },
+  "screenshot_edit_preflight": "优先判断外框出现在真实导出图还是宿主应用预览UI。若仅是宿主预览，不能把其当作图片本身一部分去修改。",
+  "v16_editing_contract": [
+    "用户只改标题：保持原图、布局、主体，尽可能只改文字图层",
+    "用户只改平台：重新选择该平台版式和画幅，锁定主体身份和标题原文",
+    "用户说更有电影感：增强光影层次与画面融合，不重新画不存在的内容",
+    "用户说去掉边框：先检查成品文件本身是否含边框，忽略宿主界面预览外框"
+  ]
+}

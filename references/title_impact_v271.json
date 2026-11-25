@@ -1,0 +1,207 @@
+{
+  "version": "2.7.1",
+  "title_impact_principle": "标题是一种画面结构，不是截图上的后贴字幕。以字形主次、空间关系、质感/景深、准确钩子和移动端可读性共同形成冲击力。",
+  "order": [
+    "尊重用户原文、无字偏好和风格图",
+    "识别可以从原文截取的唯一核心词，禁止添加新事实",
+    "标题字阶和区块先于字体配方",
+    "与真实主体建立层次（主体后遮挡须实际图层支持）",
+    "依据S01–S12选择材质/色彩/动势",
+    "手机缩略图验收；去AI味仅删除无效装饰"
+  ],
+  "levels": {
+    "subtle": {
+      "scale": 0.96,
+      "stroke": 0.7,
+      "motion": 0.45
+    },
+    "strong": {
+      "scale": 1.0,
+      "stroke": 1.0,
+      "motion": 1.0
+    },
+    "bold": {
+      "scale": 1.12,
+      "stroke": 1.2,
+      "motion": 1.2
+    }
+  },
+  "styles": {
+    "S01": {
+      "name": "电影叙事",
+      "system": "cinematic",
+      "layout_direction": "关键短语低位压场、余字小一阶；以形体和留白制造张力",
+      "color_contrast": "高反差奶油白/暗色窄阴影",
+      "space_relation": "只在有需要时做细微透视，避免漫天光效",
+      "material": "电影化窄体、单层深影",
+      "focus_ratio": 1.16,
+      "tilt_deg": -2,
+      "suggested_edit_recipe": "F01",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S02": {
+      "name": "悬念探索",
+      "system": "discovery",
+      "layout_direction": "疑问或发现的核心词占主视觉，旁侧保留真实线索的指向关系",
+      "color_contrast": "黄色/米白与暗色粗边",
+      "space_relation": "核心词微倾，指向线索但不能圈无关物",
+      "material": "双描边、局部高亮",
+      "focus_ratio": 1.35,
+      "tilt_deg": -6,
+      "suggested_edit_recipe": "F03",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S03": {
+      "name": "强反差对比",
+      "system": "split",
+      "layout_direction": "对比双方的关键词分居两侧，中间可有最少的对比标识",
+      "color_contrast": "冷暖两组对比色而非统一渐变",
+      "space_relation": "分屏边界与标题对齐，真实差别才可突出",
+      "material": "双色分组、厚边缘",
+      "focus_ratio": 1.23,
+      "tilt_deg": 0,
+      "suggested_edit_recipe": "F14",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S04": {
+      "name": "超大数字",
+      "system": "number",
+      "layout_direction": "只让真实数字/年数/时长成为超大字，其余文字缩小解释",
+      "color_contrast": "纯亮色数字+深背景；禁止凭空构造分数",
+      "space_relation": "数字可轻微超出普通行框但不能裁切",
+      "material": "大面积数字、立体厚度",
+      "focus_ratio": 1.42,
+      "tilt_deg": -3,
+      "suggested_edit_recipe": "F03",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S05": {
+      "name": "多图信息拼贴",
+      "system": "collage",
+      "layout_direction": "一个核心判断词压住拼贴主区，其他信息缩为辅助编号",
+      "color_contrast": "明亮重点色+统一黑色边缘",
+      "space_relation": "文字可部分压过图像分割处，不能遮证据",
+      "material": "不规则标题组、分层边框",
+      "focus_ratio": 1.2,
+      "tilt_deg": -4,
+      "suggested_edit_recipe": "F14",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S06": {
+      "name": "背景巨字",
+      "system": "behind",
+      "layout_direction": "巨字占构图主面积，文字与主体需形成前后遮挡；不是普通前景字幕",
+      "color_contrast": "低频高对比的大色块字/轮廓字",
+      "space_relation": "必须借助人物独立抠图或蒙版实现真正遮挡；不能只在全画面顶层叠字就宣称完成",
+      "material": "巨字+前景穿插+层次",
+      "focus_ratio": 1.34,
+      "tilt_deg": 0,
+      "suggested_edit_recipe": "F01",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S07": {
+      "name": "荒诞名场面",
+      "system": "kinetic",
+      "layout_direction": "短感叹或问句作为跳动的视觉符号，但笑点必须来自真实动作",
+      "color_contrast": "橙黄/白字黑边，单处高能量",
+      "space_relation": "标题倾斜且错位，避免同时堆速度线贴纸",
+      "material": "斜排、爆点阴影",
+      "focus_ratio": 1.4,
+      "tilt_deg": -9,
+      "suggested_edit_recipe": "F03",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S08": {
+      "name": "快讯爆料",
+      "system": "news",
+      "layout_direction": "核心消息一行巨字、来源时间只作小信息层",
+      "color_contrast": "深色信息区+黄/白/红单一强调",
+      "space_relation": "允许切角信息色块，但禁止无源官宣字样",
+      "material": "资讯粗黑、强调条",
+      "focus_ratio": 1.22,
+      "tilt_deg": 0,
+      "suggested_edit_recipe": "F14",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S09": {
+      "name": "地图攻略",
+      "system": "wayfinding",
+      "layout_direction": "让地点/任务/关键步骤成为醒目标识，路线和图形必须可靠",
+      "color_contrast": "黄白强调+深蓝灰底",
+      "space_relation": "标题与定位编号构成层次，不能假地图",
+      "material": "编号化字效、简洁描边",
+      "focus_ratio": 1.18,
+      "tilt_deg": 0,
+      "suggested_edit_recipe": "F11",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S10": {
+      "name": "复古杂志",
+      "system": "editorial",
+      "layout_direction": "刊头大字与副标题产生明显字号对比；版式像刊物而非字幕",
+      "color_contrast": "奶油白/棕/墨绿，印刷色",
+      "space_relation": "不规则杂志网格，少量叠印与纸张边缘",
+      "material": "复古衬线/印刷错位",
+      "focus_ratio": 1.2,
+      "tilt_deg": -1,
+      "suggested_edit_recipe": "F24",
+      "default_level": "strong",
+      "allow_no_text": false,
+      "no_fake_data": true
+    },
+    "S11": {
+      "name": "原生奇观",
+      "system": "no_text",
+      "layout_direction": "默认无字；若用户确切需要标题，仅用低权重短语，不抢奇观主体",
+      "color_contrast": "保持游戏真实画面本色",
+      "space_relation": "避免任意角标、三维爆炸字与假实机",
+      "material": "无字或少字",
+      "focus_ratio": 1.0,
+      "tilt_deg": 0,
+      "suggested_edit_recipe": "F11",
+      "default_level": "subtle",
+      "allow_no_text": true,
+      "no_fake_data": true
+    },
+    "S12": {
+      "name": "极简氛围",
+      "system": "minimal",
+      "layout_direction": "默认无字或少字；用留白与微妙字重差，而非夸张立体字",
+      "color_contrast": "低饱和柔和高可读配色",
+      "space_relation": "细小标题沿留白排列，拒绝闪光和重阴影",
+      "material": "低信息量纤细文字",
+      "focus_ratio": 1.0,
+      "tilt_deg": 0,
+      "suggested_edit_recipe": "F11",
+      "default_level": "subtle",
+      "allow_no_text": true,
+      "no_fake_data": true
+    }
+  },
+  "qa": [
+    "标题所有字按原次序完整可读，禁止缺词/错字/意外重复",
+    "焦点词能被第一眼感知，文字不过分覆盖脸或证据",
+    "除S11/S12外避免整张图只有一条统一字号文字",
+    "背景巨字需要独立主体图层/蒙版才能实现真实前后遮挡",
+    "禁止以加虚假评级、装饰性英文或多个发光层来制造视觉冲击",
+    "用户明确选择无字时不得强制叠标题"
+  ]
+}

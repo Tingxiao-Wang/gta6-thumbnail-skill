@@ -1,0 +1,133 @@
+{
+  "version": "1.7.0",
+  "name": "GTA Thumbnail Pro",
+  "description": "V1.6 原有三平台生成策略之外的可编辑排版交接合同。宿主负责无字底图，用户在 tools/thumbnail-editor.html 实时修改图层后导出。",
+  "preferred_workflow": [
+    "从用户需求及参考截图生成或编辑一张不含任何文字、Logo、边框、平台UI的满版背景图",
+    "将用户原始标题、可选标签、副标题与发布平台保留为独立图层，而不是渲染进底图",
+    "把背景图片交付用户并提示打开本地 tools/thumbnail-editor.html，通过上传按钮导入背景",
+    "由用户在编辑器实时拖动文字、选择字体、字号、描边、阴影和颜色、调整图片效果",
+    "用户从编辑器导出 PNG 和可再次导入的编辑项目 JSON"
+  ],
+  "user_intent_routing": {
+    "explicit_editor": "若用户希望可编辑、拖动文字、实时预览、改字体/描边，默认优先准备无字背景及本地编辑器，不把标题烧进生图结果。",
+    "normal_generation": "用户只要求直接成品时仍按 V1.6 执行；可主动告知另有可编辑预览模式，但不要强制引导。",
+    "already_has_text_image": "若上传图已内嵌文字，可在编辑器上增加文字但不能像素级抹掉旧字；优先让生图/修图工具输出无字底图后再编辑。",
+    "no_image_tool": "不能谎称已生成背景；可提供用户自己上传合法素材进入编辑器。"
+  },
+  "editor_path": "tools/thumbnail-editor.html",
+  "delivery": {
+    "format": "standalone offline HTML5 file",
+    "requires_server": false,
+    "requires_model_or_api_key": false,
+    "can_embed_in_doubao_or_workbuddy_chat": false,
+    "note": "能否由宿主直接打开本地HTML取决于宿主权限；不保证在豆包/WorkBuddy聊天内部嵌入交互UI。"
+  },
+  "size_presets": {
+    "bilibili": [
+      {
+        "id": "bili16",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "id": "bili43",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "xiaohongshu": [
+      {
+        "id": "xhs34",
+        "width": 1080,
+        "height": 1440
+      },
+      {
+        "id": "xhs11",
+        "width": 1080,
+        "height": 1080
+      }
+    ],
+    "youtube": [
+      {
+        "id": "yt16",
+        "width": 3840,
+        "height": 2160
+      },
+      {
+        "id": "ytshort",
+        "width": 2160,
+        "height": 3840
+      }
+    ]
+  },
+  "editable_layers": [
+    "headline",
+    "tag",
+    "subtitle"
+  ],
+  "text_fields": [
+    "text",
+    "visible",
+    "x",
+    "y",
+    "width",
+    "fontFamily",
+    "fontWeight",
+    "fontSize",
+    "fill",
+    "stroke",
+    "strokeWidth",
+    "shadowBlur",
+    "shadowColor",
+    "align",
+    "letterSpacing"
+  ],
+  "background_fields": [
+    "zoom",
+    "x",
+    "y",
+    "brightness",
+    "contrast",
+    "saturation",
+    "darken",
+    "vignette"
+  ],
+  "design_invariants": [
+    "用户提供的标题逐字保留，不偷偷增加或删减文字",
+    "编辑器文字与上传背景始终分层，字体与视觉效果不回传修改原始截图",
+    "背景未导入时出现可识别的内置示例图，用户不应误认它是生图结果",
+    "导出的是浏览器真实渲染的PNG，字体由本地可用字体决定",
+    "不要声称编辑器能自动去除嵌入原图的旧标题、修复AI生成错误人物或代替图生图",
+    "所有编辑在本地进行，不上传素材到服务器"
+  ],
+  "first_test": {
+    "platform": "bilibili",
+    "headline": "孩子们真正的史一游来了",
+    "template": "电影感、留主视觉、左侧标题",
+    "acceptance": [
+      "上传背景后画面立即可见",
+      "改文字立即显示",
+      "拖动标题后位置更新",
+      "更换字体和描边实时显示",
+      "导出1920x1080 PNG",
+      "保存并恢复编辑项目"
+    ]
+  },
+  "v25_reference_inputs": {
+    "style_reference_source": [
+      "user_uploaded",
+      "bundled_auto",
+      "bundled_manual",
+      "none"
+    ],
+    "selected_reference_ids": [
+      "b01"
+    ],
+    "selected_reference_paths": [
+      "assets/bundled_references/bilibili/b (1).png"
+    ],
+    "previous_result_path": null,
+    "comparison_checklist": "references/comparison_rules_v25.json"
+  }
+}

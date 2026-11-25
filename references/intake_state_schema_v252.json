@@ -1,0 +1,88 @@
+{
+  "version": "2.5.2",
+  "name": "conversation_intake_state",
+  "lifecycle": "persist within one conversation/project only; do not claim remote storage",
+  "required_fields": [
+    "mode",
+    "assets",
+    "answers",
+    "guided_step",
+    "pending_question",
+    "generation_allowed"
+  ],
+  "fields": {
+    "mode": {
+      "enum": [
+        "assisted",
+        "instant",
+        "guided8",
+        "edit"
+      ]
+    },
+    "assets": {
+      "type": "array",
+      "item": {
+        "id": "image_N",
+        "path": "string",
+        "role": "subject | style_reference | both | null",
+        "role_source": "explicit | confirmed | inferred | unresolved"
+      }
+    },
+    "answers": {
+      "type": "object",
+      "includes": [
+        "platform",
+        "topic",
+        "content_angle",
+        "headline_exact",
+        "cover_style",
+        "person_reference",
+        "expression_action",
+        "additional_assets",
+        "background_tone",
+        "font_style",
+        "font_effect",
+        "final_headline"
+      ]
+    },
+    "guided_step": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9
+    },
+    "pending_question": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "keys": [
+        "id",
+        "type",
+        "text",
+        "choices"
+      ]
+    },
+    "completed_steps": {
+      "type": "array",
+      "items": "integer"
+    },
+    "skipped_steps": {
+      "type": "array",
+      "items": "integer"
+    },
+    "generation_allowed": {
+      "type": "boolean"
+    },
+    "event_log": {
+      "type": "array",
+      "items": "assistant_question|user_answer|skip|change|ready"
+    }
+  },
+  "invariants": [
+    "Unconfirmed required image roles block generation.",
+    "Confirmed image roles must never be silently changed.",
+    "Numeric answers bind to active pending question only.",
+    "Step N+1 cannot be asked before N is answered/skipped.",
+    "An explicit title is not changed by title recommendations."
+  ]
+}

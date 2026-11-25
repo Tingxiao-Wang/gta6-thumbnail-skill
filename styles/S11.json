@@ -1,0 +1,26 @@
+{
+  "id": "S11",
+  "english_name": "Native Spectacle",
+  "name": "原生奇观风",
+  "intended_content": "罕见事件、实机高能",
+  "composition": "裁切突出唯一事件；主体建议占30%以上",
+  "palette": "原始游戏色彩",
+  "typography": "默认无字",
+  "required_visual_anchors": [
+    "真实且独立有传播价值的画面"
+  ],
+  "optional_visual_elements": [
+    "裁切",
+    "亮度",
+    "适度锐化"
+  ],
+  "forbidden_elements": [
+    "虚构实机",
+    "强制文字"
+  ],
+  "preview_svg": "references/design_principles/style_previews/S11.svg",
+  "reference_assets": [],
+  "reference_image_type": "original_abstract_svg_design_schematic",
+  "source": "GTA6封面设计原则_V1.0.html",
+  "user_document_data_not_performance_validated": true
+}

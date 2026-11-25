@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>GTA6 视频与图文封面内容参考手册</title><style>
+:root{--ink:#111827;--sub:#6b7280;--line:#e5e7eb;--soft:#f9fafb;--blue:#185FA5;--pink:#993556;--amber:#B45309;--red:#B91C1C}
+*{box-sizing:border-box}
+body{margin:0;background:#eef0f3;color:var(--ink);font:15px/1.78 -apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.page{max-width:1000px;margin:0 auto;background:#fff;padding:60px 68px 88px}
+h1{font-size:31px;line-height:1.35;font-weight:600;margin:0 0 10px;letter-spacing:-.3px}
+h2{font-size:21px;font-weight:600;margin:56px 0 6px;padding-top:18px;border-top:1px solid var(--line)}
+h3{font-size:16px;font-weight:600;margin:0}
+h4{font-size:14px;font-weight:600;margin:22px 0 8px}
+p{margin:10px 0}
+.lead{font-size:16px;color:#374151;margin:0 0 4px}
+.meta{font-size:12.5px;color:var(--sub);border-left:2px solid var(--line);padding-left:12px;margin:18px 0 0}
+.meta b{color:#374151;font-weight:500}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--blue);text-transform:uppercase;font-weight:600;margin-bottom:10px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0}
+nav a{font-size:12.5px;color:#374151;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--soft)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 0}
+.card{border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px;background:var(--soft)}
+.card .k{font-size:12px;color:var(--sub);margin-bottom:6px}
+.card .v{font-size:25px;font-weight:600;letter-spacing:-.5px;line-height:1.2}
+.card .d{font-size:12px;color:var(--sub);margin-top:6px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:18px}
+.bar-row{display:grid;grid-template-columns:88px 1fr 54px;align-items:center;gap:10px;margin:7px 0;font-size:12.5px;color:#374151}
+.bl{color:var(--sub)}
+.bt{height:9px;background:#eef0f3;border-radius:99px;overflow:hidden;display:block}
+.bt i{display:block;height:100%;background:var(--blue);border-radius:99px}
+.bt i.amber{background:#D97706}
+.bv{text-align:right;color:var(--sub);font-variant-numeric:tabular-nums}
+.type{margin:34px 0 0;padding:22px 24px 20px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.type-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.idx{font-size:12px;font-weight:600;color:#fff;background:var(--ink);border-radius:5px;padding:3px 8px;letter-spacing:.04em}
+.formula{margin:10px 0 4px;font-size:13.5px;color:#374151;background:var(--soft);border-left:2px solid var(--blue);padding:9px 12px;border-radius:0 6px 6px 0}
+.formula b{color:var(--blue);font-weight:600;margin-right:6px}
+.why{font-size:13px;color:var(--sub);margin:8px 0 0}
+.covers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 4px}
+.cover{margin:0;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+.cover img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#e5e7eb}
+.cover figcaption{padding:9px 11px 11px}
+.ct{font-size:12.5px;font-weight:500;line-height:1.45;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cm{font-size:11.5px;color:var(--sub)}
+.cn{font-size:11.5px;color:var(--blue);margin-top:7px;padding-top:7px;border-top:1px dashed var(--line);line-height:1.5}
+table{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:13px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:#374151;background:var(--soft);font-size:12.5px}
+td code{background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12px}
+.note{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;font-size:13px;color:#78350F;margin:16px 0}
+.note b{color:#92400E}
+.xhs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 4px}
+.xhs{border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.xc{aspect-ratio:3/4;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;overflow:hidden}
+.xc .bgimg{position:absolute;inset:0;background:#d1d5db;background-size:cover;background-position:center;filter:saturate(.9)}
+.xc .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 100%)}
+.xc .txt{position:relative;color:#fff}
+.xc .kicker{display:inline-block;font-size:10px;background:#fff;color:#111;border-radius:3px;padding:2px 5px;margin-bottom:7px;font-weight:600}
+.xc .big{font-size:19px;font-weight:600;line-height:1.3;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.xc .small{font-size:10.5px;opacity:.9;margin-top:6px}
+.xn{padding:9px 11px;font-size:11.5px;color:var(--sub);background:#fff;border-top:1px solid var(--line);line-height:1.5}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.box{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--soft)}
+.box h4{margin:0 0 8px;font-size:13.5px;color:var(--blue)}
+.box.x{border-color:#F3D0DA;background:#FDF5F7}
+.box.x h4{color:var(--pink)}
+.box ul{margin:6px 0 0;padding-left:18px;font-size:13px}
+.box li{margin:5px 0;color:#374151}
+ul.tight{margin:8px 0;padding-left:20px;font-size:13.5px}
+ul.tight li{margin:6px 0}
+.cheat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.cheat div{border:1px solid var(--line);border-radius:8px;padding:11px 13px;font-size:12.5px;background:#fff}
+.cheat b{display:block;font-size:12px;color:var(--sub);font-weight:500;margin-bottom:3px}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);font-size:11.5px;color:var(--sub);line-height:1.7}
+@media (max-width:760px){.page{padding:32px 20px 48px}h1{font-size:24px}.cards,.covers,.xhs-grid,.split,.two,.cheat{grid-template-columns:1fr}}
+@media print{body{background:#fff}.page{box-shadow:none;max-width:none;padding:0}.type,table,.cover,.xhs{break-inside:avoid}nav{display:none}}
+</style></head><body><div class="page"><div class="eyebrow">内容研究 · 封面参考</div><h1>GTA6 视频与图文封面内容参考手册</h1><p>【公开候选版】第三方图片已移除，保留原始内容研究、封面公式、示意图与设计建议。</p><p class="lead">B 站 8 类视频 × 小红书 7 类笔记：真实封面案例、封面公式、文案句式与设计规范</p><div class="meta"><b>数据时间</b> 2026 年 11 月 23 日　<b>样本</b> B 站 347 条 GTA6 相关视频（发售前 193 / 发售后 154）　<b>来源</b> B 站公开搜索接口抓取 + 小红书公开报道与话题页　<b>说明</b> 封面版权归原作者，此处仅作研究与学习用途</div><nav><a href="#summary">核心结论</a><a href="#data">样本画像</a><a href="#bili">B站八类</a><a href="#xhs">小红书七类</a><a href="#copy">文案句式库</a><a href="#design">设计规范</a><a href="#risk">避坑</a><a href="#cheat">速查表</a></nav><h2 id="summary">一、核心结论</h2><p>把 347 条样本的封面横向摊开看，同质化程度比想象中高得多：绝大多数封面都在用同一张官方 KV——粉紫渐变的 VI 标、Jason 与 Lucia、棕榈树和跑车。真正跑出百万播放的，往往不是“更好看的 KV”，而是在这张底图上做了一个明确的视觉决策。</p><div class="cards"><div class="card"><div class="k">最大公约数</div><div class="v">官方 KV</div><div class="d">预告期几乎 100% 复用，认知成本最低</div></div><div class="card"><div class="k">最强点击钩子</div><div class="v">大数字</div><div class="d">10 分 / 3.7 分 / 6 星 / 210G / 80 小时</div></div><div class="card"><div class="k">最有效的差异点</div><div class="v">黄字黑边</div><div class="d">在粉紫信息流里，黄色是唯一稳定的破局色</div></div><div class="card"><div class="k">占比最高的时长</div><div class="v">1–5 分钟</div><div class="d">36%，切片与单点解析的主战场</div></div><div class="card"><div class="k">标题最高频词</div><div class="v">预告 / 解析</div><div class="d">52 次与 38 次，其次是彩蛋 34 次</div></div><div class="card"><div class="k">小红书主战场</div><div class="v">3:4 图文</div><div class="d">大字 + 场景，游戏是背景板不是主角</div></div></div><div class="note"><b>一句话策略：</b>用官方 KV 保证“这是 GTA6”的识别，只留一个区域做差异化——一个黄字、一个红圈、一个大数字，或者干脆一个字都不放，只给一个奇观画面。三者同时上，等于没有重点。</div><h2 id="data">二、样本画像</h2><p>样本取自 B 站视频搜索，覆盖「GTA6 / 侠盗猎车手6 / 解析 / 攻略 / 彩蛋 / 实况 / 评测 / 名场面 / 完美劫案 / 二创 / 拍照 / 地图 / 预告」等关键词，按播放、综合、最新三种排序各取两页，去重后得到 347 条。</p><div class="split"><div><h4>视频时长分布</h4><div class="bar-row"><span class="bl">≤ 1 分钟</span><span class="bt"><i style="width:15.3%"></i></span><span class="bv">53 条</span></div><div class="bar-row"><span class="bl">1–5 分钟</span><span class="bt"><i style="width:36.3%"></i></span><span class="bv">126 条</span></div><div class="bar-row"><span class="bl">5–15 分钟</span><span class="bt"><i style="width:24.2%"></i></span><span class="bv">84 条</span></div><div class="bar-row"><span class="bl">15–60 分钟</span><span class="bt"><i style="width:18.4%"></i></span><span class="bv">64 条</span></div><div class="bar-row"><span class="bl">&gt; 60 分钟</span><span class="bt"><i style="width:5.8%"></i></span><span class="bv">20 条</span></div></div><div><h4>标题高频词（GTA6 除外）</h4><div class="bar-row"><span class="bl">预告</span><span class="bt"><i class="amber" style="width:100.0%"></i></span><span class="bv">52</span></div><div class="bar-row"><span class="bl">解析</span><span class="bt"><i class="amber" style="width:73.1%"></i></span><span class="bv">38</span></div><div class="bar-row"><span class="bl">彩蛋</span><span class="bt"><i class="amber" style="width:65.4%"></i></span><span class="bv">34</span></div><div class="bar-row"><span class="bl">地图</span><span class="bt"><i class="amber" style="width:51.9%"></i></span><span class="bv">27</span></div><div class="bar-row"><span class="bl">细节</span><span class="bt"><i class="amber" style="width:36.5%"></i></span><span class="bv">19</span></div><div class="bar-row"><span class="bl">泄露</span><span class="bt"><i class="amber" style="width:25.0%"></i></span><span class="bv">13</span></div><div class="bar-row"><span class="bl">评测</span><span class="bt"><i class="amber" style="width:23.1%"></i></span><span class="bv">12</span></div><div class="bar-row"><span class="bl">4K</span><span class="bt"><i class="amber" style="width:21.2%"></i></span><span class="bv">11</span></div><div class="bar-row"><span class="bl">NPC</span><span class="bt"><i class="amber" style="width:19.2%"></i></span><span class="bv">10</span></div><div class="bar-row"><span class="bl">爆料</span><span class="bt"><i class="amber" style="width:17.3%"></i></span><span class="bv">9</span></div><div class="bar-row"><span class="bl">实况</span><span class="bt"><i class="amber" style="width:17.3%"></i></span><span class="bv">9</span></div><div class="bar-row"><span class="bl">杰森</span><span class="bt"><i class="amber" style="width:17.3%"></i></span><span class="bv">9</span></div></div></div><p class="why">读法：1–5 分钟与 5–15 分钟合计约 60%，说明这个题材的主流不是“长篇纪录片”，而是“单点讲透”；但同时 &gt;60 分钟的全流程仍有 20 条，且头部播放极高——两端都能活，中间地带（15–60 分钟）反而最挤。</p><h2 id="bili">三、B 站：八类视频的封面拆解</h2><p>每一类给出「封面公式 + 真实案例 + 设计意图」。封面图均来自公开搜索结果，标题与播放量为抓取时点数据。</p><div class="type"><div class="type-head"><span class="idx">A</span><h3>官方物料 / 预告搬运</h3></div><p class="formula"><b>封面公式</b>官方 KV 直出 + 平台角标，零中文大字</p><p class="why">版权最安全、认知成本最低，但也最容易在信息流里被同款淹没；适合抢首发时效。</p><div class="covers"><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">【IGN】《GTA6》首个预告</div>
+<div class="cm">IGN中国 · 1581.9万播放</div>
+<div class="cn">官方海报原样直出，粉紫渐变 + 双人 + 棕榈树，左上角只加 IGN 角标</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">Grand Theft Auto VI 预告片 2</div>
+<div class="cm">RockstarGames · 618.3万播放</div>
+<div class="cn">纯 KV，无任何叠加文字，靠品牌本身撑点击</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">GTAVI现已推出</div>
+<div class="cm">RockstarGames · 502.3万播放</div>
+<div class="cn">KV 底部加一行发售信息，把“已上线”做成信息增量</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">【4K中字】《GTA6》官方首支预告片 | 来源：Rockstar Games</div>
+<div class="cm">KG-Area21 · 134.7万播放</div>
+<div class="cn">真人出镜 + 白色“OFFICIAL 4K TRAILER”，用清晰度和官方感做差异</div>
+</figcaption></figure></div></div><div class="type"><div class="type-head"><span class="idx">B</span><h3>深度解析 / 考据</h3></div><p class="formula"><b>封面公式</b>多图拼贴 + 中央标识 + 说明字，信息密度取胜</p><p class="why">B 站最典型的长青类型，标题里必须给出“量级承诺”（万字 / 2小时 / 99个 / 全最）。</p><div class="covers"><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">《GTA6》全网最全泄露实机分析！角色、玩法、武器多方面解读——上期「Game墙」</div>
+<div class="cm">游戏星GameStar · 275.8万播放</div>
+<div class="cn">多张实机截图拼贴，中央压“Grand Theft Auto”字标，左下粉色长标题</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">🔥《GTA6》第二支预告片！地图大到惊人！信息量爆炸！！！</div>
+<div class="cm">游戏星GameStar · 134.1万播放</div>
+<div class="cn">官方 KV 打底 + 火焰 emoji + 黄字“信息量爆炸”</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">🏚️《GTA6》最全地图解析！军事基地、赛车比赛，R星到底藏了多少东西？「GameStar」</div>
+<div class="cm">游戏星GameStar · 121.8万播放</div>
+<div class="cn">游戏鸟瞰地图铺满画面，白字直接压在地形上</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">GTA6已经彻底变态的细节和彩蛋【彩蛋艺术馆】</div>
+<div class="cm">黑椒墨鱼 · 132.3万播放</div>
+<div class="cn">女性角色实机截图 + 白色描边“GTA6 守身如玉的细节彩蛋”，官方VI标压在中间</div>
+</figcaption></figure></div></div><div class="type"><div class="type-head"><span class="idx">C</span><h3>全流程实况 / 开荒</h3></div><p class="formula"><b>封面公式</b>主播脸或官方 KV + 时长承诺 + 4K/PS5 角标</p><p class="why">卖的是“陪伴感”和“进度”，封面要能让观众一秒判断更新到哪、画质如何。</p><div class="covers"><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">【侠盗猎车手6】4K 最高画质 全网首发 全任务 全剧情流程通关攻略 开放世界冒险游戏 GTA6 - Grand Theft Auto VI</div>
+<div class="cm">11的游戏世界 · 840.2万播放</div>
+<div class="cn">电影感人物剪影 + 城市夜景，左上角“1K画质”角标</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">【更新至40P】老戴《侠盗猎车手 6》初见开荒全实况流程解说【GTA 6】</div>
+<div class="cm">老戴在此 · 319.4万播放</div>
+<div class="cn">官方 KV + 黄色“老戴 实况流程解说”，把主播名做成品牌</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">小宇4K【GTA6 侠盗猎车手6】PS5Pro 最高画质 完美结局 全流程 全支线 通关解说</div>
+<div class="cm">小宇热游解说 · 102.3万播放</div>
+<div class="cn">多图拼贴 + 白色“4K / PS5 / GTA6”三行大字</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">【4K】全网首发《GTA6》主线全流程实况解说</div>
+<div class="cm">友利奈绪大魔王丶 · 244.4万播放</div>
+<div class="cn">官方 KV 变体 + 白色小字标注“4K 全网首发”，靠画质承诺</div>
+</figcaption></figure></div></div><div class="type"><div class="type-head"><span class="idx">D</span><h3>评测 / 锐评 / 评分</h3></div><p class="formula"><b>封面公式</b>大数字 + 人物半身，红色专用于评分与结论</p><p class="why">数字是最强的点击钩子；正反评价都能起量，关键是立场要一眼可见。</p><div class="covers"><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">【IGN】10分，《GTA 6》评测：这个时代最伟大的游戏</div>
+<div class="cm">IGN中国 · 326.2万播放</div>
+<div class="cn">红色六边形里一个大“10”，双主角半身像，几乎无其他文字</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">游戏史上最大的反转！M站GTA6用户评分仅3.7分！M站用户评分公布！</div>
+<div class="cm">老蕉Banous · 69.6万播放</div>
+<div class="cn">紫色“两极反转” + 粉色大圆里的“3.7”，配 M 站评分页面截图作证据</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">史上最强！GTA6 购买前，你需要知道的 10 件事！</div>
+<div class="cm">贪玩歌姬小宁子 · 114.4万播放</div>
+<div class="cn">真人出镜 + 白底黄字标题，把“10件事”做成清单感</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">《GTA6》已通关，无剧透聊聊R星有多无敌【视频播客 EP.81】</div>
+<div class="cm">核电波 · 111.0万播放</div>
+<div class="cn">播客式双人画面 + 一句“无剧透”消除顾虑</div>
+</figcaption></figure></div></div><div class="type"><div class="type-head"><span class="idx">E</span><h3>攻略 / 彩蛋 / 发现</h3></div><p class="formula"><b>封面公式</b>红圈 + 白箭头指向目标，或干脆只放奇观画面</p><p class="why">“发现类”的核心是制造信息差：让观众看到但看不懂，或看到但找不到。</p><div class="covers"><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">以防你不知道GTA6的狗子会开摩托艇来救你！</div>
+<div class="cm">忘川无语 · 345.1万播放</div>
+<div class="cn">纯游戏画面，无大字，靠“狗骑摩托艇”的荒诞感直接取胜</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">以防你不知道GTA6路人是如何暴富的💰</div>
+<div class="cm">盾盾盾反 · 244.6万播放</div>
+<div class="cn">左上“热榜”贴纸 + 真人惊讶脸 + 黄字“目前最搞笑的视频”</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">GTA6 第一次感觉抢车这么的无力</div>
+<div class="cm">VictorCharlie · 159.9万播放</div>
+<div class="cn">第一人称抢车实拍 + 底部一行小白字，像纪录片</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">24小时尾行！跟踪GTA6里的NPC，她的一天有多真实？</div>
+<div class="cm">爬爬娘 · 211.9万播放</div>
+<div class="cn">红圈 + 白箭头精确指向 NPC，黄字只写四个字“跟NPC回家”</div>
+</figcaption></figure></div></div><div class="type"><div class="type-head"><span class="idx">F</span><h3>搞笑切片 / 名场面</h3></div><p class="formula"><b>封面公式</b>高能瞬间 + 短句大字 + 表情包/贴纸</p><p class="why">切片靠“情绪峰值”而非信息量；封面要截在动作最夸张的那一帧。</p><div class="covers"><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">尾随NPC的真实反应</div>
+<div class="cm">叶猫Gamer · 576.3万播放</div>
+<div class="cn">游戏背影 + 粉紫底白字“反应真实到离谱”，五字说清看点</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">Speed抢走老奶奶的电动轮椅 画面过于逼真而感到内疚 最后被警察逮捕</div>
+<div class="cm">Speed-777 · 95.9万播放</div>
+<div class="cn">事故现场游戏画面，无文字，靠画面本身传播</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">以防你不知道单膝下跪和让美女NPC以为你要和她求婚有多搞笑！被暴揍一顿！</div>
+<div class="cm">许愿龙神 · 53.6万播放</div>
+<div class="cn">游戏画面原样 + 小字标题，保留“会发生什么”的悬念</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">王浩宇玩GTA6竟意外发现丧尸彩蛋？</div>
+<div class="cm">梓辰林树切片 · 215.9万播放</div>
+<div class="cn">红色手写体“《GTA6》有丧尸？”压在暗调游戏画面上，像弹幕又像爆料</div>
+</figcaption></figure></div></div><div class="type"><div class="type-head"><span class="idx">G</span><h3>二创 / AI / 鬼畜</h3></div><p class="formula"><b>封面公式</b>强风格化：电影感、拼贴、真人化，弱化官方 KV</p><p class="why">二创的封面不能像“游戏视频”，要像“作品”，才有跨圈层传播力。</p><div class="covers"><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">非凡之恶：这两人玩GTA6认识的</div>
+<div class="cm">快乐阿托 · 440.9万播放</div>
+<div class="cn">AI 生成的电影感双人构图 + 黑底手写体片名，完全脱离游戏截图</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">GTA6：中国</div>
+<div class="cm">自动鬼畜中的WZ · 235.0万播放</div>
+<div class="cn">多人物拼贴 + VI 三角标，用“中国”制造错位感</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">【逆天中配】漫威  但是GTA6预告</div>
+<div class="cm">恶人王小花 · 219.1万播放</div>
+<div class="cn">真人 cos + 红字“中文配音 / 逆天队长”，配音梗前置</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">GTA6真人版！欢迎来到真正的罪恶都市-迈阿密！！</div>
+<div class="cm">小鹿Lawrence · 232.3万播放</div>
+<div class="cn">真人美女 + 游戏 UI 元素叠加，模糊现实与游戏边界</div>
+</figcaption></figure></div></div><div class="type"><div class="type-head"><span class="idx">H</span><h3>资讯 / 爆料</h3></div><p class="formula"><b>封面公式</b>多层文字堆叠 + 红黄警告色 + emoji</p><p class="why">发售前的流量主力，标题里必须出现“官宣 / 曝光 / 泄露 / 首次”这类确定性词。</p><div class="covers"><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">R星亮出王牌！《GTA6》史诗级大爆料正式登场#神作来临</div>
+<div class="cm">杰森说彩蛋 · 324.7万播放</div>
+<div class="cn">红黄撞色 + 四层文字（GTA6 / 演示泄露 / 地图曝光 / 大爆料），信息轰炸</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">真的太离谱了！R星大作《GTA6》售价首次曝光！竟然要这个数？！《星空》好评率下跌！《猛兽派对》在线人数暴涨！Epic免费喜加一！</div>
+<div class="cm">Steam-游戏特惠 · 200.0万播放</div>
+<div class="cn">黄字“售价曝光！涨至4位数！” + 惊讶 emoji，纯情绪驱动</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">GTA6已经开发完成！画面堪比现实</div>
+<div class="cm">大队长优化指南 · 268.4万播放</div>
+<div class="cn">超大号黄字压在游戏画面上，字占封面近一半</div>
+</figcaption></figure><figure class="cover">
+<div style="padding:1.5rem;color:#6b7280;font-size:13px;text-align:center;background:#f3f4f6">第三方封面截图未包含在公开版中。可自行添加具有使用权的视觉样例。</div>
+<figcaption>
+<div class="ct">R星正式官宣《GTA6》目前正在积极开发中！这次是真正的官方消息！</div>
+<div class="cm">TG探员DetectiveTG · 217.4万播放</div>
+<div class="cn">黑底 + 人物半身 + 红字“终于等到你”，像官宣海报</div>
+</figcaption></figure></div></div><h2 id="xhs">四、小红书：七类图文/视频的封面拆解</h2><p>小红书以 3:4 图文笔记为主，视频也多为竖屏短片。封面逻辑与 B 站完全不同：不追求信息密度，追求「一眼看懂情绪 + 一眼看出是我的生活」。以下版式为结构示意，非真实笔记截图。</p><div class="xhs-grid"><div class="xhs">
+<div class="xc" style="background:#111">
+<div class="bgimg" style="background:linear-gradient(135deg,#c9b8d8,#e8b7c4 55%,#f0c9a0)"></div>
+<div class="veil"></div>
+<div class="txt"><span class="kicker">#GTA6</span><div class="big">GTA6 预购到账｜客厅第三台主机</div><div class="small">今晚八点，罪恶城见</div></div>
+</div>
+<div class="xn"><b>A · 晒单 / 开箱 / 场景展示</b><br/>真人半身 + 主机/光盘实物 + 一行大字<br/><span style="color:#993556">本质是“生活方式展示”，游戏只是身份标签。视觉重心是人，不是游戏。</span></div>
+</div><div class="xhs">
+<div class="xc" style="background:#111">
+<div class="bgimg" style="background:linear-gradient(135deg,#c9b8d8,#e8b7c4 55%,#f0c9a0)"></div>
+<div class="veil"></div>
+<div class="txt"><span class="kicker">#GTA6</span><div class="big">请假玩 GTA6，结果在游戏里上班</div><div class="small">这代 GTA，个个都是大大的良民</div></div>
+</div>
+<div class="xn"><b>B · 玩梗 / 情绪共鸣</b><br/>游戏截图 + 一句戳心文案，字号要大到像表情包<br/><span style="color:#993556">不解释背景，只给结论式吐槽；共鸣来自“这说的就是我”。</span></div>
+</div><div class="xhs">
+<div class="xc" style="background:#111">
+<div class="bgimg" style="background:linear-gradient(135deg,#c9b8d8,#e8b7c4 55%,#f0c9a0)"></div>
+<div class="veil"></div>
+<div class="txt"><span class="kicker">#GTA6</span><div class="big">GTA6 首发别乱买｜PS5 版本怎么选</div><div class="small">多花两千上 Pro，到底值不值</div></div>
+</div>
+<div class="xn"><b>C · 选购避坑 / 入坑指南</b><br/>主机或光盘实物 + 数字清单标题（3/5/10 条）<br/><span style="color:#993556">收藏率最高的类型；标题里必须有“避坑 / 别买 / 值不值”。</span></div>
+</div><div class="xhs">
+<div class="xc" style="background:#111">
+<div class="bgimg" style="background:linear-gradient(135deg,#c9b8d8,#e8b7c4 55%,#f0c9a0)"></div>
+<div class="veil"></div>
+<div class="txt"><span class="kicker">#GTA6</span><div class="big">在 GTA6 里拍到了电影感</div><div class="small">罪恶城的雨夜，随手一拍就是壁纸</div></div>
+</div>
+<div class="xn"><b>D · 拍照出片 / 截图美学</b><br/>纯游戏画面，不加字或只在角落加一行小字<br/><span style="color:#993556">卖的是审美，任何大字都会破坏画面；靠构图和光影本身取胜。</span></div>
+</div><div class="xhs">
+<div class="xc" style="background:#111">
+<div class="bgimg" style="background:linear-gradient(135deg,#c9b8d8,#e8b7c4 55%,#f0c9a0)"></div>
+<div class="veil"></div>
+<div class="txt"><span class="kicker">#GTA6</span><div class="big">迈阿密罪城同款打卡路线</div><div class="small">别再说迈阿密无聊了</div></div>
+</div>
+<div class="xn"><b>E · 实景打卡 / 旅行攻略</b><br/>现实照片 + 地点标签 + “同款”字样<br/><span style="color:#993556">把虚拟场景映射到现实地点，制造“我也能去”的行动感。</span></div>
+</div><div class="xhs">
+<div class="xc" style="background:#111">
+<div class="bgimg" style="background:linear-gradient(135deg,#c9b8d8,#e8b7c4 55%,#f0c9a0)"></div>
+<div class="veil"></div>
+<div class="txt"><span class="kicker">#GTA6</span><div class="big">Lucia 仿妆｜从监狱橙到黑皮衣</div><div class="small">和男朋友 cos 了一对亡命鸳鸯</div></div>
+</div>
+<div class="xn"><b>F · 穿搭 / 仿妆 / 情侣</b><br/>人像对比图（左游戏右真人）+ 角色名<br/><span style="color:#993556">cos 与仿妆的评判标准是“像不像”，所以要给同角度对比。</span></div>
+</div><div class="xhs">
+<div class="xc" style="background:#111">
+<div class="bgimg" style="background:linear-gradient(135deg,#c9b8d8,#e8b7c4 55%,#f0c9a0)"></div>
+<div class="veil"></div>
+<div class="txt"><span class="kicker">#GTA6</span><div class="big">杰森和露西亚，到底谁更需要谁</div><div class="small">玩 GTA6 玩出了恋爱脑</div></div>
+</div>
+<div class="xn"><b>G · 剧情 / CP 情感向</b><br/>双人同框剧照 + 一句台词或情绪文案<br/><span style="color:#993556">把犯罪游戏讲成爱情故事，是这个题材在小红书最大的叙事红利。</span></div>
+</div></div><h4>公开报道中出现过的高传播笔记（标题 + 封面特征）</h4><table><tr><th style="width:38%">标题 / 话题</th><th style="width:16%">类型</th><th>封面与文案特征</th></tr><tr><td>直播玩 GTA6，个个都是大大的良民</td><td>玩梗共鸣</td><td>游戏画面 + 一句结论式吐槽，约 1 万赞；封面字即观点</td></tr><tr><td>请假不上班玩 GTA6，却可以在 GTA6 里上班</td><td>玩梗共鸣</td><td>文字本身就是封面，近 2 千赞；热评「我在里面刷 ins」</td></tr><tr><td>别再说迈阿密无聊了｜罪城同款线路打卡指南</td><td>实景打卡</td><td>现实街景 + 地点清单，正文给三天/五天路线</td></tr><tr><td>晒预购付款截图（文案多为「买给老公的礼物」）</td><td>晒单开箱</td><td>精致人像 + 电视预载画面 + 手持付款截图，同一构图批量复制</td></tr><tr><td>在 GTA6 里拍到了电影感</td><td>拍照出片</td><td>纯游戏截图，几乎不加字，靠光影与构图</td></tr></table><h4>小红书封面文字的三层结构</h4><table><tr><th style="width:22%">层级</th><th style="width:38%">作用</th><th>写法示例</th></tr><tr><td>主标题</td><td>一行说清核心利益，视觉重量占全部文字 70% 以上</td><td>「GTA6 首发别乱买」「请假玩 GTA6，结果在上班」</td></tr><tr><td>辅助行</td><td>补充人群、场景或时效</td><td>「PS5 玩家亲测」「2026 首发版」</td></tr><tr><td>点缀层</td><td>标签、账号名、系列序号</td><td>「#GTA6」「第 3 期」</td></tr></table><h2 id="copy">五、封面与标题文案句式库</h2><h4>B 站：五种经得起复用的标题结构</h4><table><tr><th style="width:26%">结构</th><th style="width:36%">公式</th><th>GTA6 版示例</th></tr><tr><td>身份反差</td><td><code>当 + 玩家身份 + 第一次 + 游戏</code></td><td>当从没玩过 GTA 的人第一次进罪恶城</td></tr><tr><td>但是体</td><td><code>游戏 + 但是 + 出格条件</code></td><td>GTA6——但是全程不抢车</td></tr><tr><td>时间投入</td><td><code>花了 X 小时 + 终于 + 成就</code></td><td>花了 80 小时，终于打出完美劫案</td></tr><tr><td>决策类</td><td><code>游戏 + 值不值得买 + 判断暗示</code></td><td>GTA6 玩了 50 小时，值不值得 493 元</td></tr><tr><td>极值切片</td><td><code>游戏 + 最 X 的 N 分钟 + 看点</code></td><td>GTA6 最离谱的 3 分钟，笑到肚子疼</td></tr></table><h4>封面上的字：宁短勿长</h4><ul class="tight"><li><b>4–8 字</b>最佳，最多两行；超过 12 字在手机小屏上基本失效。</li><li>只保留一个核心词或一个数字，其余信息交给视频标题。</li><li>黄色或白色粗体 + 2–3px 黑色描边，是在粉紫／霓虹底图上唯一稳定的可读方案。</li><li>动词优先于名词：「跟 NPC 回家」比「NPC 行为解析」点击率高一个量级。</li></ul><h4>可直接复用的数字钩子</h4><table><tr><th style="width:30%">数字</th><th>出处与用法</th></tr><tr><td>10 分 / 99 分</td><td>IGN 与 Metacritic 评分，适合评测类封面做大数字</td></tr><tr><td>3.7 分</td><td>M 站用户开分，“两极反转”叙事的核心证据</td></tr><tr><td>6 星</td><td>通缉等级，天然的“极限挑战”钩子</td></tr><tr><td>210 GB</td><td>安装容量，选购类与避坑类必提</td></tr><tr><td>80 小时 / 70 小时</td><td>主线时长与首轮通关时长，适合“值不值”</td></tr><tr><td>37.9 亿美元</td><td>首发销售额，资讯类的权威感来源</td></tr><tr><td>12500 / 15000 美元</td><td>路人赔偿事件的具体金额，越具体越可信</td></tr><tr><td>2 倍 / 150 首</td><td>地图规模、电台曲目数，考据类的量级承诺</td></tr></table><h2 id="design">六、设计规范</h2><div class="two"><div class="box"><h4>B 站 · 16:9（1920×1080）</h4><ul>
+<li>视觉焦点放在九宫格交点，优先左上或正上</li>
+<li>真人出镜时，面部垂直占比 ≥ 1/3，眼部亮度高于背景</li>
+<li>三层亮度：亮主体 / 中灰过渡 / 深或浅底，避免灰蒙蒙一片</li>
+<li>文字 4–7 字，无衬线粗体，字号约为封面高度的 1/8–1/6</li>
+<li>右下角留给时长角标，右侧留给平台按钮，不要放关键信息</li>
+<li>导出后用 168px 宽度自测：看不清就重做</li></ul></div><div class="box x"><h4>小红书 · 3:4（1080×1440）</h4><ul>
+<li>主标题字号占画面宽度 80% 以上，宁可两行大字</li>
+<li>整张封面文字 ≤ 20 字，行距 1.3–1.5</li>
+<li>文字距边缘 ≥ 6%，避开不同展示场景的裁切</li>
+<li>主色 60% / 辅色 30% / 强调色 10%，主色不超过两种</li>
+<li>照片做底时，文字区加 30%–50% 半透明蒙层</li>
+<li>强调色只给一个词，强调越多重点越平</li></ul></div></div><h4>三套可直接套用的版式（A/B/C）</h4><table><tr><th style="width:16%">版式</th><th style="width:34%">结构</th><th>适用内容</th></tr><tr><td>A 横向冲击</td><td>主体横贯画面，标题压在左侧或上缘空白区</td><td>名场面、切片、二创，需要一眼的冲击力</td></tr><tr><td>B 右下电影</td><td>主体偏右上，左下留出标题区，做电影海报感</td><td>解析、考据、剧情向，需要质感和信息层级</td></tr><tr><td>C 左侧资讯</td><td>左侧纯色块承载多行文字，右侧放画面</td><td>资讯、爆料、盘点，信息量优先</td></tr></table><div class="note"><b>关于粉紫色：</b>这是 GTA6 的视觉母语，也是最大的同质化陷阱。正确用法是——把它留给“世界”（天空、霓虹、海面），然后用一个不属于这个色系的颜色做标题：硬黄、荧光绿、纯白抠字。整个信息流都是粉紫时，黄色就是最便宜的记忆点。</div><h2 id="risk">七、避坑清单</h2><ul class="tight"><li><b>版权与剧透</b>：R 星／Take-Two 允许玩家上传实机，但会下架结局、重大剧情反转、单独搬运的过场动画与游戏内电视节目。封面不要直接剧透关键人物结局。</li><li><b>封面与内容不符</b>：用夸张封面骗点击会直接拉低完播，平台的推荐权重跟着掉；一次翻车的代价大于十次小爆。</li><li><b>平台 UI 遮挡</b>：B 站右下角有时长、右侧有按钮；小红书底部有标题与互动栏。关键元素别放这些区域。</li><li><b>文字过密</b>：三行以上、超过 12 字，在手机上会糊成一团色块，等于没有封面。</li><li><b>AI 假画面混入实况</b>：一旦被观众发现封面或画面是拼接生成的，评论区会直接反噬，账号信任度难恢复。</li><li><b>假冒版本诈骗</b>：GTA6 目前只有 PS5 / Xbox 版，没有 PC 版也没有手游版。做“下载教程”类内容极易踩到诈骗链接，也会被平台判违规。</li><li><b>直播合规</b>：国内平台对敏感画面有明确要求，主播需提前准备遮挡与断流方案；“不能打人、不能抢车、不能打警察”是流传的直播白名单口径。</li></ul><h2 id="cheat">八、速查表</h2><div class="cheat"><div><b>类型 → 封面主体</b>解析：地图/多图拼贴｜实况：主播脸或 KV｜攻略：目标物 + 红圈｜评测：大数字｜切片：高能帧｜二创：风格化主视觉</div><div><b>类型 → 主色</b>解析：深底 + 白字｜攻略：游戏原色 + 红圈黄字｜评测：红/黑｜资讯：红黄撞色｜小红书：粉紫 + 白大字</div><div><b>标题字数</b>B 站 4–8 字（封面）/ ≤25 字（标题）｜小红书 ≤20 字（整张封面）</div><div><b>安全区</b>B 站四周留 5%，右下角避让｜小红书四周留 6%</div><div><b>必测尺寸</b>B 站缩到 168px 宽｜小红书缩到手机屏宽</div><div><b>三件套</b>一个主体、一句短话、一个颜色重点——多一个都是干扰</div></div><footer>本手册基于 2026 年 11 月 23 日 B 站公开搜索数据（347 条样本）与小红书公开报道、话题页整理。封面图片版权归各 UP 主与 Rockstar Games 所有，此处仅用于内容形态研究与学习，不构成商业使用授权。播放量、评分为抓取时点数据，会随时间变化。小红书部分版式为结构示意，非真实笔记截图。</footer></div></body></html>

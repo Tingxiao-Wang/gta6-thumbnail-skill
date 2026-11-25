@@ -1,0 +1,118 @@
+{
+  "version": "1.6.0",
+  "description": "这是当前会话中的临时结构化设计决策；只用于从用户选择到图像生成的字段传递，不要求在聊天里展示 JSON 或永久保存。",
+  "template": {
+    "task_kind": "new|edit|multi_platform",
+    "platform": "bilibili|xiaohongshu|youtube|generic",
+    "ratio": "4:3|16:9|3:4|9:16|user_requested",
+    "source_language": "zh|en|other",
+    "content_type": "review|chase|guide|bug|versus|story|other",
+    "content_subtype": "worth_it|deep_review|pros_cons|feature_review|null",
+    "video_facts_from_user": [],
+    "claims_allowed": [],
+    "claims_not_verified": [],
+    "source_assets": [],
+    "primary_style_id": "existing_styles_recipe_id",
+    "secondary_style_id": null,
+    "composition_id": "existing_composition_layout_id",
+    "headline": {
+      "exact_text": "",
+      "source": "user_exact|suggested|no_text",
+      "may_rewrite": false
+    },
+    "subheadline": {
+      "text": null,
+      "is_user_verified": false
+    },
+    "subject": "",
+    "background": "",
+    "visual_hook": "",
+    "palette": "",
+    "negative_constraints": [],
+    "question_history": [],
+    "decision_source": "explicit_user|selected_option|rule_based_default",
+    "image_capability": "unknown|full|generation_only|text_only",
+    "edit_locks": [],
+    "input_mode": "screenshot_based_cover|text_to_image|edit_existing|reference_style",
+    "screenshot_brief": {
+      "asset_ref": null,
+      "observed_subjects": [],
+      "scene_landmarks": [],
+      "horizon_and_camera": null,
+      "negative_space": null,
+      "preserve": [],
+      "allowed_enhancements": [],
+      "full_bleed": true,
+      "film_look_not_frame": true,
+      "source_visible": false
+    },
+    "platform_layout_id": "platform_layout_rules.json::platform.layout_id",
+    "title_block_height_pct": "from_platform_layout_contract",
+    "headline_rect": "normalized_rect_from_selected_layout",
+    "hero_rect": "normalized_rect_from_selected_layout",
+    "layout_safe_override": "optional_for_dual_preset",
+    "screenshot_adjustment_plan": "local_tone_crop_depth_and_text_zone",
+    "contract_version": "1.6.0"
+  },
+  "compile_sequence": [
+    "保留用户原有输入/标题/上传资产/证据/平台；只填尚未确定字段。",
+    "如有用户截图，记录 screenshot_brief 中真实可见主体与保留约束；根据平台 profile 决定全画幅适配，禁止灰白相框。",
+    "根据用户选择写入 content_subtype、primary_style_id 及建议标题（仅无用户自定义标题时）。",
+    "styles.json[primary_style_id].visual_parameters.composition_id 决定构图；composition.json 决定画幅布局。",
+    "typography.json 决定文字排版；用户给定的标题逐字保留。",
+    "capabilities.json 决定实际调用生图/编辑/文字叠加工具或降级。",
+    "编辑请求以 editing_rules.json patch 方式更新，不重置前一张信息。"
+  ],
+  "invariants": [
+    "style_id 不得超出 styles.json 的9种已有 ID",
+    "不能改写用户提供的标题原文",
+    "不能把建议或模糊需求变成已确认游戏事实",
+    "选项后必须执行或交付工具限制说明，不无端再问视觉偏好",
+    "用户要求无文字时，不得自动添加推荐标题",
+    "设计状态只在宿主可见会话内有效",
+    "selected platform layout ID must exist in platform_layout_rules.json",
+    "user original title preserved character-for-character",
+    "default Bilibili creative preset 16:9 and feed 4:3 only on request/target",
+    "actual output size only claimed if image tools support and result validated"
+  ],
+  "example_brief": {
+    "user_input": "我现在有一个测评类的GTA视频需要封面，发布在B站",
+    "after_user_selects": "深度测评",
+    "platform": "bilibili",
+    "ratio": "4:3",
+    "content_type": "review",
+    "content_subtype": "deep_review",
+    "primary_style_id": "dense_news",
+    "composition_id": "editorial_news",
+    "headline": {
+      "exact_text": "GTA深度测评",
+      "source": "suggested",
+      "may_rewrite": true
+    },
+    "subheadline": {
+      "text": null,
+      "is_user_verified": false
+    },
+    "visual_hook": "professional review with one GTA-related game visual; avoid generic shiny advertisement look",
+    "decision_source": "selected_option",
+    "not_claimed": [
+      "视频实际包含画面/玩法/手感三个篇章",
+      "任何真实评分或数值"
+    ]
+  },
+  "guided_flow_extension": {
+    "version": "1.9.0",
+    "mode": "guided8",
+    "state_reference": "guided_flow.json::state_schema",
+    "merge_strategy": "prior user data > user choice > recommendation; every next question only if required step unresolved",
+    "required_final_fields": [
+      "platform",
+      "primary_style_id",
+      "headline",
+      "asset_roles",
+      "background_tone",
+      "text_style",
+      "output_mode"
+    ]
+  }
+}

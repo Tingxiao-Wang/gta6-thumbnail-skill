@@ -1,0 +1,49 @@
+{
+  "version": "2.4.2",
+  "name": "标题视觉占比监测",
+  "measurement": "approximate rendered title glyph block area / canvas area, not bounding group rectangle",
+  "targets": {
+    "xiaohongshu": {
+      "min_ratio": 0.12,
+      "ideal_band": [
+        0.12,
+        0.22
+      ]
+    },
+    "bilibili": {
+      "min_ratio": 0.085,
+      "ideal_band": [
+        0.085,
+        0.18
+      ]
+    },
+    "youtube": {
+      "min_ratio": 0.085,
+      "ideal_band": [
+        0.085,
+        0.18
+      ]
+    }
+  },
+  "exceptions": [
+    "user_requested_minimal_typography",
+    "logo_only",
+    "no_text",
+    "explicit_negative_space"
+  ],
+  "execution_order": [
+    "evaluate_title_after_layout",
+    "show_low_coverage_warning",
+    "enlarge_short_headlines_without_changing_text",
+    "keep_title_from_occluding_faces_or_protected_landmarks",
+    "recalculate_per_variant_after_platform_resize"
+  ],
+  "editor_controls": [
+    "realtime_title_area_score",
+    "enlargeTitleBtn"
+  ],
+  "notes": [
+    "These thresholds are product heuristics, not platform official rules",
+    "Area calculation is a visual proxy and does not guarantee CTR."
+  ]
+}

@@ -1,0 +1,660 @@
+{
+  "version": "2.6-preview",
+  "source": "references/content_atlas/GTA6封面内容参考手册.html",
+  "source_title": "GTA6 视频与图文封面内容参考手册",
+  "declared_sample": "B站347条（手册自述；未独立核验）",
+  "source_caveats": [
+    "研究手册自述的播放量/评分/发行事实未经本工具验证，不能当成最新事实或封面文案。",
+    "32 third-party research thumbnails removed from this public-safe candidate; user must add licensed image samples to enable visual reference.",
+    "HTML含B站和小红书案例，没有独立YouTube内容研究。"
+  ],
+  "platform_coverage": {
+    "bilibili": {
+      "case_count": 8,
+      "visual_samples": 0
+    },
+    "xiaohongshu": {
+      "case_count": 7,
+      "visual_samples": "7 CSS schematic renderings"
+    },
+    "youtube": {
+      "case_count": 0,
+      "fallback": "V2.5.2 YouTube platform+layout+typography rules; no manual examples"
+    }
+  },
+  "cases": [
+    {
+      "id": "bili_A",
+      "platform": "bilibili",
+      "topic": "trailer",
+      "name": "官方物料 / 预告搬运",
+      "keywords": [
+        "预告",
+        "官方",
+        "宣传片",
+        "首发",
+        "trailer",
+        "官宣",
+        "物料"
+      ],
+      "cover_formula": " 官方 KV 直出 + 平台角标，零中文大字",
+      "design_intent": "版权最安全、认知成本最低，但也最容易在信息流里被同款淹没；适合抢首发时效。",
+      "samples": [
+        {
+          "id": "b_A_01",
+          "label": "【IGN】《GTA6》首个预告",
+          "source_credit": "IGN中国 · 1581.9万播放",
+          "visual_observation": "官方海报原样直出，粉紫渐变 + 双人 + 棕榈树，左上角只加 IGN 角标",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_A_02",
+          "label": "Grand Theft Auto VI 预告片 2",
+          "source_credit": "RockstarGames · 618.3万播放",
+          "visual_observation": "纯 KV，无任何叠加文字，靠品牌本身撑点击",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_A_03",
+          "label": "GTAVI现已推出",
+          "source_credit": "RockstarGames · 502.3万播放",
+          "visual_observation": "KV 底部加一行发售信息，把“已上线”做成信息增量",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_A_04",
+          "label": "【4K中字】《GTA6》官方首支预告片 | 来源：Rockstar Games",
+          "source_credit": "KG-Area21 · 134.7万播放",
+          "visual_observation": "真人出镜 + 白色“OFFICIAL 4K TRAILER”，用清晰度和官方感做差异",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        }
+      ],
+      "source_anchor": "#bili",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "bili_B",
+      "platform": "bilibili",
+      "topic": "analysis",
+      "name": "深度解析 / 考据",
+      "keywords": [
+        "解析",
+        "考据",
+        "细节",
+        "深度",
+        "地图",
+        "推理",
+        "analysis",
+        "解读"
+      ],
+      "cover_formula": " 多图拼贴 + 中央标识 + 说明字，信息密度取胜",
+      "design_intent": "B 站最典型的长青类型，标题里必须给出“量级承诺”（万字 / 2小时 / 99个 / 全最）。",
+      "samples": [
+        {
+          "id": "b_B_01",
+          "label": "《GTA6》全网最全泄露实机分析！角色、玩法、武器多方面解读——上期「Game墙」",
+          "source_credit": "游戏星GameStar · 275.8万播放",
+          "visual_observation": "多张实机截图拼贴，中央压“Grand Theft Auto”字标，左下粉色长标题",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_B_02",
+          "label": "🔥《GTA6》第二支预告片！地图大到惊人！信息量爆炸！！！",
+          "source_credit": "游戏星GameStar · 134.1万播放",
+          "visual_observation": "官方 KV 打底 + 火焰 emoji + 黄字“信息量爆炸”",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_B_03",
+          "label": "🏚️《GTA6》最全地图解析！军事基地、赛车比赛，R星到底藏了多少东西？「GameStar」",
+          "source_credit": "游戏星GameStar · 121.8万播放",
+          "visual_observation": "游戏鸟瞰地图铺满画面，白字直接压在地形上",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_B_04",
+          "label": "GTA6已经彻底变态的细节和彩蛋【彩蛋艺术馆】",
+          "source_credit": "黑椒墨鱼 · 132.3万播放",
+          "visual_observation": "女性角色实机截图 + 白色描边“GTA6 守身如玉的细节彩蛋”，官方VI标压在中间",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        }
+      ],
+      "source_anchor": "#bili",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "bili_C",
+      "platform": "bilibili",
+      "topic": "gameplay",
+      "name": "全流程实况 / 开荒",
+      "keywords": [
+        "实况",
+        "开荒",
+        "通关",
+        "任务",
+        "直播",
+        "流程",
+        "存档",
+        "playthrough"
+      ],
+      "cover_formula": " 主播脸或官方 KV + 时长承诺 + 4K/PS5 角标",
+      "design_intent": "卖的是“陪伴感”和“进度”，封面要能让观众一秒判断更新到哪、画质如何。",
+      "samples": [
+        {
+          "id": "b_C_01",
+          "label": "【侠盗猎车手6】4K 最高画质 全网首发 全任务 全剧情流程通关攻略 开放世界冒险游戏 GTA6 - Grand Theft Auto VI",
+          "source_credit": "11的游戏世界 · 840.2万播放",
+          "visual_observation": "电影感人物剪影 + 城市夜景，左上角“1K画质”角标",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_C_02",
+          "label": "【更新至40P】老戴《侠盗猎车手 6》初见开荒全实况流程解说【GTA 6】",
+          "source_credit": "老戴在此 · 319.4万播放",
+          "visual_observation": "官方 KV + 黄色“老戴 实况流程解说”，把主播名做成品牌",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_C_03",
+          "label": "小宇4K【GTA6 侠盗猎车手6】PS5Pro 最高画质 完美结局 全流程 全支线 通关解说",
+          "source_credit": "小宇热游解说 · 102.3万播放",
+          "visual_observation": "多图拼贴 + 白色“4K / PS5 / GTA6”三行大字",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_C_04",
+          "label": "【4K】全网首发《GTA6》主线全流程实况解说",
+          "source_credit": "友利奈绪大魔王丶 · 244.4万播放",
+          "visual_observation": "官方 KV 变体 + 白色小字标注“4K 全网首发”，靠画质承诺",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        }
+      ],
+      "source_anchor": "#bili",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "bili_D",
+      "platform": "bilibili",
+      "topic": "review",
+      "name": "评测 / 锐评 / 评分",
+      "keywords": [
+        "评测",
+        "测评",
+        "评分",
+        "值得吗",
+        "值不值",
+        "锐评",
+        "review",
+        "评价"
+      ],
+      "cover_formula": " 大数字 + 人物半身，红色专用于评分与结论",
+      "design_intent": "数字是最强的点击钩子；正反评价都能起量，关键是立场要一眼可见。",
+      "samples": [
+        {
+          "id": "b_D_01",
+          "label": "【IGN】10分，《GTA 6》评测：这个时代最伟大的游戏",
+          "source_credit": "IGN中国 · 326.2万播放",
+          "visual_observation": "红色六边形里一个大“10”，双主角半身像，几乎无其他文字",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_D_02",
+          "label": "游戏史上最大的反转！M站GTA6用户评分仅3.7分！M站用户评分公布！",
+          "source_credit": "老蕉Banous · 69.6万播放",
+          "visual_observation": "紫色“两极反转” + 粉色大圆里的“3.7”，配 M 站评分页面截图作证据",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_D_03",
+          "label": "史上最强！GTA6 购买前，你需要知道的 10 件事！",
+          "source_credit": "贪玩歌姬小宁子 · 114.4万播放",
+          "visual_observation": "真人出镜 + 白底黄字标题，把“10件事”做成清单感",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_D_04",
+          "label": "《GTA6》已通关，无剧透聊聊R星有多无敌【视频播客 EP.81】",
+          "source_credit": "核电波 · 111.0万播放",
+          "visual_observation": "播客式双人画面 + 一句“无剧透”消除顾虑",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        }
+      ],
+      "source_anchor": "#bili",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "bili_E",
+      "platform": "bilibili",
+      "topic": "guide",
+      "name": "攻略 / 彩蛋 / 发现",
+      "keywords": [
+        "攻略",
+        "彩蛋",
+        "发现",
+        "秘密",
+        "隐藏",
+        "npc",
+        "技巧",
+        "guide"
+      ],
+      "cover_formula": " 红圈 + 白箭头指向目标，或干脆只放奇观画面",
+      "design_intent": "“发现类”的核心是制造信息差：让观众看到但看不懂，或看到但找不到。",
+      "samples": [
+        {
+          "id": "b_E_01",
+          "label": "以防你不知道GTA6的狗子会开摩托艇来救你！",
+          "source_credit": "忘川无语 · 345.1万播放",
+          "visual_observation": "纯游戏画面，无大字，靠“狗骑摩托艇”的荒诞感直接取胜",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_E_02",
+          "label": "以防你不知道GTA6路人是如何暴富的💰",
+          "source_credit": "盾盾盾反 · 244.6万播放",
+          "visual_observation": "左上“热榜”贴纸 + 真人惊讶脸 + 黄字“目前最搞笑的视频”",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_E_03",
+          "label": "GTA6 第一次感觉抢车这么的无力",
+          "source_credit": "VictorCharlie · 159.9万播放",
+          "visual_observation": "第一人称抢车实拍 + 底部一行小白字，像纪录片",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_E_04",
+          "label": "24小时尾行！跟踪GTA6里的NPC，她的一天有多真实？",
+          "source_credit": "爬爬娘 · 211.9万播放",
+          "visual_observation": "红圈 + 白箭头精确指向 NPC，黄字只写四个字“跟NPC回家”",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        }
+      ],
+      "source_anchor": "#bili",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "bili_F",
+      "platform": "bilibili",
+      "topic": "funny",
+      "name": "搞笑切片 / 名场面",
+      "keywords": [
+        "搞笑",
+        "切片",
+        "整活",
+        "名场面",
+        "离谱",
+        "reaction",
+        "反应",
+        "搞笑片段"
+      ],
+      "cover_formula": " 高能瞬间 + 短句大字 + 表情包/贴纸",
+      "design_intent": "切片靠“情绪峰值”而非信息量；封面要截在动作最夸张的那一帧。",
+      "samples": [
+        {
+          "id": "b_F_01",
+          "label": "尾随NPC的真实反应",
+          "source_credit": "叶猫Gamer · 576.3万播放",
+          "visual_observation": "游戏背影 + 粉紫底白字“反应真实到离谱”，五字说清看点",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_F_02",
+          "label": "Speed抢走老奶奶的电动轮椅 画面过于逼真而感到内疚 最后被警察逮捕",
+          "source_credit": "Speed-777 · 95.9万播放",
+          "visual_observation": "事故现场游戏画面，无文字，靠画面本身传播",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_F_03",
+          "label": "以防你不知道单膝下跪和让美女NPC以为你要和她求婚有多搞笑！被暴揍一顿！",
+          "source_credit": "许愿龙神 · 53.6万播放",
+          "visual_observation": "游戏画面原样 + 小字标题，保留“会发生什么”的悬念",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_F_04",
+          "label": "王浩宇玩GTA6竟意外发现丧尸彩蛋？",
+          "source_credit": "梓辰林树切片 · 215.9万播放",
+          "visual_observation": "红色手写体“《GTA6》有丧尸？”压在暗调游戏画面上，像弹幕又像爆料",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        }
+      ],
+      "source_anchor": "#bili",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "bili_G",
+      "platform": "bilibili",
+      "topic": "remix",
+      "name": "二创 / AI / 鬼畜",
+      "keywords": [
+        "二创",
+        "ai",
+        "鬼畜",
+        "电影",
+        "真人化",
+        "cos",
+        "致敬",
+        "remix"
+      ],
+      "cover_formula": " 强风格化：电影感、拼贴、真人化，弱化官方 KV",
+      "design_intent": "二创的封面不能像“游戏视频”，要像“作品”，才有跨圈层传播力。",
+      "samples": [
+        {
+          "id": "b_G_01",
+          "label": "非凡之恶：这两人玩GTA6认识的",
+          "source_credit": "快乐阿托 · 440.9万播放",
+          "visual_observation": "AI 生成的电影感双人构图 + 黑底手写体片名，完全脱离游戏截图",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_G_02",
+          "label": "GTA6：中国",
+          "source_credit": "自动鬼畜中的WZ · 235.0万播放",
+          "visual_observation": "多人物拼贴 + VI 三角标，用“中国”制造错位感",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_G_03",
+          "label": "【逆天中配】漫威 但是GTA6预告",
+          "source_credit": "恶人王小花 · 219.1万播放",
+          "visual_observation": "真人 cos + 红字“中文配音 / 逆天队长”，配音梗前置",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_G_04",
+          "label": "GTA6真人版！欢迎来到真正的罪恶都市-迈阿密！！",
+          "source_credit": "小鹿Lawrence · 232.3万播放",
+          "visual_observation": "真人美女 + 游戏 UI 元素叠加，模糊现实与游戏边界",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        }
+      ],
+      "source_anchor": "#bili",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "bili_H",
+      "platform": "bilibili",
+      "topic": "news",
+      "name": "资讯 / 爆料",
+      "keywords": [
+        "新闻",
+        "资讯",
+        "爆料",
+        "泄露",
+        "消息",
+        "发售",
+        "售价",
+        "曝光",
+        "news"
+      ],
+      "cover_formula": " 多层文字堆叠 + 红黄警告色 + emoji",
+      "design_intent": "发售前的流量主力，标题里必须出现“官宣 / 曝光 / 泄露 / 首次”这类确定性词。",
+      "samples": [
+        {
+          "id": "b_H_01",
+          "label": "R星亮出王牌！《GTA6》史诗级大爆料正式登场#神作来临",
+          "source_credit": "杰森说彩蛋 · 324.7万播放",
+          "visual_observation": "红黄撞色 + 四层文字（GTA6 / 演示泄露 / 地图曝光 / 大爆料），信息轰炸",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_H_02",
+          "label": "真的太离谱了！R星大作《GTA6》售价首次曝光！竟然要这个数？！《星空》好评率下跌！《猛兽派对》在线人数暴涨！Epic免费喜加一！",
+          "source_credit": "Steam-游戏特惠 · 200.0万播放",
+          "visual_observation": "黄字“售价曝光！涨至4位数！” + 惊讶 emoji，纯情绪驱动",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_H_03",
+          "label": "GTA6已经开发完成！画面堪比现实",
+          "source_credit": "大队长优化指南 · 268.4万播放",
+          "visual_observation": "超大号黄字压在游戏画面上，字占封面近一半",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        },
+        {
+          "id": "b_H_04",
+          "label": "R星正式官宣《GTA6》目前正在积极开发中！这次是真正的官方消息！",
+          "source_credit": "TG探员DetectiveTG · 217.4万播放",
+          "visual_observation": "黑底 + 人物半身 + 红字“终于等到你”，像官宣海报",
+          "image_path": null,
+          "rights": "third_party_research_only"
+        }
+      ],
+      "source_anchor": "#bili",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "xhs_A",
+      "platform": "xiaohongshu",
+      "topic": "unboxing",
+      "name": "A · 晒单 / 开箱 / 场景展示",
+      "keywords": [
+        "晒单",
+        "开箱",
+        "购买",
+        "预购",
+        "晒图",
+        "主机",
+        "版本",
+        "礼物"
+      ],
+      "cover_formula": "A · 晒单 / 开箱 / 场景展示 真人半身 + 主机/光盘实物 + 一行大字 本质是“生活方式展示”，游戏只是身份标签。视觉重心是人，不是游戏。",
+      "design_intent": "A · 晒单 / 开箱 / 场景展示 真人半身 + 主机/光盘实物 + 一行大字 本质是“生活方式展示”，游戏只是身份标签。视觉重心是人，不是游戏。",
+      "sample_text": "GTA6 预购到账｜客厅第三台主机",
+      "subtitle": "今晚八点，罪恶城见",
+      "sample_kind": "css_schematic_not_real_post",
+      "image_path": "assets/atlas_cases/xiaohongshu/x_A.png",
+      "source_anchor": "#xhs",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "xhs_B",
+      "platform": "xiaohongshu",
+      "topic": "meme",
+      "name": "B · 玩梗 / 情绪共鸣",
+      "keywords": [
+        "玩梗",
+        "吐槽",
+        "情绪",
+        "共鸣",
+        "打工",
+        "段子",
+        "梗"
+      ],
+      "cover_formula": "B · 玩梗 / 情绪共鸣 游戏截图 + 一句戳心文案，字号要大到像表情包 不解释背景，只给结论式吐槽；共鸣来自“这说的就是我”。",
+      "design_intent": "B · 玩梗 / 情绪共鸣 游戏截图 + 一句戳心文案，字号要大到像表情包 不解释背景，只给结论式吐槽；共鸣来自“这说的就是我”。",
+      "sample_text": "请假玩 GTA6，结果在游戏里上班",
+      "subtitle": "这代 GTA，个个都是大大的良民",
+      "sample_kind": "css_schematic_not_real_post",
+      "image_path": "assets/atlas_cases/xiaohongshu/x_B.png",
+      "source_anchor": "#xhs",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "xhs_C",
+      "platform": "xiaohongshu",
+      "topic": "buying_guide",
+      "name": "C · 选购避坑 / 入坑指南",
+      "keywords": [
+        "避坑",
+        "购买",
+        "选购",
+        "版本",
+        "买哪个",
+        "值不值",
+        "值得买吗"
+      ],
+      "cover_formula": "C · 选购避坑 / 入坑指南 主机或光盘实物 + 数字清单标题（3/5/10 条） 收藏率最高的类型；标题里必须有“避坑 / 别买 / 值不值”。",
+      "design_intent": "C · 选购避坑 / 入坑指南 主机或光盘实物 + 数字清单标题（3/5/10 条） 收藏率最高的类型；标题里必须有“避坑 / 别买 / 值不值”。",
+      "sample_text": "GTA6 首发别乱买｜PS5 版本怎么选",
+      "subtitle": "多花两千上 Pro，到底值不值",
+      "sample_kind": "css_schematic_not_real_post",
+      "image_path": "assets/atlas_cases/xiaohongshu/x_C.png",
+      "source_anchor": "#xhs",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "xhs_D",
+      "platform": "xiaohongshu",
+      "topic": "screenshot_art",
+      "name": "D · 拍照出片 / 截图美学",
+      "keywords": [
+        "截图",
+        "摄影",
+        "壁纸",
+        "出片",
+        "电影感",
+        "拍照",
+        "风景"
+      ],
+      "cover_formula": "D · 拍照出片 / 截图美学 纯游戏画面，不加字或只在角落加一行小字 卖的是审美，任何大字都会破坏画面；靠构图和光影本身取胜。",
+      "design_intent": "D · 拍照出片 / 截图美学 纯游戏画面，不加字或只在角落加一行小字 卖的是审美，任何大字都会破坏画面；靠构图和光影本身取胜。",
+      "sample_text": "在 GTA6 里拍到了电影感",
+      "subtitle": "罪恶城的雨夜，随手一拍就是壁纸",
+      "sample_kind": "css_schematic_not_real_post",
+      "image_path": "assets/atlas_cases/xiaohongshu/x_D.png",
+      "source_anchor": "#xhs",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "xhs_E",
+      "platform": "xiaohongshu",
+      "topic": "travel",
+      "name": "E · 实景打卡 / 旅行攻略",
+      "keywords": [
+        "旅游",
+        "打卡",
+        "迈阿密",
+        "路线",
+        "同款",
+        "旅行"
+      ],
+      "cover_formula": "E · 实景打卡 / 旅行攻略 现实照片 + 地点标签 + “同款”字样 把虚拟场景映射到现实地点，制造“我也能去”的行动感。",
+      "design_intent": "E · 实景打卡 / 旅行攻略 现实照片 + 地点标签 + “同款”字样 把虚拟场景映射到现实地点，制造“我也能去”的行动感。",
+      "sample_text": "迈阿密罪城同款打卡路线",
+      "subtitle": "别再说迈阿密无聊了",
+      "sample_kind": "css_schematic_not_real_post",
+      "image_path": "assets/atlas_cases/xiaohongshu/x_E.png",
+      "source_anchor": "#xhs",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "xhs_F",
+      "platform": "xiaohongshu",
+      "topic": "cosplay",
+      "name": "F · 穿搭 / 仿妆 / 情侣",
+      "keywords": [
+        "cos",
+        "仿妆",
+        "穿搭",
+        "情侣",
+        "lucia",
+        "cosplay"
+      ],
+      "cover_formula": "F · 穿搭 / 仿妆 / 情侣 人像对比图（左游戏右真人）+ 角色名 cos 与仿妆的评判标准是“像不像”，所以要给同角度对比。",
+      "design_intent": "F · 穿搭 / 仿妆 / 情侣 人像对比图（左游戏右真人）+ 角色名 cos 与仿妆的评判标准是“像不像”，所以要给同角度对比。",
+      "sample_text": "Lucia 仿妆｜从监狱橙到黑皮衣",
+      "subtitle": "和男朋友 cos 了一对亡命鸳鸯",
+      "sample_kind": "css_schematic_not_real_post",
+      "image_path": "assets/atlas_cases/xiaohongshu/x_F.png",
+      "source_anchor": "#xhs",
+      "research_status": "user_supplied_unverified"
+    },
+    {
+      "id": "xhs_G",
+      "platform": "xiaohongshu",
+      "topic": "story_romance",
+      "name": "G · 剧情 / CP 情感向",
+      "keywords": [
+        "爱情",
+        "剧情",
+        "cp",
+        "感情",
+        "故事",
+        "杰森",
+        "露西亚",
+        "角色"
+      ],
+      "cover_formula": "G · 剧情 / CP 情感向 双人同框剧照 + 一句台词或情绪文案 把犯罪游戏讲成爱情故事，是这个题材在小红书最大的叙事红利。",
+      "design_intent": "G · 剧情 / CP 情感向 双人同框剧照 + 一句台词或情绪文案 把犯罪游戏讲成爱情故事，是这个题材在小红书最大的叙事红利。",
+      "sample_text": "杰森和露西亚，到底谁更需要谁",
+      "subtitle": "玩 GTA6 玩出了恋爱脑",
+      "sample_kind": "css_schematic_not_real_post",
+      "image_path": "assets/atlas_cases/xiaohongshu/x_G.png",
+      "source_anchor": "#xhs",
+      "research_status": "user_supplied_unverified"
+    }
+  ],
+  "content_sections": {
+    "summary": [
+      "把 347 条样本的封面横向摊开看，同质化程度比想象中高得多：绝大多数封面都在用同一张官方 KV——粉紫渐变的 VI 标、Jason 与 Lucia、棕榈树和跑车。真正跑出百万播放的，往往不是“更好看的 KV”，而是在这张底图上做了一个明确的视觉决策。",
+      "最大公约数 官方 KV 预告期几乎 100% 复用，认知成本最低 最强点击钩子 大数字 10 分 / 3.7 分 / 6 星 / 210G / 80 小时 最有效的差异点 黄字黑边 在粉紫信息流里，黄色是唯一稳定的破局色 占比最高的时长 1–5 分钟 36%，切片与单点解析的主战场 标题最高频词 预告 / 解析 52 次与 38 次，其次是彩蛋 34 次 小红书主战场 3:4 图文 大字 + 场景，游戏是背景板不是主角",
+      "一句话策略： 用官方 KV 保证“这是 GTA6”的识别，只留一个区域做差异化——一个黄字、一个红圈、一个大数字，或者干脆一个字都不放，只给一个奇观画面。三者同时上，等于没有重点。"
+    ],
+    "research_overview": [
+      "样本取自 B 站视频搜索，覆盖「GTA6 / 侠盗猎车手6 / 解析 / 攻略 / 彩蛋 / 实况 / 评测 / 名场面 / 完美劫案 / 二创 / 拍照 / 地图 / 预告」等关键词，按播放、综合、最新三种排序各取两页，去重后得到 347 条。",
+      "视频时长分布 ≤ 1 分钟 53 条 1–5 分钟 126 条 5–15 分钟 84 条 15–60 分钟 64 条 > 60 分钟 20 条 标题高频词（GTA6 除外） 预告 52 解析 38 彩蛋 34 地图 27 细节 19 泄露 13 评测 12 4K 11 NPC 10 爆料 9 实况 9 杰森 9",
+      "读法：1–5 分钟与 5–15 分钟合计约 60%，说明这个题材的主流不是“长篇纪录片”，而是“单点讲透”；但同时 >60 分钟的全流程仍有 20 条，且头部播放极高——两端都能活，中间地带（15–60 分钟）反而最挤。"
+    ],
+    "copywriting": [
+      "B 站：五种经得起复用的标题结构",
+      "结构 公式 GTA6 版示例 身份反差 当 + 玩家身份 + 第一次 + 游戏 当从没玩过 GTA 的人第一次进罪恶城 但是体 游戏 + 但是 + 出格条件 GTA6——但是全程不抢车 时间投入 花了 X 小时 + 终于 + 成就 花了 80 小时，终于打出完美劫案 决策类 游戏 + 值不值得买 + 判断暗示 GTA6 玩了 50 小时，值不值得 493 元 极值切片 游戏 + 最 X 的 N 分钟 + 看点 GTA6 最离谱的 3 分钟，笑到肚子疼",
+      "封面上的字：宁短勿长",
+      "4–8 字 最佳，最多两行；超过 12 字在手机小屏上基本失效。 只保留一个核心词或一个数字，其余信息交给视频标题。 黄色或白色粗体 + 2–3px 黑色描边，是在粉紫／霓虹底图上唯一稳定的可读方案。 动词优先于名词：「跟 NPC 回家」比「NPC 行为解析」点击率高一个量级。",
+      "可直接复用的数字钩子",
+      "数字 出处与用法 10 分 / 99 分 IGN 与 Metacritic 评分，适合评测类封面做大数字 3.7 分 M 站用户开分，“两极反转”叙事的核心证据 6 星 通缉等级，天然的“极限挑战”钩子 210 GB 安装容量，选购类与避坑类必提 80 小时 / 70 小时 主线时长与首轮通关时长，适合“值不值” 37.9 亿美元 首发销售额，资讯类的权威感来源 12500 / 15000 美元 路人赔偿事件的具体金额，越具体越可信 2 倍 / 150 首 地图规模、电台曲目数，考据类的量级承诺"
+    ],
+    "platform_design": [
+      "B 站 · 16:9（1920×1080） 视觉焦点放在九宫格交点，优先左上或正上 真人出镜时，面部垂直占比 ≥ 1/3，眼部亮度高于背景 三层亮度：亮主体 / 中灰过渡 / 深或浅底，避免灰蒙蒙一片 文字 4–7 字，无衬线粗体，字号约为封面高度的 1/8–1/6 右下角留给时长角标，右侧留给平台按钮，不要放关键信息 导出后用 168px 宽度自测：看不清就重做 小红书 · 3:4（1080×1440） 主标题字号占画面宽度 80% 以上，宁可两行大字 整张封面文字 ≤ 20 字，行距 1.3–1.5 文字距边缘 ≥ 6%，避开不同展示场景的裁切 主色 60% / 辅色 30% / 强调色 10%，主色不超过两种 照片做底时，文字区加 30%–50% 半透明蒙层 强调色只给一个词，强调越多重点越平",
+      "三套可直接套用的版式（A/B/C）",
+      "版式 结构 适用内容 A 横向冲击 主体横贯画面，标题压在左侧或上缘空白区 名场面、切片、二创，需要一眼的冲击力 B 右下电影 主体偏右上，左下留出标题区，做电影海报感 解析、考据、剧情向，需要质感和信息层级 C 左侧资讯 左侧纯色块承载多行文字，右侧放画面 资讯、爆料、盘点，信息量优先",
+      "关于粉紫色： 这是 GTA6 的视觉母语，也是最大的同质化陷阱。正确用法是——把它留给“世界”（天空、霓虹、海面），然后用一个不属于这个色系的颜色做标题：硬黄、荧光绿、纯白抠字。整个信息流都是粉紫时，黄色就是最便宜的记忆点。"
+    ],
+    "risks": [
+      "版权与剧透 ：R 星／Take-Two 允许玩家上传实机，但会下架结局、重大剧情反转、单独搬运的过场动画与游戏内电视节目。封面不要直接剧透关键人物结局。 封面与内容不符 ：用夸张封面骗点击会直接拉低完播，平台的推荐权重跟着掉；一次翻车的代价大于十次小爆。 平台 UI 遮挡 ：B 站右下角有时长、右侧有按钮；小红书底部有标题与互动栏。关键元素别放这些区域。 文字过密 ：三行以上、超过 12 字，在手机上会糊成一团色块，等于没有封面。 AI 假画面混入实况 ：一旦被观众发现封面或画面是拼接生成的，评论区会直接反噬，账号信任度难恢复。 假冒版本诈骗 ：GTA6 目前只有 PS5 / Xbox 版，没有 PC 版也没有手游版。做“下载教程”类内容极易踩到诈骗链接，也会被平台判违规。 直播合规 ：国内平台对敏感画面有明确要求，主播需提前准备遮挡与断流方案；“不能打人、不能抢车、不能打警察”是流传的直播白名单口径。"
+    ],
+    "quick_reference": [
+      "类型 → 封面主体 解析：地图/多图拼贴｜实况：主播脸或 KV｜攻略：目标物 + 红圈｜评测：大数字｜切片：高能帧｜二创：风格化主视觉 类型 → 主色 解析：深底 + 白字｜攻略：游戏原色 + 红圈黄字｜评测：红/黑｜资讯：红黄撞色｜小红书：粉紫 + 白大字 标题字数 B 站 4–8 字（封面）/ ≤25 字（标题）｜小红书 ≤20 字（整张封面） 安全区 B 站四周留 5%，右下角避让｜小红书四周留 6% 必测尺寸 B 站缩到 168px 宽｜小红书缩到手机屏宽 三件套 一个主体、一句短话、一个颜色重点——多一个都是干扰",
+      "本手册基于 2026 年 11 月 23 日 B 站公开搜索数据（347 条样本）与小红书公开报道、话题页整理。封面图片版权归各 UP 主与 Rockstar Games 所有，此处仅用于内容形态研究与学习，不构成商业使用授权。播放量、评分为抓取时点数据，会随时间变化。小红书部分版式为结构示意，非真实笔记截图。"
+    ]
+  },
+  "routing": {
+    "first": "platform+content_type",
+    "second": "content_formula",
+    "third": "A/B/C differential layout and typography",
+    "user_style_priority": "Confirmed user style reference has priority over manual imagery; manual content strategy remains advisory.",
+    "user_subject_priority": "Confirmed subject images are protected and not transformed into style examples."
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "version": "1.9.0",
+  "purpose": "把对话收集到的真实信息与已选规则编译成可直接执行的唯一提示词；禁止把模块占位符交给生图模型",
+  "inputs": [
+    "platform",
+    "aspect_ratio",
+    "image_mode",
+    "asset_manifest",
+    "exact_headline",
+    "topic",
+    "content_angle",
+    "chosen_style_id",
+    "chosen_layout_id",
+    "color_intent",
+    "rendering_mode",
+    "protected_regions",
+    "guided_step_responses",
+    "expression_action",
+    "background_tone",
+    "font_style",
+    "font_effect",
+    "final_headline_source"
+  ],
+  "stages": [
+    {
+      "order": 1,
+      "key": "target",
+      "mandatory": true,
+      "content": "画幅比例与目标发布平台，当前任务是全新生成还是编辑上传图"
+    },
+    {
+      "order": 2,
+      "key": "asset_fidelity",
+      "mandatory": true,
+      "content": "参考图编号及用途（图1主体、图2主播、图3证据）；需保留的人物/车辆/视角"
+    },
+    {
+      "order": 3,
+      "key": "spatial_structure",
+      "mandatory": true,
+      "content": "明确主体位置、标题负空间、景别与前中后景；引用唯一风格ID和对应平台布局"
+    },
+    {
+      "order": 4,
+      "key": "main_visual",
+      "mandatory": true,
+      "content": "主体行为、环境、画面动作与情绪，描述具体但不编造事实"
+    },
+    {
+      "order": 5,
+      "key": "typography",
+      "mandatory": true,
+      "content": "生成方式=无字底图+编辑器叠字（优先）或直接叠字；原始标题完全保留；如非需要可无字"
+    },
+    {
+      "order": 6,
+      "key": "postprocessing",
+      "mandatory": true,
+      "content": "满版、负空间、主体提亮/文字区压暗、色彩统一、缩略图读图"
+    },
+    {
+      "order": 7,
+      "key": "exclusions",
+      "mandatory": true,
+      "content": "无白/灰外边、无平台UI、无错字、无虚构logo、无虚构成绩"
+    },
+    {
+      "order": 8,
+      "key": "delivery",
+      "mandatory": true,
+      "content": "调用实际可用的生图工具，或诚实输出不可生成原因；可编辑模式附编辑器操作说明"
+    }
+  ],
+  "compiled_output": {
+    "type": "single_complete_prompt",
+    "must_not_contain": [
+      "待定",
+      "自行决定",
+      "[标题]",
+      "[人物]",
+      "[参考图]",
+      "TBD",
+      "选择一种",
+      "可选风格"
+    ],
+    "language": "依用户语言与宿主工具理解能力调整，不强行改动用户标题",
+    "only_one_recipe": "防止多种模板互相稀释"
+  },
+  "image_modes": {
+    "text_free_editor": {
+      "preferred": true,
+      "prompt_typography": "绝对无文字，无标识，无平台叠加层，预留对应标题负空间",
+      "follow_up": "用户在 tools/thumbnail-editor.html 中独立叠字，保留可编辑文字"
+    },
+    "direct_complete_image": {
+      "prompt_typography": "严格使用用户确认的原标题和指定文字位置；渲染不准时输出无字底图并转编辑器",
+      "follow_up": "仅可核验后声称标题准确"
+    },
+    "image_revision": {
+      "prompt_typography": "保留未修改的文字/主体/背景，显式列出 changed_fields",
+      "follow_up": "优先编辑原图或项目 JSON，避免无关漂移"
+    }
+  },
+  "example": {
+    "input": "用我上传的城市俯瞰截图，B站电影感，标题孩子们真正的史一游来了",
+    "compiled_background_prompt": "横版16:9的B站游戏视频封面无字底图。图1为唯一主场景：保留画面中人物背影、城市全景、河湾/地平线与原有视角；画面完整满版铺边，不做画中画、留灰底或外边框。采用电影化叙事构图，人物与城市形成尺度对比，左上或天空真实负空间保留给后期大标题。对天空和城市进行克制的层次调色、局部高光和轻暗角，主体清晰但不过度锐化；禁止添加无关跑车、人物、官方Logo、字样、播放量或时长。优先使用图像编辑而非从零重绘。",
+    "editor_text": "孩子们真正的史一游来了"
+  },
+  "guided_eight_step_override": {
+    "trigger": "mode=guided8",
+    "reference": "guided_flow.json",
+    "rules": [
+      "以已确认用户选项为最高优先级，自动推荐只填空缺项",
+      "字体、字效只影响文字层，不应迫使图片底图生成随机乱码",
+      "用户的原标题必须逐字保留",
+      "人物和附加素材均可为空",
+      "最终只编译一个完整可用的提示词，若可生图则主动调用工具",
+      "除非用户请求，勿在普通聊天逐项展示所有内部参数"
+    ]
+  }
+}

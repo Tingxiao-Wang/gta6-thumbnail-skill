@@ -1,0 +1,36 @@
+{
+  "version": "2.7.2",
+  "priority": "mandatory_before_any_visual_style_or_title_impact",
+  "trigger": "User-uploaded real-person/self photo used as subject or both; image role alone is not regeneration consent.",
+  "default": "preserve_original_pixels",
+  "allowed_without_approval": [
+    "original-pixel cutout or mask",
+    "resize and positioning",
+    "non-generative crop",
+    "place on a new generated background",
+    "separate text and graphical overlays",
+    "conservative color matching that preserves appearance"
+  ],
+  "prohibited_without_approval": [
+    "re-generate a lookalike",
+    "face replacement or face generation",
+    "alter facial features, hairstyle or body",
+    "generate new clothes, pose or expression",
+    "turn the person into a fictional or cartoon character",
+    "outpaint the person or use character reference to recreate them"
+  ],
+  "approval_spec": {
+    "field": "person_regeneration_approval",
+    "required": [
+      "approved:true",
+      "asset_ids",
+      "allowed_changes",
+      "explicit_user_request"
+    ],
+    "meaning": "Explicit consent must refer to the exact photo and particular edit; general style preference is never consent."
+  },
+  "host_limit": "Whole-image image-generation editing can unintentionally re-create the subject. If pixel-accurate preservation cannot be guaranteed, use non-generative compositing or explain the limitation and do not make the edit.",
+  "abc_requirement": "Keep exactly same original photo pixels per person across A/B/C, vary backgrounds/typography and layout only.",
+  "qa_veto": "unconsented_real_person_recreation",
+  "confidence": "Recognition of real photos depends on host vision / explicit asset metadata. The local compiler is not a photo detector."
+}

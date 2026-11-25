@@ -1,0 +1,436 @@
+{
+  "version": "2.1.0",
+  "notice": "风格标注基于用户提供的GTA封面样本；示意图不包含源图、Logo或真实主播肖像，不代表实测CTR。",
+  "styles": [
+    {
+      "id": "cinematic_poster",
+      "name": "电影叙事",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "电影",
+        "探索",
+        "剧情",
+        "史诗",
+        "城市"
+      ],
+      "reference_ids": [
+        "B06",
+        "Y07"
+      ],
+      "best_for": [
+        "剧情",
+        "首发",
+        "角色介绍",
+        "氛围向"
+      ],
+      "one_line_result": "场景/角色的宏大故事",
+      "visual_contract": "中心或偏右人物/场景，真实负空间承载少量标题",
+      "editor_preset": "cinema",
+      "palette": [
+        "#7E4F8D",
+        "#E78FA4",
+        "#F0A868",
+        "#27354B"
+      ],
+      "prompt_core": "original cinematic tropical metropolis at sunset, one heroic subject, layered urban depth, restrained magenta orange palette, film-poster composition",
+      "negative_rules": [
+        "复制官方Logo",
+        "直接描摹官方游戏人物",
+        "无关的强光束"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "clean_cinematic",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    },
+    {
+      "id": "streamer_reaction",
+      "name": "主播反应",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "主播",
+        "反应",
+        "惊讶",
+        "预告",
+        "reaction"
+      ],
+      "reference_ids": [
+        "B01",
+        "B05",
+        "B08",
+        "Y03",
+        "Y06"
+      ],
+      "best_for": [
+        "实况",
+        "搞笑",
+        "震惊",
+        "挑战反应"
+      ],
+      "one_line_result": "真人反应与游戏事件强对比",
+      "visual_contract": "真实授权主播在画面一侧占约三分之一，游戏事件在另一侧",
+      "editor_preset": "reaction",
+      "palette": [
+        "#F396A8",
+        "#7D3C86",
+        "#FFD74B",
+        "#FFFFFF"
+      ],
+      "prompt_core": "creator-supplied expressive portrait cutout with clean outline, clear secondary in-game event, strong subject-background separation, readable headline space",
+      "negative_rules": [
+        "凭空生成或冒充真实主播身份",
+        "脸部畸形",
+        "主播与故事争抢同一焦点"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "intentional_hype",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    },
+    {
+      "id": "gameplay_question",
+      "name": "疑问钩子",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "值得",
+        "为什么",
+        "这是什么",
+        "初体验",
+        "好奇"
+      ],
+      "reference_ids": [
+        "H01",
+        "H02"
+      ],
+      "best_for": [
+        "首次体验",
+        "真实性讨论",
+        "新发现",
+        "汽车体验"
+      ],
+      "one_line_result": "问题让人产生好奇",
+      "visual_contract": "问题短标题占一块高反差区域，游戏主体为依据",
+      "editor_preset": "question",
+      "palette": [
+        "#FFFFFF",
+        "#171717",
+        "#71D9A0",
+        "#F2CF55"
+      ],
+      "prompt_core": "authentic user-provided gameplay scene, one clear unexpected detail, editorial cover with concise question headline and one emphasized keyword",
+      "negative_rules": [
+        "假的游戏机制和画面声明",
+        "无素材支持的噱头"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "balanced_cleanup",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    },
+    {
+      "id": "discovery_annotation",
+      "name": "局部发现",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "彩蛋",
+        "BUG",
+        "隐藏",
+        "细节",
+        "发现"
+      ],
+      "reference_ids": [
+        "B03",
+        "Y10"
+      ],
+      "best_for": [
+        "BUG",
+        "彩蛋",
+        "秘密位置",
+        "玩法解读"
+      ],
+      "one_line_result": "圈选事实或异常动作",
+      "visual_contract": "圈/箭头指向真实可见的关键证据，至多两个标记",
+      "editor_preset": "review",
+      "palette": [
+        "#F64635",
+        "#FFD452",
+        "#FFFFFF",
+        "#161616"
+      ],
+      "prompt_core": "single visible gameplay discovery with one precise red pointer and an unobstructed callout region, clear informative headline",
+      "negative_rules": [
+        "圈选不存在的东西",
+        "三根以上箭头",
+        "凭空补造真实事件"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "editorial_info",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    },
+    {
+      "id": "dense_news",
+      "name": "资讯攻略",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "攻略",
+        "评测",
+        "分析",
+        "盘点",
+        "讲解"
+      ],
+      "reference_ids": [
+        "B07",
+        "B09",
+        "H05"
+      ],
+      "best_for": [
+        "新闻资讯",
+        "攻略合集",
+        "性能分析",
+        "更新盘点"
+      ],
+      "one_line_result": "多层资讯与条理",
+      "visual_contract": "标签-主标题-副标题分级，但避免把文字堆满画面",
+      "editor_preset": "review",
+      "palette": [
+        "#FFDB3D",
+        "#E53935",
+        "#FFFFFF",
+        "#171717"
+      ],
+      "prompt_core": "structured gaming news thumbnail, strong single-line main claim, secondary factual hook, large legible typography, uncluttered information hierarchy",
+      "negative_rules": [
+        "未证实消息当事实",
+        "营销优惠/性能指标无证据",
+        "为了热闹堆满字"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "editorial_info",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    },
+    {
+      "id": "versus_split",
+      "name": "对照分屏",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "对比",
+        "VS",
+        "画质",
+        "前后",
+        "新旧"
+      ],
+      "reference_ids": [
+        "H03",
+        "Y12"
+      ],
+      "best_for": [
+        "游戏与现实",
+        "GTA5对GTA6",
+        "画质对比",
+        "车辆对比"
+      ],
+      "one_line_result": "左右有真实可比素材",
+      "visual_contract": "等权分屏、A与B对应位置、清楚差异焦点",
+      "editor_preset": "review",
+      "palette": [
+        "#4A3F4F",
+        "#F39AC3",
+        "#34B4D4",
+        "#FFFFFF"
+      ],
+      "prompt_core": "clearly labeled side-by-side comparison, matched subject scale, distinct split line, fair visual evidence, balanced lighting",
+      "negative_rules": [
+        "颠倒来源标签",
+        "将 AI 虚构图冒充真实对比",
+        "不等比拉伸"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "editorial_info",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    },
+    {
+      "id": "clean_documentary",
+      "name": "沉浸纪实",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "沉浸",
+        "风景",
+        "旅行",
+        "探索",
+        "纪录"
+      ],
+      "reference_ids": [
+        "B02",
+        "H06"
+      ],
+      "best_for": [
+        "探索",
+        "写实风光",
+        "场景赏析",
+        "沉浸式实况"
+      ],
+      "one_line_result": "场景本身是主角",
+      "visual_contract": "原场景完整，标题极少，环境层次清晰",
+      "editor_preset": "cinema",
+      "palette": [
+        "#496D72",
+        "#B2C8C6",
+        "#D2A783",
+        "#24303A"
+      ],
+      "prompt_core": "quiet cinematic gameplay scenery, grounded lighting, true-to-source composition, clean details, restrained editorial treatment",
+      "negative_rules": [
+        "过度调色",
+        "过多光效",
+        "假装 AI 场景是真实截图"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "clean_cinematic",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    },
+    {
+      "id": "episode_live",
+      "name": "系列实况",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "直播",
+        "第",
+        "Day",
+        "实况",
+        "连载"
+      ],
+      "reference_ids": [
+        "Y01",
+        "Y05"
+      ],
+      "best_for": [
+        "直播",
+        "连载实况",
+        "DAY N",
+        "新系列"
+      ],
+      "one_line_result": "持续更新和期数识别",
+      "visual_contract": "系列标签明确，直播角标必须是真实直播",
+      "editor_preset": "reaction",
+      "palette": [
+        "#F193BA",
+        "#663981",
+        "#FFFFFF",
+        "#F7CB48"
+      ],
+      "prompt_core": "consistent branded episode thumbnail, clear series badge, creator identity when provided, legible scene-specific hook",
+      "negative_rules": [
+        "非直播写LIVE",
+        "虚构集数",
+        "把播放量时长做进素材"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "intentional_hype",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    },
+    {
+      "id": "minimal_action",
+      "name": "极简动作",
+      "origin": "GTA user reference analysis; original abstracted rule, not licensed source artwork",
+      "tags": [
+        "挑战",
+        "动作",
+        "极限",
+        "速度",
+        "闯关"
+      ],
+      "reference_ids": [
+        "Y02"
+      ],
+      "best_for": [
+        "奇葩挑战",
+        "反差玩法",
+        "单一动作",
+        "探索时刻"
+      ],
+      "one_line_result": "一个动作或者数字带来冲击",
+      "visual_contract": "主体主导，极短标题，可完全无字",
+      "editor_preset": "action",
+      "palette": [
+        "#81B9E7",
+        "#D7BFA0",
+        "#151515",
+        "#FFFFFF"
+      ],
+      "prompt_core": "one instantly understandable action, clean open background, single bold visual contradiction, minimalist gaming thumbnail",
+      "negative_rules": [
+        "多重箭头",
+        "信息密集",
+        "抽象无事件主体"
+      ],
+      "source_assets_included": false,
+      "de_ai_mode": "balanced_cleanup",
+      "de_ai_contract": {
+        "nonfunctional_lines": 0,
+        "unrequested_english_labels": 0,
+        "headline_priority": true,
+        "keep_subject": true,
+        "tag": "optional and only if informative",
+        "subtitle": "only if new true information"
+      }
+    }
+  ],
+  "selection": {
+    "automatic": "按内容目标与已有素材推荐最多2项，不凭平台机械决定审美",
+    "manual": "可输入风格ID或使用 tools/style-gallery.html 查看原创布局示意",
+    "learning": "用户明确要求学习参考图→参见 references/style_learning_workflow.md"
+  }
+}
